@@ -812,6 +812,7 @@
       gap: 12px;
       z-index: 60;
       align-items: center;
+      transition: transform 0.22s cubic-bezier(0.2,0.9,0.2,1), right 0.22s ease;
     }
 
     .floating-btn {
@@ -829,6 +830,11 @@
 
     .floating-btn:active {
       transform: translateY(1px) scale(0.995);
+    }
+
+    /* Shift floating actions up to avoid overlapping with back-to-top */
+    .floating-actions.shift-up {
+      transform: translateY(-96px);
     }
 
     .floating-whatsapp {
@@ -849,6 +855,9 @@
       .floating-btn {
         width: 48px;
         height: 48px;
+      }
+      .floating-actions.shift-up {
+        transform: translateY(-84px);
       }
     }
 
@@ -901,7 +910,7 @@
       background-repeat: no-repeat;
       background-position: center center;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 1.2s ease-in-out;
       will-change: opacity, transform;
       transform: scale(1.02);
     }
@@ -2274,7 +2283,7 @@
         slides[idx].classList.remove('active');
         idx = (idx + 1) % slides.length;
         slides[idx].classList.add('active');
-      }, 5000);
+      }, 6000);
     })();
 
     // ===== PAGE LOADER =====
