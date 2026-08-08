@@ -785,6 +785,16 @@
       box-shadow: 0 8px 24px rgba(2,6,23,0.08);
     }
 
+    /* Icon button used in mobile menu header */
+    .icon-btn {
+      transition: background 0.2s ease, transform 0.12s ease;
+      border: 1px solid rgba(15,23,42,0.04);
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-2px);
+    }
+
     .hamburger.active .hamburger-line:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
@@ -1005,9 +1015,17 @@
           <div class="flex items-center">
             <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-12 h-12 object-contain" />
           </div>
-          <button id="closeMobileMenu" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors">
-            <i class="fas fa-times text-slate-600"></i>
-          </button>
+          <div class="flex items-center gap-3">
+            <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" aria-label="WhatsApp" class="icon-btn w-10 h-10 rounded-full bg-green-50 flex items-center justify-center hover:bg-green-100 transition-colors">
+              <i class="fab fa-whatsapp text-green-600"></i>
+            </a>
+            <a href="#contact" aria-label="Contact Us" class="icon-btn w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors">
+              <i class="fas fa-envelope text-slate-700"></i>
+            </a>
+            <button id="closeMobileMenu" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors">
+              <i class="fas fa-times text-slate-600"></i>
+            </button>
+          </div>
         </div>
         <nav class="flex flex-col gap-1">
           <a href="#home" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Home</a>
@@ -1020,10 +1038,20 @@
           <a href="#contact" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Contact Us</a>
         </nav>
         <div class="mt-8 pt-6 border-t border-slate-100">
-          <a href="tel:+919876543210" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors">
-            <i class="fas fa-phone text-brand-500"></i>
-            +91 98765 43210
-          </a>
+          <div class="flex flex-col gap-3">
+            <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors">
+              <i class="fab fa-whatsapp text-green-500"></i>
+              Chat on WhatsApp
+            </a>
+            <a href="tel:+919876543210" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors">
+              <i class="fas fa-phone text-brand-500"></i>
+              +91 98765 43210
+            </a>
+            <a href="#contact" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors">
+              <i class="fas fa-envelope text-slate-700"></i>
+              Contact Us
+            </a>
+          </div>
           <a href="#contact" class="btn-primary w-full justify-center mt-4 text-sm py-3">
             Get a Free Quote
           </a>
