@@ -852,6 +852,53 @@
       }
     }
 
+    /* Page loader */
+    #pageLoader {
+      position: fixed;
+      inset: 0;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+
+    #pageLoader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #pageLoader .loader-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    #pageLoader img {
+      width: 84px;
+      height: 84px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.08);
+      transform-origin: center;
+      animation: loader-pulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes loader-pulse {
+      0% { transform: scale(0.98); opacity: 0.95; }
+      50% { transform: scale(1.03); opacity: 1; }
+      100% { transform: scale(0.98); opacity: 0.95; }
+    }
+
+    /* prevent scrolling while loader is active */
+    body.preloading {
+      overflow: hidden;
+      touch-action: none;
+    }
+
     .hamburger.active .hamburger-line:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
@@ -1017,7 +1064,15 @@
     }
   </style>
 </head>
-<body>
+<body class="preloading">
+
+  <!-- Page Loader - shows logo while site assets load -->
+  <div id="pageLoader" aria-hidden="false">
+    <div class="loader-inner">
+      <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" />
+      <div class="text-sm text-slate-600">Loading...</div>
+    </div>
+  </div>
 
   <!-- ===== HEADER ===== -->
   <header id="header" class="header-sticky fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl">
@@ -2190,6 +2245,21 @@
         }
       }
     });
+
+    // ===== PAGE LOADER =====
+    (function() {
+      const pageLoader = document.getElementById('pageLoader');
+      if (!pageLoader) return;
+
+      window.addEventListener('load', () => {
+        // fade out loader then remove and restore scrolling
+        pageLoader.classList.add('hidden');
+        setTimeout(() => {
+          if (pageLoader && pageLoader.parentNode) pageLoader.parentNode.removeChild(pageLoader);
+          document.body.classList.remove('preloading');
+        }, 500);
+      });
+    })();
   </script>
 </body>
 </html>
