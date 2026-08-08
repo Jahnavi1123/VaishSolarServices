@@ -893,6 +893,24 @@
       100% { transform: scale(0.98); opacity: 0.95; }
     }
 
+    /* Hero slideshow slides */
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      will-change: opacity, transform;
+      transform: scale(1.02);
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
     /* prevent scrolling while loader is active */
     body.preloading {
       overflow: hidden;
@@ -921,6 +939,7 @@
     .back-to-top.visible {
       opacity: 1;
       visibility: visible;
+      z-index: 90; /* ensure this appears above floating WhatsApp */
     }
 
     /* ===== TRUST BADGE ===== */
@@ -1176,13 +1195,12 @@
   <!-- ===== HERO SECTION ===== -->
   <section id="home" class="relative min-h-screen pt-20 overflow-hidden">
     <!-- Background Image -->
-    <div class="absolute inset-0 z-0">
-      <img 
-        src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&q=85" 
-        alt="Modern Indian home with rooftop solar panels" 
-        class="w-full h-full object-cover"
-        style="object-position: center 30%;"
-      >
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <div id="heroSlides" class="absolute inset-0">
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&q=85'); background-position: center 30%;"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=1920&q=85'); background-position: center 30%;"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1549399546-48f9b63a6c0b?w=1920&q=85'); background-position: center 30%;"></div>
+      </div>
       <div class="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/40 lg:via-white/90 lg:to-transparent"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent lg:hidden"></div>
     </div>
@@ -2245,6 +2263,19 @@
         }
       }
     });
+
+    // ===== HERO SLIDESHOW =====
+    (function() {
+      const slides = document.querySelectorAll('.hero-slide');
+      if (!slides || slides.length === 0) return;
+      let idx = 0;
+      slides[idx].classList.add('active');
+      setInterval(() => {
+        slides[idx].classList.remove('active');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add('active');
+      }, 5000);
+    })();
 
     // ===== PAGE LOADER =====
     (function() {
