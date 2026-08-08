@@ -773,6 +773,18 @@
       transition: all 0.3s ease;
     }
 
+    .hamburger {
+      background: transparent;
+      border-radius: 10px;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+      z-index: 60;
+    }
+
+    .hamburger.active {
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(2,6,23,0.08);
+    }
+
     .hamburger.active .hamburger-line:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
