@@ -795,6 +795,63 @@
       transform: translateY(-2px);
     }
 
+    /* make sure mobile close button sits above nearby elements and accepts clicks */
+    #closeMobileMenu {
+      position: relative;
+      z-index: 70;
+      pointer-events: auto;
+    }
+
+    /* Floating action buttons (bottom right) */
+    .floating-actions {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 60;
+      align-items: center;
+    }
+
+    .floating-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 8px 20px rgba(2,6,23,0.12);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+      text-decoration: none;
+    }
+
+    .floating-btn:active {
+      transform: translateY(1px) scale(0.995);
+    }
+
+    .floating-whatsapp {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    }
+
+    .floating-contact {
+      background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+    }
+
+    @media (max-width: 480px) {
+      .floating-actions {
+        right: 12px;
+        bottom: 16px;
+        gap: 10px;
+      }
+
+      .floating-btn {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
     .hamburger.active .hamburger-line:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
@@ -1955,6 +2012,16 @@
     <i class="fas fa-arrow-up"></i>
   </button>
 
+  <!-- Floating Actions: WhatsApp + Contact -->
+  <div class="floating-actions" aria-hidden="false">
+    <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" class="floating-btn floating-whatsapp" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="#contact" class="floating-btn floating-contact" aria-label="Contact Us">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+
   <script>
     // ===== MOBILE MENU =====
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1979,6 +2046,12 @@
     mobileMenuBtn.addEventListener('click', openMobileMenu);
     closeMobileMenu.addEventListener('click', closeMobileMenuFn);
     mobileOverlay.addEventListener('click', closeMobileMenuFn);
+
+    // Fallback: ensure clicking the inner close icon also triggers menu close
+    const closeMobileMenuIcon = document.querySelector('#closeMobileMenu i');
+    if (closeMobileMenuIcon) {
+      closeMobileMenuIcon.addEventListener('click', closeMobileMenuFn);
+    }
 
     document.querySelectorAll('.mobile-nav-link').forEach(link => {
       link.addEventListener('click', closeMobileMenuFn);
