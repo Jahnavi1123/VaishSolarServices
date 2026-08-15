@@ -760,16 +760,7 @@
 
     @media (max-width: 640px) {
       .mobile-menu {
-        width: 100% !important;
-        left: 0;
-        right: 0;
-        transform: translateX(100%);
-        background: #ffffff !important;
-        box-shadow: none !important;
-      }
-      /* ensure overlay is visible behind menu on mobile when shown */
-      #mobileOverlay {
-        display: block;
+        width: min(20rem, calc(100vw - 3rem)) !important;
       }
     }
 
@@ -1235,9 +1226,7 @@
     }
 
     #mobileMenu #closeMobileMenu {
-      background: #FFFFFF;
-      border-color: #DBEAFE;
-      color: #1D4ED8;
+      display: none;
     }
 
     #mobileMenu #closeMobileMenu .fa-times::before {

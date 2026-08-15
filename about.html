@@ -424,15 +424,7 @@
 
     @media (max-width: 640px) {
       .mobile-menu {
-        width: 100% !important;
-        left: 0;
-        right: 0;
-        transform: translateX(0);
-        background: #ffffff !important;
-        box-shadow: none !important;
-      }
-      #mobileOverlay {
-        display: block;
+        width: min(20rem, calc(100vw - 3rem)) !important;
       }
     }
 
@@ -631,7 +623,7 @@
     #mobileMenu .icon-btn[aria-label="WhatsApp"]:hover { background: #22C55E; color: #FFFFFF; }
     #mobileMenu .icon-btn[aria-label="Contact Us"] { background: #F1F5F9; color: #334155; }
     #mobileMenu .icon-btn[aria-label="Contact Us"]:hover, #mobileMenu #closeMobileMenu:hover { background: #1D4ED8; border-color: #1D4ED8; color: #FFFFFF; }
-    #mobileMenu #closeMobileMenu { background: #FFFFFF; border-color: #DBEAFE; color: #1D4ED8; }
+    #mobileMenu #closeMobileMenu { display: none; }
     #mobileMenu #closeMobileMenu .fa-times::before { content: "\f060"; }
     #mobileMenu .icon-btn:focus-visible, #mobileMenu #closeMobileMenu:focus-visible { outline: 3px solid rgba(74, 127, 232, 0.45); outline-offset: 3px; }
   </style>
