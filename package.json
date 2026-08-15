@@ -1,0 +1,11 @@
+{
+  "name": "vaish-solar-services",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "pg": "^8.22.0"
+  }
+}

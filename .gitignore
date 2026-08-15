@@ -9,3 +9,7 @@ Thumbs.db
 # Temporary files
 *.log
 *.tmp
+
+# Local environment secrets
+.env
+.env.local

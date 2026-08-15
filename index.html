@@ -1194,6 +1194,61 @@
         line-height: 1.15 !important;
       }
     }
+    /* Mobile menu action buttons */
+    #mobileMenu .icon-btn,
+    #mobileMenu #closeMobileMenu {
+      width: 3rem;
+      height: 3rem;
+      border: 1px solid #E2E8F0;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+      transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    #mobileMenu .icon-btn:hover,
+    #mobileMenu #closeMobileMenu:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.13);
+    }
+
+    #mobileMenu .icon-btn[aria-label="WhatsApp"] {
+      background: #F0FDF4;
+      border-color: #D1FAE5;
+      color: #16A34A;
+    }
+
+    #mobileMenu .icon-btn[aria-label="WhatsApp"]:hover {
+      background: #22C55E;
+      color: #FFFFFF;
+    }
+
+    #mobileMenu .icon-btn[aria-label="Contact Us"] {
+      background: #F1F5F9;
+      color: #334155;
+    }
+
+    #mobileMenu .icon-btn[aria-label="Contact Us"]:hover,
+    #mobileMenu #closeMobileMenu:hover {
+      background: #1D4ED8;
+      border-color: #1D4ED8;
+      color: #FFFFFF;
+    }
+
+    #mobileMenu #closeMobileMenu {
+      background: #FFFFFF;
+      border-color: #DBEAFE;
+      color: #1D4ED8;
+    }
+
+    #mobileMenu #closeMobileMenu .fa-times::before {
+      content: "\f060";
+    }
+
+    #mobileMenu .icon-btn:focus-visible,
+    #mobileMenu #closeMobileMenu:focus-visible {
+      outline: 3px solid rgba(74, 127, 232, 0.45);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body class="preloading">
@@ -1947,7 +2002,7 @@
       <div class="text-center max-w-2xl mx-auto mb-16 reveal">
         <span class="inline-block px-4 py-1.5 bg-white text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4 shadow-sm">Testimonials</span>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-5 leading-tight">What Our Customers Say</h2>
-        <p class="text-slate-500 text-lg leading-relaxed">Don't just take our word for it. Here's what homeowners and businesses across India say about their solar journey with us.</p>
+        <p class="text-slate-500 text-lg leading-relaxed">Don't just take our word for it. Here's what our customers say about their solar journey with us.</p>
       </div>
 
       <!-- Google Reviews Badge -->
@@ -1995,17 +2050,10 @@
             <i class="fas fa-star star-filled text-sm"></i>
           </div>
           <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"VAISH Solar transformed our home energy consumption completely. Our electricity bill dropped from Rs. 8,500 to just Rs. 1,200 per month. The installation team was professional and completed the work in just 3 days. Highly recommended!"</p>
-          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
-            <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" 
-              alt="Rajesh Kumar" 
-              class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-100"
-            >
+          <div class="flex items-center pt-6 border-t border-slate-100">
             <div>
               <p class="font-bold text-brand-950 text-sm">Rajesh Kumar</p>
-              <p class="text-xs text-slate-500">Homeowner, Bengaluru</p>
             </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-5 h-5 ml-auto opacity-50">
           </div>
         </div>
 
@@ -2019,17 +2067,10 @@
             <i class="fas fa-star star-filled text-sm"></i>
           </div>
           <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"As a factory owner, I was skeptical about the ROI. But VAISH Solar proved me wrong. Our 250kW system is generating exactly what was promised. The maintenance team is responsive and the monitoring dashboard is excellent."</p>
-          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
-            <img 
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" 
-              alt="Amit Patel" 
-              class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-100"
-            >
+          <div class="flex items-center pt-6 border-t border-slate-100">
             <div>
               <p class="font-bold text-brand-950 text-sm">Amit Patel</p>
-              <p class="text-xs text-slate-500">Factory Owner, Ahmedabad</p>
             </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-5 h-5 ml-auto opacity-50">
           </div>
         </div>
 
@@ -2043,17 +2084,10 @@
             <i class="fas fa-star star-filled text-sm"></i>
           </div>
           <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"The entire process from consultation to installation was seamless. They helped us get the government subsidy which saved us Rs. 1.5 lakhs. Our 5kW system powers our entire home including ACs. Best investment we've made!"</p>
-          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
-            <img 
-              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" 
-              alt="Priya Sharma" 
-              class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-100"
-            >
+          <div class="flex items-center pt-6 border-t border-slate-100">
             <div>
               <p class="font-bold text-brand-950 text-sm">Priya Sharma</p>
-              <p class="text-xs text-slate-500">Homeowner, Hyderabad</p>
             </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-5 h-5 ml-auto opacity-50">
           </div>
         </div>
 
@@ -2067,11 +2101,9 @@
             <i class="fas fa-star star-filled text-sm"></i>
           </div>
           <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"The project was completed on schedule and is operating profitably compared to the investment costs. Thanks to Vaish Solar Services. They are the best."</p>
-          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
-            <div class="w-12 h-12 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center ring-2 ring-brand-100"><i class="fas fa-user"></i></div>
+          <div class="flex items-center pt-6 border-t border-slate-100">
             <div>
               <p class="font-bold text-brand-950 text-sm">Omveer Singh</p>
-              <p class="text-xs text-slate-500">Client</p>
             </div>
             <i class="fas fa-quote-right text-brand-200 ml-auto"></i>
           </div>
@@ -2087,11 +2119,9 @@
             <i class="fas fa-star star-filled text-sm"></i>
           </div>
           <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"Excellent quality material provided by Vaish Solar Service. All the workers are cooperative, and I was satisfied with the work they have done."</p>
-          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
-            <div class="w-12 h-12 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center ring-2 ring-brand-100"><i class="fas fa-user"></i></div>
+          <div class="flex items-center pt-6 border-t border-slate-100">
             <div>
               <p class="font-bold text-brand-950 text-sm">Nikhil Gupta</p>
-              <p class="text-xs text-slate-500">Client</p>
             </div>
             <i class="fas fa-quote-right text-brand-200 ml-auto"></i>
           </div>
@@ -2107,11 +2137,9 @@
             <i class="fas fa-star star-filled text-sm"></i>
           </div>
           <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"I recommend installing solar energy from Vaish Solar Services team. They work very professionally and conscientiously at a very good price."</p>
-          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
-            <div class="w-12 h-12 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center ring-2 ring-brand-100"><i class="fas fa-user"></i></div>
+          <div class="flex items-center pt-6 border-t border-slate-100">
             <div>
               <p class="font-bold text-brand-950 text-sm">Mukesh Agarwal</p>
-              <p class="text-xs text-slate-500">Client</p>
             </div>
             <i class="fas fa-quote-right text-brand-200 ml-auto"></i>
           </div>
@@ -2564,5 +2592,6 @@
       });
     })();
   </script>
+  <script src="content-manager.js"></script>
 </body>
 </html>

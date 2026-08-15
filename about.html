@@ -623,6 +623,17 @@
         line-height: 1.15 !important;
       }
     }
+    /* Mobile menu action buttons */
+    #mobileMenu .icon-btn,
+    #mobileMenu #closeMobileMenu { width: 3rem; height: 3rem; border: 1px solid #E2E8F0; border-radius: 1rem; box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); transition: transform .2s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease; }
+    #mobileMenu .icon-btn:hover, #mobileMenu #closeMobileMenu:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(15, 23, 42, 0.13); }
+    #mobileMenu .icon-btn[aria-label="WhatsApp"] { background: #F0FDF4; border-color: #D1FAE5; color: #16A34A; }
+    #mobileMenu .icon-btn[aria-label="WhatsApp"]:hover { background: #22C55E; color: #FFFFFF; }
+    #mobileMenu .icon-btn[aria-label="Contact Us"] { background: #F1F5F9; color: #334155; }
+    #mobileMenu .icon-btn[aria-label="Contact Us"]:hover, #mobileMenu #closeMobileMenu:hover { background: #1D4ED8; border-color: #1D4ED8; color: #FFFFFF; }
+    #mobileMenu #closeMobileMenu { background: #FFFFFF; border-color: #DBEAFE; color: #1D4ED8; }
+    #mobileMenu #closeMobileMenu .fa-times::before { content: "\f060"; }
+    #mobileMenu .icon-btn:focus-visible, #mobileMenu #closeMobileMenu:focus-visible { outline: 3px solid rgba(74, 127, 232, 0.45); outline-offset: 3px; }
   </style>
 </head>
 <body class="preloading">
@@ -1101,5 +1112,6 @@
       }
     });
   </script>
+  <script src="content-manager.js"></script>
 </body>
 </html>
