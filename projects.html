@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VAISH Solar Services - Projects</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#EEF4FF',
+              100: '#D9E6FF',
+              200: '#B3CDFF',
+              300: '#7AA8FF',
+              400: '#4A7FE8',
+              500: '#2563EB',
+              600: '#1D4ED8',
+              700: '#1E40AF',
+              800: '#1E3A8A',
+              900: '#172554',
+              950: '#0F1D4A',
+            },
+            green: {
+              50: '#F0FDF4',
+              100: '#DCFCE7',
+              200: '#BBF7D0',
+              300: '#86EFAC',
+              400: '#4ADE80',
+              500: '#22C55E',
+              600: '#16A34A',
+              700: '#15803D',
+              800: '#166534',
+              900: '#14532D',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            display: ['Playfair Display', 'Georgia', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1E293B; background: #FFFFFF; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #F1F5F9; }
+    ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(40px); transition: all .9s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .btn-primary { position: relative; overflow: hidden; background: linear-gradient(135deg,#2563EB 0%,#1E40AF 100%); color: white; padding: 14px 32px; border-radius: 12px; font-weight: 600; font-size: .95rem; transition: all .4s cubic-bezier(0.16,1,0.3,1); box-shadow: 0 4px 20px rgba(37,99,235,.25),0 1px 3px rgba(37,99,235,.1); border:none; cursor:pointer; display:inline-flex; align-items:center; gap:8px; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,99,235,.35),0 2px 8px rgba(37,99,235,.15); }
+    .btn-secondary { position: relative; background: transparent; color: #1E40AF; padding: 14px 32px; border-radius: 12px; font-weight: 600; font-size: .95rem; transition: all .4s cubic-bezier(0.16,1,0.3,1); border:1.5px solid #BFDBFE; cursor:pointer; display:inline-flex; align-items:center; gap:8px; }
+    .btn-secondary:hover { background:#EFF6FF; border-color:#2563EB; color:#1E40AF; transform: translateY(-2px); box-shadow:0 4px 20px rgba(37,99,235,.1); }
+    .nav-link { position: relative; color: #475569; font-weight: 500; font-size: .875rem; transition: color .3s ease; padding: 4px 0; }
+    .nav-link::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background: linear-gradient(90deg,#2563EB,#1E40AF); border-radius:2px; transition: width .3s ease; }
+    .nav-link:hover { color:#1E40AF; } .nav-link:hover::after { width:100%; }
+    .header-sticky { transition: all .4s cubic-bezier(0.16,1,0.3,1); }
+    .header-sticky.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow:0 1px 3px rgba(0,0,0,.05),0 4px 20px rgba(0,0,0,.03); }
+    .mobile-menu { transform: translateX(100%); transition: transform .4s cubic-bezier(0.16,1,0.3,1); background:#fff; }
+    .mobile-menu.open { transform: translateX(0); }
+    @media (max-width:640px){ .mobile-menu{width:100% !important;left:0;right:0;transform:translateX(0);background:#fff !important;box-shadow:none !important;} #mobileOverlay{display:block;} }
+    .hamburger-line { transition: all .3s ease; }
+    .hamburger { background:transparent; border-radius:10px; transition:background .2s ease, box-shadow .2s ease; z-index:60; }
+    .hamburger.active { background:#fff; box-shadow:0 8px 24px rgba(2,6,23,.08); }
+    .footer-bg { background: linear-gradient(180deg, #0F172A 0%, #020617 100%); }
+    .footer-link{position:relative;color:#94A3B8;transition:color .3s ease;} .footer-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#60A5FA;transition:width .3s ease;} .footer-link:hover{color:#fff;} .footer-link:hover::after{width:100%;}
+    .social-icon{transition:all .3s ease;} .social-icon:hover{background:#2563EB;color:white;transform:translateY(-3px);} .hero-visual{min-height:440px;background-size:cover;background-position:center center;border-radius:2rem;position:relative;overflow:hidden;} .hero-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right, rgba(37,99,235,.14), transparent 45%);} #pageLoader{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .45s ease,visibility .45s ease;} #pageLoader.hidden{opacity:0;visibility:hidden;pointer-events:none;} #pageLoader .loader-inner{display:flex;flex-direction:column;align-items:center;gap:12px;} #pageLoader img{width:84px;height:84px;object-fit:contain;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,.08);transform-origin:center;animation:loader-pulse 1.6s ease-in-out infinite;} @keyframes loader-pulse{0%{transform:scale(.98);opacity:.95;}50%{transform:scale(1.03);opacity:1;}100%{transform:scale(.98);opacity:.95;}} body.preloading{overflow:hidden;touch-action:none;}
+  </style>
+</head>
+<body class="preloading">
+  <div id="pageLoader" aria-hidden="false"><div class="loader-inner"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" /><div class="text-sm text-slate-600">Loading...</div></div></div>
+  <header id="header" class="header-sticky fixed top-0 left-0 right-0 z-50 bg-white"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-20"><a href="index.html" class="flex items-center group"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-14 h-14 object-contain" /></a><nav class="hidden lg:flex items-center gap-1"><a href="index.html" class="nav-link px-3 py-2">Home</a><a href="about.html" class="nav-link px-3 py-2">About Us</a><a href="services.html" class="nav-link px-3 py-2">Services</a><a href="projects.html" class="nav-link px-3 py-2">Projects</a><a href="contact.html" class="nav-link px-3 py-2">Contact Us</a></nav><div class="hidden lg:flex items-center gap-5"><a href="tel:+919876543210" class="flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800 transition-colors"><div class="w-9 h-9 rounded-full bg-brand-50 flex items-center justify-center"><i class="fas fa-phone text-brand-500 text-xs"></i></div><span>+91 98765 43210</span></a><a href="contact.html" class="btn-primary text-sm py-3 px-6">Get a Free Quote<i class="fas fa-arrow-right text-xs"></i></a></div><button id="mobileMenuBtn" class="lg:hidden hamburger p-2" aria-label="Toggle menu"><div class="w-6 flex flex-col gap-1.5"><span class="hamburger-line block w-full h-0.5 bg-brand-800 rounded-full"></span><span class="hamburger-line block w-4 h-0.5 bg-brand-800 rounded-full ml-auto"></span><span class="hamburger-line block w-full h-0.5 bg-brand-800 rounded-full"></span></div></button></div></div><div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 lg:hidden"><div class="p-6"><div class="flex items-center justify-between mb-10"><div class="flex items-center"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-12 h-12 object-contain" /></div><div class="flex items-center gap-3"><a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" aria-label="WhatsApp" class="icon-btn w-10 h-10 rounded-full bg-green-50 flex items-center justify-center hover:bg-green-100 transition-colors"><i class="fab fa-whatsapp text-green-600"></i></a><a href="contact.html" aria-label="Contact Us" class="icon-btn w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors"><i class="fas fa-envelope text-slate-700"></i></a><button id="closeMobileMenu" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors"><i class="fas fa-times text-slate-600"></i></button></div></div><nav class="flex flex-col gap-1"><a href="index.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Home</a><a href="about.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">About Us</a><a href="services.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Services</a><a href="projects.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Projects</a><a href="contact.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Contact Us</a></nav><div class="mt-8 pt-6 border-t border-slate-100"><div class="flex flex-col gap-3"><a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors"><i class="fab fa-whatsapp text-green-500"></i>Chat on WhatsApp</a><a href="tel:+919876543210" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors"><i class="fas fa-phone text-brand-500"></i>+91 98765 43210</a><a href="contact.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors"><i class="fas fa-envelope text-slate-700"></i>Contact Us</a></div><a href="contact.html" class="btn-primary w-full justify-center mt-4 text-sm py-3">Get a Free Quote</a></div></div><div id="mobileOverlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden lg:hidden"></div></header>
+  <main class="pt-24">
+    <section class="relative overflow-hidden pt-24 pb-20">
+      <div class="absolute inset-0 bg-gradient-to-br from-brand-50 via-white to-white"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="max-w-xl">
+            <span class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-100 rounded-full text-sm font-semibold text-brand-700 mb-6">Our Projects</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-950 mb-6">Real installations that prove the power of solar.</h1>
+            <p class="text-lg text-slate-600 leading-relaxed mb-8">Browse our portfolio of completed solar projects across residential, commercial, and industrial sectors. Every installation is designed for performance and long-term reliability.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="contact.html" class="btn-primary text-base py-4 px-8 justify-center">Schedule a Visit<i class="fas fa-arrow-right"></i></a>
+              <a href="services.html" class="btn-secondary text-base py-4 px-8 justify-center">View Services<i class="fas fa-chevron-right text-xs"></i></a>
+            </div>
+          </div>
+          <div class="hero-visual bg-[url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&q=85')] bg-cover bg-center h-[460px] shadow-2xl rounded-[2rem]"></div>
+        </div>
+      </div>
+    </section>
+    <section class="projects-bg py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="project-card group rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 cursor-pointer reveal">
+            <div class="relative h-72 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Residential rooftop solar installation" class="project-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent p-6 flex items-end">
+                <div>
+                  <span class="inline-block px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-full mb-2">Residential</span>
+                  <h3 class="text-white text-xl font-bold">Villa Solar Setup</h3>
+                  <p class="text-white/80 text-sm">Bengaluru, Karnataka — 10kW system</p>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="project-card group rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 cursor-pointer reveal">
+            <div class="relative h-72 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1545208942-e0c43a4c4dd2?w=600&q=80" alt="Commercial solar installation on factory roof" class="project-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent p-6 flex items-end">
+                <div>
+                  <span class="inline-block px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-full mb-2">Commercial</span>
+                  <h3 class="text-white text-xl font-bold">Factory Solar Plant</h3>
+                  <p class="text-white/80 text-sm">Ahmedabad, Gujarat — 250kW plant</p>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="project-card group rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 cursor-pointer reveal">
+            <div class="relative h-72 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=600&q=80" alt="Industrial solar farm installation" class="project-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent p-6 flex items-end">
+                <div>
+                  <span class="inline-block px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-full mb-2">Industrial</span>
+                  <h3 class="text-white text-xl font-bold">Ground-Mount Solar Farm</h3>
+                  <p class="text-white/80 text-sm">Rajasthan — 1MW installation</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer-bg pt-20 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-16">
+        <div class="sm:col-span-2 lg:col-span-1"><a href="index.html" class="flex items-center mb-6"><img src="Assests/falcon.png" alt="Falcon logo" class="w-14 h-14 object-contain" /></a><p class="text-slate-400 text-sm leading-relaxed mb-6">Leading solar energy solutions provider in India, committed to making renewable energy accessible, affordable, and efficient for every home and business.</p><div class="flex gap-3"><a href="#" class="social-icon w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400"><i class="fab fa-facebook-f text-sm"></i></a><a href="#" class="social-icon w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400"><i class="fab fa-instagram text-sm"></i></a><a href="#" class="social-icon w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400"><i class="fab fa-linkedin-in text-sm"></i></a><a href="#" class="social-icon w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400"><i class="fab fa-youtube text-sm"></i></a></div></div>
+        <div><h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Quick Links</h4><ul class="space-y-3.5"><li><a href="index.html" class="footer-link text-sm">Home</a></li><li><a href="about.html" class="footer-link text-sm">About Us</a></li><li><a href="services.html" class="footer-link text-sm">Services</a></li><li><a href="projects.html" class="footer-link text-sm">Projects</a></li><li><a href="about.html#certificates" class="footer-link text-sm">View Certificates</a></li></ul></div>
+        <div><h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Services</h4><ul class="space-y-3.5"><li><a href="services.html" class="footer-link text-sm">Rooftop Solar</a></li><li><a href="services.html" class="footer-link text-sm">Solar Installation</a></li><li><a href="services.html" class="footer-link text-sm">Maintenance & AMC</a></li><li><a href="services.html" class="footer-link text-sm">Solar Batteries</a></li><li><a href="services.html" class="footer-link text-sm">Commercial Solar</a></li><li><a href="services.html" class="footer-link text-sm">Industrial Solar</a></li></ul></div>
+        <div><h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Contact Us</h4><ul class="space-y-4"><li class="flex items-start gap-3"><div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-map-marker-alt text-brand-400 text-xs"></i></div><span class="text-slate-400 text-sm leading-relaxed">123 Solar Street, Green Energy Park, Bengaluru, Karnataka - 560001</span></li><li class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center flex-shrink-0"><i class="fas fa-phone text-brand-400 text-xs"></i></div><a href="tel:+919876543210" class="footer-link text-sm">+91 98765 43210</a></li><li class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center flex-shrink-0"><i class="fas fa-envelope text-brand-400 text-xs"></i></div><a href="mailto:info@vaishsolar.com" class="footer-link text-sm">info@vaishsolar.com</a></li><li class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center flex-shrink-0"><i class="fas fa-clock text-brand-400 text-xs"></i></div><span class="text-slate-400 text-sm">Mon - Sat: 9:00 AM - 7:00 PM</span></li></ul></div>
+      </div>
+      <div class="section-divider mb-8"></div>
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4"><p class="text-slate-500 text-sm">2026 VAISH Solar Services. All rights reserved.</p><div class="flex gap-6"><a href="#" class="footer-link text-sm">Privacy Policy</a><a href="#" class="footer-link text-sm">Terms of Service</a><a href="#" class="footer-link text-sm">Sitemap</a></div></div>
+    </div>
+  </footer>
+  <div class="floating-actions" aria-hidden="false"><a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" class="floating-btn floating-whatsapp" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a><a href="contact.html" class="floating-btn floating-contact" aria-label="Contact Us"><i class="fas fa-envelope"></i></a></div>
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    function openMobileMenu(){mobileMenu.classList.add('open');mobileOverlay.classList.remove('hidden');mobileMenuBtn.classList.add('active');document.body.style.overflow='hidden';}
+    function closeMobileMenuFn(){mobileMenu.classList.remove('open');mobileOverlay.classList.add('hidden');mobileMenuBtn.classList.remove('active');document.body.style.overflow='';}
+    mobileMenuBtn.addEventListener('click', openMobileMenu); closeMobileMenu.addEventListener('click', closeMobileMenuFn); mobileOverlay.addEventListener('click', closeMobileMenuFn);
+    const closeMobileMenuIcon=document.querySelector('#closeMobileMenu i'); if (closeMobileMenuIcon) closeMobileMenuIcon.addEventListener('click', closeMobileMenuFn);
+    document.querySelectorAll('.mobile-nav-link').forEach(link=>link.addEventListener('click', closeMobileMenuFn));
+    const header=document.getElementById('header'); window.addEventListener('scroll',()=>{ if(window.scrollY>50) header.classList.add('scrolled'); else header.classList.remove('scrolled'); });
+    const revealElements=document.querySelectorAll('.reveal'); const revealObserver=new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObserver.unobserve(entry.target);} }); },{threshold:0.1,rootMargin:'0px 0px -50px 0px'}); revealElements.forEach(el=>revealObserver.observe(el));
+    window.addEventListener('load',()=>{ const pageLoader=document.getElementById('pageLoader'); if(pageLoader){pageLoader.classList.add('hidden'); setTimeout(()=>{ if(pageLoader.parentNode) pageLoader.parentNode.removeChild(pageLoader); document.body.classList.remove('preloading');},500);}});
+  </script>
+</body>
+</html>

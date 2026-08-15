@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Savings Calculator | VAISH Solar Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['DM Sans', 'sans-serif'] }, colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#2563eb', 600: '#1d4ed8', 700: '#1d4ed8', 950: '#172554' } } } } };
+  </script>
+  <style>
+    body { background: #f8fafc; }
+    .form-input { width: 100%; border: 1px solid #cbd5e1; border-radius: .75rem; padding: .875rem 1rem; outline: none; transition: .2s; }
+    .form-input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.12); }
+    .workflow-step-icon { width: 4.5rem; height: 4.5rem; border: 2px solid #60a5fa; background: #eff6ff; color: #0284c7; }
+    .workflow-step.is-active .workflow-step-icon { background: #2563eb; border-color: #2563eb; color: white; box-shadow: 0 0 0 5px #dbeafe; }
+  </style>
+</head>
+<body class="font-sans text-slate-800">
+  <header class="bg-white border-b border-slate-100 sticky top-0 z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3" aria-label="VAISH Solar Services home"><img src="assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-12 h-12 object-contain"><span class="font-extrabold text-brand-950 hidden sm:block">VAISH Solar Services</span></a>
+      <a href="index.html" class="text-sm font-bold text-brand-700 hover:text-brand-950"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="bg-gradient-to-br from-brand-950 via-blue-900 to-slate-950 py-16 lg:py-24 text-white overflow-hidden relative">
+      <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full border border-white/10"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest mb-5">Solar Savings Calculator</span>
+          <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-5">See what solar can save you.</h1>
+          <p class="text-lg text-blue-100 leading-relaxed max-w-xl">Get an estimated system size, savings, payback period and carbon reduction for your home or business.</p>
+          <div class="mt-8 grid grid-cols-3 gap-4 max-w-lg text-center">
+            <div class="rounded-xl bg-white/10 border border-white/10 p-4"><i class="fas fa-bolt text-amber-300 mb-2"></i><p class="text-xs text-blue-100">Instant estimate</p></div>
+            <div class="rounded-xl bg-white/10 border border-white/10 p-4"><i class="fas fa-indian-rupee-sign text-green-300 mb-2"></i><p class="text-xs text-blue-100">Savings forecast</p></div>
+            <div class="rounded-xl bg-white/10 border border-white/10 p-4"><i class="fas fa-leaf text-emerald-300 mb-2"></i><p class="text-xs text-blue-100">CO₂ impact</p></div>
+          </div>
+        </div>
+        <div class="hidden lg:flex justify-center"><div class="rounded-3xl bg-white/10 border border-white/10 p-8 shadow-2xl"><img src="assests/hybrid.png" alt="Solar energy system" class="w-full max-w-md h-72 object-contain"></div></div>
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-24">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-900/5 p-6 sm:p-10">
+          <div class="mb-10"><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950">Calculate your savings</h2><p class="text-slate-500 mt-2">Your contact details are required to view the estimate.</p></div>
+
+          <div class="relative grid grid-cols-3 gap-3 mb-12" aria-label="Solar journey steps">
+            <div class="hidden sm:block absolute border-t-4 border-dotted border-sky-400 left-[16.5%] right-[16.5%] top-9"></div>
+            <div id="workflowStep1" class="workflow-step is-active relative z-10 text-center">
+              <p class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-3">Step 01</p>
+              <div class="workflow-step-icon rounded-full mx-auto flex items-center justify-center text-2xl"><i class="fas fa-calculator"></i></div>
+              <p class="mt-3 text-sm sm:text-base font-extrabold text-brand-950 leading-tight">Run the<br>Calculator</p>
+            </div>
+            <div id="workflowStep2" class="workflow-step relative z-10 text-center">
+              <p class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-3">Step 02</p>
+              <div class="workflow-step-icon rounded-full mx-auto flex items-center justify-center text-2xl"><i class="fas fa-house"></i></div>
+              <p class="mt-3 text-sm sm:text-base font-extrabold text-brand-950 leading-tight">Schedule Your<br>Site Survey</p>
+            </div>
+            <div id="workflowStep3" class="workflow-step relative z-10 text-center">
+              <p class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-3">Step 03</p>
+              <div class="workflow-step-icon rounded-full mx-auto flex items-center justify-center text-2xl"><i class="fas fa-sun"></i></div>
+              <p class="mt-3 text-sm sm:text-base font-extrabold text-brand-950 leading-tight">Buy Solar and<br>Reap Benefits</p>
+            </div>
+          </div>
+          <form id="solarCalculatorForm" class="space-y-6">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div><label for="calculatorName" class="block text-sm font-bold text-slate-700 mb-2">Full Name <span class="text-red-500">*</span></label><input id="calculatorName" name="name" type="text" autocomplete="name" class="form-input" placeholder="Enter your full name" required></div>
+              <div><label for="calculatorPhone" class="block text-sm font-bold text-slate-700 mb-2">Phone Number <span class="text-red-500">*</span></label><input id="calculatorPhone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" pattern="[6-9][0-9]{9}" title="Enter a valid 10-digit Indian mobile number" class="form-input" placeholder="10-digit mobile number" required></div>
+            </div>
+            <div><label for="calculatorAddress" class="block text-sm font-bold text-slate-700 mb-2">Installation Address <span class="text-red-500">*</span></label><textarea id="calculatorAddress" name="address" rows="3" autocomplete="street-address" class="form-input resize-none" placeholder="House/building, street, city and PIN code" required></textarea></div>
+            <fieldset class="rounded-2xl border border-slate-200 p-5">
+              <legend class="px-2 text-sm font-bold text-slate-700">Power Supply Phase <span class="text-red-500">*</span></legend>
+              <div class="flex flex-wrap gap-6 mt-2">
+                <label class="flex items-center gap-2 font-semibold text-slate-700 cursor-pointer"><input type="radio" name="powerPhase" value="single" class="accent-brand-600" checked required> Single Phase</label>
+                <label class="flex items-center gap-2 font-semibold text-slate-700 cursor-pointer"><input type="radio" name="powerPhase" value="three" class="accent-brand-600" required> Three Phase</label>
+              </div>
+            </fieldset>
+            <div>
+              <label for="tariffRate" class="block text-sm font-bold text-slate-700 mb-2">Tariff Rate (₹ per unit) <span class="text-red-500">*</span></label>
+              <div class="flex items-center gap-4"><input id="tariffSlider" type="range" min="4" max="30" value="7" step="0.1" class="w-full accent-brand-600"><input id="tariffRate" type="number" min="4" max="30" step="0.1" value="7" class="form-input w-28 text-center" required><span class="text-sm font-semibold text-slate-500">INR</span></div>
+            </div>
+            <div><label for="billAmount" class="block text-sm font-bold text-slate-700 mb-2">Monthly Electricity Bill (₹) <span class="text-red-500">*</span></label><input id="billAmount" type="number" min="1" value="5000" class="form-input" required></div>
+            <div class="grid sm:grid-cols-[1fr_auto] gap-4 items-end">
+              <div><label for="roofArea" class="block text-sm font-bold text-slate-700 mb-2">Available Rooftop Area <span class="text-red-500">*</span></label><input id="roofArea" type="number" min="1" value="120" class="form-input" required></div>
+              <fieldset class="pb-3"><legend class="sr-only">Roof area unit</legend><div class="flex gap-4"><label class="flex items-center gap-2 text-sm font-semibold cursor-pointer"><input type="radio" name="roofUnit" value="sqft" class="accent-brand-600" checked> Sq.ft</label><label class="flex items-center gap-2 text-sm font-semibold cursor-pointer"><input type="radio" name="roofUnit" value="sqm" class="accent-brand-600"> Sq.m</label></div></fieldset>
+            </div>
+            <p class="-mt-3 text-xs text-slate-500"><i class="fas fa-info-circle text-brand-600 mr-1"></i>Approx. 1 kW system requires 120 sq.ft / 11.15 sq.m of rooftop area.</p>
+            <div><label for="sanctionLoad" class="block text-sm font-bold text-slate-700 mb-2">Sanctioned Load (kW) <span class="text-red-500">*</span></label><input id="sanctionLoad" type="number" min="1" step="0.1" value="5" class="form-input" required></div>
+            <button type="submit" class="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 px-6 transition-colors"><i class="fas fa-calculator mr-2"></i>Calculate My Savings</button>
+          </form>
+
+          <div id="savingsResult" class="hidden mt-10 pt-8 border-t border-slate-200">
+            <h3 class="text-xl font-extrabold text-brand-950 mb-5">Your estimated solar benefit</h3>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="rounded-2xl bg-blue-50 border border-blue-100 p-4 text-center"><p class="text-xs font-bold uppercase tracking-wide text-brand-600 mb-2">System size</p><p id="systemSize" class="text-xl font-extrabold text-brand-700">0 kW</p></div>
+              <div class="rounded-2xl bg-green-50 border border-green-100 p-4 text-center"><p class="text-xs font-bold uppercase tracking-wide text-green-600 mb-2">Monthly saving</p><p id="monthlySavings" class="text-xl font-extrabold text-green-700">₹0</p></div>
+              <div class="rounded-2xl bg-indigo-50 border border-indigo-100 p-4 text-center"><p class="text-xs font-bold uppercase tracking-wide text-indigo-600 mb-2">Payback period</p><p id="paybackPeriod" class="text-xl font-extrabold text-indigo-700">0 years</p></div>
+              <div class="rounded-2xl bg-amber-50 border border-amber-100 p-4 text-center"><p class="text-xs font-bold uppercase tracking-wide text-amber-600 mb-2">CO₂ reduction</p><p id="co2Reduction" class="text-xl font-extrabold text-amber-700">0 tonnes</p></div>
+            </div>
+            <p class="mt-5 rounded-xl bg-emerald-50 border border-emerald-100 p-4 text-center text-emerald-800 font-medium"><i class="fas fa-leaf mr-2"></i>You could save up to <span id="lifetimeSavings" class="font-extrabold">₹0</span> over 25 years.</p>
+            <a href="contact.html" class="mt-6 w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 px-6 transition-colors flex items-center justify-center"><i class="fas fa-calendar-check mr-2"></i>Schedule Your Free Site Survey <i class="fas fa-arrow-right ml-3"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-950 py-8 text-center text-sm text-slate-400"><a href="about.html#certificates" class="hover:text-white">View Certificates</a><span class="mx-3 text-slate-600">|</span><span>© 2026 VAISH Solar Services</span></footer>
+  <script>
+    const form = document.getElementById('solarCalculatorForm');
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const bill = Number(document.getElementById('billAmount').value);
+      const tariff = Number(document.getElementById('tariffRate').value);
+      const roofArea = Number(document.getElementById('roofArea').value);
+      const roofUnit = document.querySelector('input[name="roofUnit"]:checked').value;
+      const sanctionedLoad = Number(document.getElementById('sanctionLoad').value);
+      const units = bill / tariff;
+      const roofAreaInSqFt = roofUnit === 'sqm' ? roofArea * 10.764 : roofArea;
+      const energyBasedSize = Math.max(1, Math.ceil(units / 130));
+      const roofBasedSize = Math.max(1, Math.floor(roofAreaInSqFt / 120));
+      const size = Math.min(energyBasedSize, roofBasedSize, sanctionedLoad);
+      const monthly = Math.round(bill * .8);
+      const yearly = monthly * 12;
+      const payback = (size * 50000 / yearly).toFixed(1);
+      const co2 = (units * 12 * .82 / 1000).toFixed(1);
+      const format = value => '₹' + value.toLocaleString('en-IN');
+      document.getElementById('systemSize').textContent = size + ' kW';
+      document.getElementById('monthlySavings').textContent = format(monthly);
+      document.getElementById('paybackPeriod').textContent = payback + ' years';
+      document.getElementById('co2Reduction').textContent = co2 + ' tonnes';
+      document.getElementById('lifetimeSavings').textContent = format(yearly * 25);
+      const result = document.getElementById('savingsResult');
+      result.classList.remove('hidden');
+      document.getElementById('workflowStep2').classList.add('is-active');
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+    const tariffSlider = document.getElementById('tariffSlider');
+    const tariffRate = document.getElementById('tariffRate');
+    tariffSlider.addEventListener('input', () => { tariffRate.value = tariffSlider.value; });
+    tariffRate.addEventListener('input', () => { tariffSlider.value = Math.min(30, Math.max(4, tariffRate.value || 4)); });
+  </script>
+</body>
+</html>

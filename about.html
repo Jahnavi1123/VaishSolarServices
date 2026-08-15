@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VAISH Solar Services - About Us</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#EEF4FF',
+              100: '#D9E6FF',
+              200: '#B3CDFF',
+              300: '#7AA8FF',
+              400: '#4A7FE8',
+              500: '#2563EB',
+              600: '#1D4ED8',
+              700: '#1E40AF',
+              800: '#1E3A8A',
+              900: '#172554',
+              950: '#0F1D4A',
+            },
+            indigo: {
+              50: '#EEF2FF',
+              100: '#E0E7FF',
+              200: '#C7D2FE',
+              300: '#A5B4FC',
+              400: '#818CF8',
+              500: '#6366F1',
+              600: '#4F46E5',
+              700: '#4338CA',
+              800: '#3730A3',
+              900: '#312E81',
+            },
+            green: {
+              50: '#F0FDF4',
+              100: '#DCFCE7',
+              200: '#BBF7D0',
+              300: '#86EFAC',
+              400: '#4ADE80',
+              500: '#22C55E',
+              600: '#16A34A',
+              700: '#15803D',
+              800: '#166534',
+              900: '#14532D',
+            },
+            warm: {
+              50: '#FFFBEB',
+              100: '#FEF3C7',
+              200: '#FDE68A',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            display: ['Playfair Display', 'Georgia', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      color: #1E293B;
+      background: #FFFFFF;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes pulse-soft {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+    }
+
+    @keyframes gradientShift {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    .animate-fade-in-left {
+      animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    .animate-fade-in-right {
+      animation: fadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .animate-pulse-soft {
+      animation: pulse-soft 3s ease-in-out infinite;
+    }
+
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    .delay-400 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-500 {
+      animation-delay: 0.5s;
+    }
+
+    .delay-600 {
+      animation-delay: 0.6s;
+    }
+
+    .delay-700 {
+      animation-delay: 0.7s;
+    }
+
+    .delay-800 {
+      animation-delay: 0.8s;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .glass-dark {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.25), 0 1px 3px rgba(37, 99, 235, 0.1);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.35), 0 2px 8px rgba(37, 99, 235, 0.15);
+    }
+
+    .btn-secondary {
+      position: relative;
+      background: transparent;
+      color: #1E40AF;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1.5px solid #BFDBFE;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .btn-secondary:hover {
+      background: #EFF6FF;
+      border-color: #2563EB;
+      color: #1E40AF;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+    }
+
+    .btn-whatsapp {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px rgba(34, 197, 94, 0.25);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(34, 197, 94, 0.35);
+    }
+
+    .nav-link {
+      position: relative;
+      color: #475569;
+      font-weight: 500;
+      font-size: 0.875rem;
+      transition: color 0.3s ease;
+      padding: 4px 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #2563EB, #1E40AF);
+      border-radius: 2px;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-link:hover {
+      color: #1E40AF;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(105deg, 
+        #FFFFFF 0%, 
+        #FFFFFF 45%, 
+        rgba(255,255,255,0.97) 50%, 
+        rgba(255,255,255,0.85) 55%, 
+        rgba(255,255,255,0.4) 60%, 
+        transparent 65%
+      );
+    }
+
+    .hero-visual {
+      min-height: 440px;
+      background-size: cover;
+      background-position: center center;
+      border-radius: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.14), transparent 45%);
+    }
+
+    .header-sticky {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .header-sticky.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      background: #ffffff;
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    @media (max-width: 640px) {
+      .mobile-menu {
+        width: 100% !important;
+        left: 0;
+        right: 0;
+        transform: translateX(0);
+        background: #ffffff !important;
+        box-shadow: none !important;
+      }
+      #mobileOverlay {
+        display: block;
+      }
+    }
+
+    .hamburger-line {
+      transition: all 0.3s ease;
+    }
+
+    .hamburger {
+      background: transparent;
+      border-radius: 10px;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+      z-index: 60;
+    }
+
+    .hamburger.active {
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(2,6,23,0.08);
+    }
+
+    .floating-actions {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 60;
+      align-items: center;
+      transition: transform 0.22s cubic-bezier(0.2,0.9,0.2,1), right 0.22s ease;
+    }
+
+    .floating-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 8px 20px rgba(2,6,23,0.12);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+      text-decoration: none;
+    }
+
+    .floating-btn:active {
+      transform: translateY(1px) scale(0.995);
+    }
+
+    .floating-actions.shift-up {
+      transform: translateY(-96px);
+    }
+
+    .floating-whatsapp {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    }
+
+    .floating-contact {
+      background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+    }
+
+    @media (max-width: 480px) {
+      .floating-actions {
+        right: 12px;
+        bottom: 16px;
+        gap: 10px;
+      }
+
+      .floating-btn {
+        width: 48px;
+        height: 48px;
+      }
+      .floating-actions.shift-up {
+        transform: translateY(-84px);
+      }
+    }
+
+    #pageLoader {
+      position: fixed;
+      inset: 0;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+
+    #pageLoader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #pageLoader .loader-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    #pageLoader img {
+      width: 84px;
+      height: 84px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.08);
+      transform-origin: center;
+      animation: loader-pulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes loader-pulse {
+      0% { transform: scale(0.98); opacity: 0.95; }
+      50% { transform: scale(1.03); opacity: 1; }
+      100% { transform: scale(0.98); opacity: 0.95; }
+    }
+
+    body.preloading {
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    .back-to-top {
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      z-index: 90;
+    }
+
+    .footer-bg {
+      background: linear-gradient(180deg, #0F172A 0%, #020617 100%);
+    }
+
+    .footer-link {
+      position: relative;
+      color: #94A3B8;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #60A5FA;
+      transition: width 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: #FFFFFF;
+    }
+
+    .footer-link:hover::after {
+      width: 100%;
+    }
+
+    .social-icon {
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: #2563EB;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .feature-check {
+      transition: all 0.3s ease;
+    }
+
+    .feature-check:hover {
+      transform: translateX(4px);
+    }
+
+    .hero-title {
+      line-height: 1.05;
+    }
+
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 2.25rem !important;
+        line-height: 1.15 !important;
+      }
+    }
+  </style>
+</head>
+<body class="preloading">
+  <div id="pageLoader" aria-hidden="false">
+    <div class="loader-inner">
+      <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" />
+      <div class="text-sm text-slate-600">Loading...</div>
+    </div>
+  </div>
+
+  <header id="header" class="header-sticky fixed top-0 left-0 right-0 z-50 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center group">
+          <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-14 h-14 object-contain" />
+        </a>
+        <nav class="hidden lg:flex items-center gap-1">
+          <a href="index.html" class="nav-link px-3 py-2">Home</a>
+          <a href="about.html" class="nav-link px-3 py-2">About Us</a>
+          <a href="services.html" class="nav-link px-3 py-2">Services</a>
+          <a href="projects.html" class="nav-link px-3 py-2">Projects</a>
+          <a href="contact.html" class="nav-link px-3 py-2">Contact Us</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-5">
+          <a href="tel:+919876543210" class="flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800 transition-colors">
+            <div class="w-9 h-9 rounded-full bg-brand-50 flex items-center justify-center">
+              <i class="fas fa-phone text-brand-500 text-xs"></i>
+            </div>
+            <span>+91 98765 43210</span>
+          </a>
+          <a href="contact.html" class="btn-primary text-sm py-3 px-6">
+            Get a Free Quote
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+        <button id="mobileMenuBtn" class="lg:hidden hamburger p-2" aria-label="Toggle menu">
+          <div class="w-6 flex flex-col gap-1.5">
+            <span class="hamburger-line block w-full h-0.5 bg-brand-800 rounded-full"></span>
+            <span class="hamburger-line block w-4 h-0.5 bg-brand-800 rounded-full ml-auto"></span>
+            <span class="hamburger-line block w-full h-0.5 bg-brand-800 rounded-full"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 lg:hidden">
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-10">
+          <div class="flex items-center">
+            <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-12 h-12 object-contain" />
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" aria-label="WhatsApp" class="icon-btn w-10 h-10 rounded-full bg-green-50 flex items-center justify-center hover:bg-green-100 transition-colors">
+              <i class="fab fa-whatsapp text-green-600"></i>
+            </a>
+            <a href="contact.html" aria-label="Contact Us" class="icon-btn w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors">
+              <i class="fas fa-envelope text-slate-700"></i>
+            </a>
+            <button id="closeMobileMenu" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors">
+              <i class="fas fa-times text-slate-600"></i>
+            </button>
+          </div>
+        </div>
+        <nav class="flex flex-col gap-1">
+          <a href="index.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Home</a>
+          <a href="about.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">About Us</a>
+          <a href="services.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Services</a>
+          <a href="projects.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Projects</a>
+          <a href="contact.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Contact Us</a>
+        </nav>
+        <div class="mt-8 pt-6 border-t border-slate-100">
+          <div class="flex flex-col gap-3">
+            <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors">
+              <i class="fab fa-whatsapp text-green-500"></i>
+              Chat on WhatsApp
+            </a>
+            <a href="tel:+919876543210" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors">
+              <i class="fas fa-phone text-brand-500"></i>
+              +91 98765 43210
+            </a>
+            <a href="contact.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors">
+              <i class="fas fa-envelope text-slate-700"></i>
+              Contact Us
+            </a>
+          </div>
+          <a href="contact.html" class="btn-primary w-full justify-center mt-4 text-sm py-3">
+            Get a Free Quote
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id="mobileOverlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+  </header>
+
+  <main class="pt-24">
+    <section class="relative overflow-hidden pt-24 pb-20">
+      <div class="absolute inset-0 bg-gradient-to-br from-brand-50 via-white to-white"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="max-w-xl">
+            <span class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-100 rounded-full text-sm font-semibold text-brand-700 mb-6">About VAISH Solar</span>
+            <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-950 mb-6">Powering sustainable homes and businesses with reliable solar solutions.</h1>
+            <p class="text-lg text-slate-600 leading-relaxed mb-8">With over a decade of experience, VAISH Solar Services delivers end-to-end solar systems that maximize savings, quality, and customer satisfaction across India.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="contact.html" class="btn-primary text-base py-4 px-8 justify-center">
+                Contact Us
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a href="services.html" class="btn-secondary text-base py-4 px-8 justify-center">
+                Explore Services
+                <i class="fas fa-chevron-right text-xs"></i>
+              </a>
+            </div>
+          </div>
+          <div class="hero-visual bg-[url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&q=85')] bg-cover bg-center h-[460px] shadow-2xl rounded-[2rem]"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-choose-bg py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div class="relative reveal-left">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-slate-900/10">
+              <img 
+                src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=85" 
+                alt="Solar installation workers wearing safety helmets" 
+                class="w-full h-[500px] lg:h-[600px] object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-900/30 via-transparent to-transparent"></div>
+            </div>
+            <div class="absolute -bottom-6 -right-4 lg:-right-8 bg-white rounded-2xl shadow-xl shadow-slate-900/10 p-5 border border-slate-100 animate-float">
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg shadow-green-500/20">
+                  <i class="fas fa-leaf text-white text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-2xl font-extrabold text-brand-950">15,000+</p>
+                  <p class="text-sm text-slate-500 font-medium">Tonnes CO<sub>2</sub> Saved</p>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -top-4 -left-4 lg:-left-8 bg-white rounded-2xl shadow-xl shadow-slate-900/10 p-4 border border-slate-100">
+              <div class="flex items-center gap-3">
+                <div class="flex -space-x-2">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="Team member">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="Team member">
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="Team member">
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-brand-950">Expert Team</p>
+                  <p class="text-xs text-slate-500">50+ Certified Engineers</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal-right">
+            <span class="inline-block px-4 py-1.5 bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4">Why Choose Us</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-6 leading-tight">Why Choose VAISH Solar Services?</h2>
+            <p class="text-slate-500 text-lg leading-relaxed mb-10">With over a decade of experience in the solar industry, we combine cutting-edge technology with personalized service to deliver solutions that truly make a difference for your energy needs and the environment.</p>
+            <div class="space-y-6">
+              <div class="feature-check flex items-start gap-5 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all cursor-default">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center flex-shrink-0 border border-brand-100">
+                  <i class="fas fa-solar-panel text-brand-600"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold text-brand-950 mb-1">High Efficiency Solar Panels</h4>
+                  <p class="text-slate-500 text-sm leading-relaxed">We use Tier-1 solar panels with efficiency ratings above 21%, ensuring maximum energy generation even in limited space.</p>
+                </div>
+              </div>
+              <div class="feature-check flex items-start gap-5 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all cursor-default">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center flex-shrink-0 border border-green-100">
+                  <i class="fas fa-sliders-h text-green-600"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold text-brand-950 mb-1">Custom Solutions</h4>
+                  <p class="text-slate-500 text-sm leading-relaxed">Every installation is uniquely designed based on your roof structure, energy consumption patterns, and budget requirements.</p>
+                </div>
+              </div>
+              <div class="feature-check flex items-start gap-5 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all cursor-default">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-50 to-indigo-100 flex items-center justify-center flex-shrink-0 border border-indigo-100">
+                  <i class="fas fa-certificate text-indigo-600"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold text-brand-950 mb-1">Government Approved Vendor</h4>
+                  <p class="text-slate-500 text-sm leading-relaxed">MNRE empanelled vendor with full assistance for government subsidies, net metering, and regulatory approvals.</p>
+                </div>
+              </div>
+              <div class="feature-check flex items-start gap-5 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all cursor-default">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center flex-shrink-0 border border-amber-100">
+                  <i class="fas fa-map-marker-alt text-amber-600"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold text-brand-950 mb-1">Local Support</h4>
+                  <p class="text-slate-500 text-sm leading-relaxed">Dedicated local service teams across multiple cities ensuring quick response times and reliable after-sales support.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT: VISION & MISSION ===== -->
+    <section class="bg-[#202630] py-20 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
+          <div class="reveal-left rounded-2xl overflow-hidden shadow-2xl shadow-black/20">
+            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1200&q=85" alt="Solar panels in a sunny field" class="w-full h-[320px] sm:h-[440px] lg:h-[560px] object-cover" loading="lazy">
+          </div>
+
+          <div class="reveal-right">
+            <p class="text-green-400 text-xs font-bold uppercase tracking-[0.22em] mb-3">Our purpose</p>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-white mb-8 leading-tight">Best Service in the Region</h2>
+
+            <div class="space-y-6">
+              <article class="rounded-xl border border-slate-600 bg-white/5 p-6 sm:p-7">
+                <div class="flex flex-col sm:flex-row gap-5">
+                  <div class="w-16 h-16 rounded-lg bg-green-500 flex items-center justify-center flex-shrink-0"><i class="fas fa-sun text-white text-2xl"></i></div>
+                  <div>
+                    <h3 class="text-xl font-extrabold text-white mb-3">Our Vision</h3>
+                    <p class="text-slate-200 leading-relaxed">To create a healthier, renewable future through eco-friendly solar services. By reducing the impact of global warming, solar energy helps safeguard the future for generations to come. We aim to spread awareness of solar-project benefits and provide services people can rely on.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="rounded-xl border border-slate-600 bg-white/5 p-6 sm:p-7">
+                <div class="flex flex-col sm:flex-row gap-5">
+                  <div class="w-16 h-16 rounded-lg bg-green-500 flex items-center justify-center flex-shrink-0"><i class="fas fa-solar-panel text-white text-2xl"></i></div>
+                  <div>
+                    <h3 class="text-xl font-extrabold text-white mb-3">Our Mission</h3>
+                    <p class="text-slate-200 leading-relaxed">To make reliable solar power accessible on every rooftop with the best service and quality. We help households and businesses achieve energy independence, reduce their carbon footprint, and move towards a better planet.</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MEET OUR PROFESSIONALS ===== -->
+    <section class="bg-white py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+          <h2 class="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-brand-950 mb-6 leading-tight">Meet Our Professionals</h2>
+          <p class="text-slate-600 text-lg leading-relaxed">VAISH Solar Services team provides the vision that has propelled us from a small solar company to a globally diversified leader in a remarkably short period of time.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-12 lg:gap-16">
+          <!-- Team Member 1 - Mrs. Neelam Vaish -->
+          <div class="reveal-left">
+            <div class="rounded-2xl overflow-hidden shadow-2xl shadow-slate-900/10 mb-8">
+              <img 
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&h=600&fit=crop&q=85" 
+                alt="Mrs. Neelam Vaish - MD Founder" 
+                class="w-full h-[400px] object-cover"
+              >
+            </div>
+            <div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Mrs. Neelam Vaish</h3>
+              <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-4">MD Founder</p>
+              <p class="text-slate-600 leading-relaxed mb-6">Mrs Neelam is an Indian businessman and a Humanitarian. Born in 1982, Mrs Neelam graduated from HNBGU in 2001 and have 7+ experience with reputed company Genpact Gurgaon as Process Trainer. She founded VAISH Solar Services in July 2019. Her vision is access to our coming up generation future and save environment.</p>
+              <div class="flex items-center text-brand-600 hover:text-brand-700 transition-colors cursor-pointer">
+                <i class="fas fa-plus text-2xl"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 2 - Mr. Vikas Vaish -->
+          <div class="reveal-right">
+            <div class="rounded-2xl overflow-hidden shadow-2xl shadow-slate-900/10 mb-8">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&q=85" 
+                alt="Mr. Vikas Vaish - Director" 
+                class="w-full h-[400px] object-cover"
+              >
+            </div>
+            <div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Mr. Vikas Vaish</h3>
+              <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-4">Director</p>
+              <p class="text-slate-600 leading-relaxed mb-6">He is MCA with 10+ year experience in IT field in BSES Yamuna power and 4+ year experience and expertise with renewable energy sector as Area Head operation.</p>
+              <div class="flex items-center text-brand-600 hover:text-brand-700 transition-colors cursor-pointer">
+                <i class="fas fa-plus text-2xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CERTIFICATES ===== -->
+    <section id="certificates" class="bg-slate-50 py-24 lg:py-32 scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+          <span class="inline-block px-4 py-1.5 bg-white text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4 shadow-sm">Our Credentials</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-5 leading-tight">Our Certificates</h2>
+          <p class="text-slate-600 text-lg leading-relaxed">View the certificates and registrations that support our commitment to quality and trusted solar services.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <a href="assests/c1.jpg" target="_blank" rel="noreferrer" class="group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="assests/c1.jpg" alt="VAISH Solar Services certificate 1" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 1</p></a>
+          <a href="assests/c2.jpg" target="_blank" rel="noreferrer" class="group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="assests/c2.jpg" alt="VAISH Solar Services certificate 2" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 2</p></a>
+          <a href="assests/c3.jpg" target="_blank" rel="noreferrer" class="group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="assests/c3.jpg" alt="VAISH Solar Services certificate 3" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 3</p></a>
+          <a href="assests/c4.jpg" target="_blank" rel="noreferrer" class="group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="assests/c4.jpg" alt="VAISH Solar Services certificate 4" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 4</p></a>
+          <a href="assests/c5.jpg" target="_blank" rel="noreferrer" class="group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="assests/c5.jpg" alt="VAISH Solar Services certificate 5" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 5</p></a>
+          <a href="assests/c6.jpg" target="_blank" rel="noreferrer" class="group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="assests/c6.jpg" alt="VAISH Solar Services certificate 6" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 6</p></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-bg pt-20 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-16">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <a href="index.html" class="flex items-center mb-6">
+            <img src="Assests/falcon.png" alt="Falcon logo" class="w-14 h-14 object-contain" />
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">Leading solar energy solutions provider in India, committed to making renewable energy accessible, affordable, and efficient for every home and business.</p>
+          <div class="flex gap-3">
+            <a href="#" class="social-icon w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#" class="social-icon w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="social-icon w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="#" class="social-icon w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400">
+              <i class="fab fa-youtube text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Quick Links</h4>
+          <ul class="space-y-3.5">
+            <li><a href="index.html" class="footer-link text-sm">Home</a></li>
+            <li><a href="about.html" class="footer-link text-sm">About Us</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Services</a></li>
+            <li><a href="projects.html" class="footer-link text-sm">Projects</a></li>
+            <li><a href="#certificates" class="footer-link text-sm">View Certificates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Services</h4>
+          <ul class="space-y-3.5">
+            <li><a href="services.html" class="footer-link text-sm">Rooftop Solar</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Solar Installation</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Maintenance & AMC</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Solar Batteries</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Commercial Solar</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Industrial Solar</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Contact Us</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-map-marker-alt text-brand-400 text-xs"></i>
+              </div>
+              <span class="text-slate-400 text-sm leading-relaxed">123 Solar Street, Green Energy Park, Bengaluru, Karnataka - 560001</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-phone text-brand-400 text-xs"></i>
+              </div>
+              <a href="tel:+919876543210" class="footer-link text-sm">+91 98765 43210</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-envelope text-brand-400 text-xs"></i>
+              </div>
+              <a href="mailto:info@vaishsolar.com" class="footer-link text-sm">info@vaishsolar.com</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-clock text-brand-400 text-xs"></i>
+              </div>
+              <span class="text-slate-400 text-sm">Mon - Sat: 9:00 AM - 7:00 PM</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-divider mb-8"></div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-slate-500 text-sm">2026 VAISH Solar Services. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="footer-link text-sm">Privacy Policy</a>
+          <a href="#" class="footer-link text-sm">Terms of Service</a>
+          <a href="#" class="footer-link text-sm">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-actions" aria-hidden="false">
+    <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" class="floating-btn floating-whatsapp" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="contact.html" class="floating-btn floating-contact" aria-label="Contact Us">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      mobileOverlay.classList.remove('hidden');
+      mobileMenuBtn.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenuFn() {
+      mobileMenu.classList.remove('open');
+      mobileOverlay.classList.add('hidden');
+      mobileMenuBtn.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    closeMobileMenu.addEventListener('click', closeMobileMenuFn);
+    mobileOverlay.addEventListener('click', closeMobileMenuFn);
+
+    const closeMobileMenuIcon = document.querySelector('#closeMobileMenu i');
+    if (closeMobileMenuIcon) {
+      closeMobileMenuIcon.addEventListener('click', closeMobileMenuFn);
+    }
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', closeMobileMenuFn);
+    });
+
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    window.addEventListener('load', () => {
+      const pageLoader = document.getElementById('pageLoader');
+      if (pageLoader) {
+        pageLoader.classList.add('hidden');
+        setTimeout(() => {
+          if (pageLoader.parentNode) pageLoader.parentNode.removeChild(pageLoader);
+          document.body.classList.remove('preloading');
+        }, 500);
+      }
+    });
+  </script>
+</body>
+</html>

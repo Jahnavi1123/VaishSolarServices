@@ -549,6 +549,106 @@
       box-shadow: 0 24px 48px -12px rgba(15, 23, 42, 0.1);
     }
 
+    .service-media {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #dbeafe;
+    }
+
+    .service-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(15, 23, 42, 0.16));
+      pointer-events: none;
+    }
+
+    .service-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .service-card:hover .service-photo {
+      transform: scale(1.07);
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #2563eb;
+      font-size: 0.875rem;
+      font-weight: 700;
+      transition: gap 0.25s ease, color 0.25s ease;
+    }
+
+    .service-link:hover {
+      color: #1e40af;
+      gap: 0.75rem;
+    }
+
+    @keyframes serviceCardRise {
+      from {
+        opacity: 0;
+        transform: translateY(52px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .service-grid .service-card.reveal {
+      will-change: opacity, transform;
+    }
+
+    .service-grid .service-card.reveal.visible {
+      animation: serviceCardRise 0.75s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+
+    .service-grid .service-card:nth-child(2) { animation-delay: 0.1s; }
+    .service-grid .service-card:nth-child(3) { animation-delay: 0.2s; }
+    .service-grid .service-card:nth-child(4) { animation-delay: 0.3s; }
+    .service-grid .service-card:nth-child(5) { animation-delay: 0.4s; }
+    .service-grid .service-card:nth-child(6) { animation-delay: 0.5s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .service-grid .service-card.reveal.visible {
+        animation: none;
+      }
+    }
+
+    /* ===== WHAT WE OFFER ===== */
+    .what-we-offer {
+      background: linear-gradient(180deg, #2d3440 0%, #2d3440 63%, #f8fafc 63%, #f8fafc 100%);
+    }
+
+    .offer-card {
+      overflow: hidden;
+      background: #fff;
+      border-radius: 0.5rem;
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.16);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .offer-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 44px rgba(15, 23, 42, 0.24);
+    }
+
+    .offer-card img {
+      width: 100%;
+      height: 13rem;
+      object-fit: cover;
+    }
+
+    @media (min-width: 1024px) {
+      .offer-card img { height: 14rem; }
+    }
+
     /* ===== PROJECT CARD OVERLAY ===== */
     .project-overlay {
       background: linear-gradient(to top, 
@@ -574,6 +674,10 @@
 
     /* ===== TESTIMONIAL CARD ===== */
     .testimonial-card {
+      fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            display: ['Playfair Display', 'Georgia', 'serif']
+          }
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -659,11 +763,11 @@
         width: 100% !important;
         left: 0;
         right: 0;
-        transform: translateX(0);
+        transform: translateX(100%);
         background: #ffffff !important;
         box-shadow: none !important;
       }
-      /* ensure overlay is visible behind menu on mobile */
+      /* ensure overlay is visible behind menu on mobile when shown */
       #mobileOverlay {
         display: block;
       }
@@ -705,7 +809,7 @@
     }
 
     .marquee-track {
-      animation: marquee 30s linear infinite;
+      animation: marquee 9s linear infinite;
     }
 
     .marquee-track:hover {
@@ -1103,24 +1207,21 @@
   </div>
 
   <!-- ===== HEADER ===== -->
-  <header id="header" class="header-sticky fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl">
+  <header id="header" class="header-sticky fixed top-0 left-0 right-0 z-50 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         <!-- Logo -->
-        <a href="#" class="flex items-center group">
+        <a href="index.html" class="flex items-center group">
           <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-14 h-14 object-contain" />
         </a>
 
         <!-- Desktop Navigation -->
         <nav class="hidden lg:flex items-center gap-1">
-          <a href="#home" class="nav-link px-3 py-2">Home</a>
-          <a href="#about" class="nav-link px-3 py-2">About Us</a>
-          <a href="#services" class="nav-link px-3 py-2">Services</a>
-          <a href="#solutions" class="nav-link px-3 py-2">Solutions</a>
-          <a href="#projects" class="nav-link px-3 py-2">Projects</a>
-          <a href="#reviews" class="nav-link px-3 py-2">Reviews</a>
-          <a href="#blog" class="nav-link px-3 py-2">Blog</a>
-          <a href="#contact" class="nav-link px-3 py-2">Contact Us</a>
+          <a href="index.html" class="nav-link px-3 py-2">Home</a>
+          <a href="about.html" class="nav-link px-3 py-2">About Us</a>
+          <a href="services.html" class="nav-link px-3 py-2">Services</a>
+          <a href="projects.html" class="nav-link px-3 py-2">Projects</a>
+          <a href="contact.html" class="nav-link px-3 py-2">Contact Us</a>
         </nav>
 
         <!-- Right Side -->
@@ -1131,7 +1232,7 @@
             </div>
             <span>+91 98765 43210</span>
           </a>
-          <a href="#contact" class="btn-primary text-sm py-3 px-6">
+          <a href="contact.html" class="btn-primary text-sm py-3 px-6">
             Get a Free Quote
             <i class="fas fa-arrow-right text-xs"></i>
           </a>
@@ -1159,7 +1260,7 @@
             <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" aria-label="WhatsApp" class="icon-btn w-10 h-10 rounded-full bg-green-50 flex items-center justify-center hover:bg-green-100 transition-colors">
               <i class="fab fa-whatsapp text-green-600"></i>
             </a>
-            <a href="#contact" aria-label="Contact Us" class="icon-btn w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors">
+            <a href="contact.html" aria-label="Contact Us" class="icon-btn w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors">
               <i class="fas fa-envelope text-slate-700"></i>
             </a>
             <button id="closeMobileMenu" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors">
@@ -1168,14 +1269,11 @@
           </div>
         </div>
         <nav class="flex flex-col gap-1">
-          <a href="#home" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Home</a>
-          <a href="#about" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">About Us</a>
-          <a href="#services" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Services</a>
-          <a href="#solutions" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Solutions</a>
-          <a href="#projects" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Projects</a>
-          <a href="#reviews" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Reviews</a>
-          <a href="#blog" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Blog</a>
-          <a href="#contact" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Contact Us</a>
+          <a href="index.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Home</a>
+          <a href="about.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">About Us</a>
+          <a href="services.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Services</a>
+          <a href="projects.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Projects</a>
+          <a href="contact.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Contact Us</a>
         </nav>
         <div class="mt-8 pt-6 border-t border-slate-100">
           <div class="flex flex-col gap-3">
@@ -1187,12 +1285,12 @@
               <i class="fas fa-phone text-brand-500"></i>
               +91 98765 43210
             </a>
-            <a href="#contact" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors">
+            <a href="contact.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors">
               <i class="fas fa-envelope text-slate-700"></i>
               Contact Us
             </a>
           </div>
-          <a href="#contact" class="btn-primary w-full justify-center mt-4 text-sm py-3">
+          <a href="contact.html" class="btn-primary w-full justify-center mt-4 text-sm py-3">
             Get a Free Quote
           </a>
         </div>
@@ -1203,6 +1301,35 @@
 
   <!-- ===== HERO SECTION ===== -->
   <section id="home" class="relative min-h-screen pt-20 overflow-hidden">
+    <!-- Trust Bar: positioned directly below the fixed navigation -->
+    <div class="absolute top-20 left-0 right-0 z-20 bg-brand-950 py-4 overflow-hidden" aria-label="Certifications and service highlights">
+      <div class="marquee-track flex items-center gap-12 whitespace-nowrap">
+        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> MNRE Approved</span>
+        <span class="text-brand-400">|</span>
+        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> ISO 9001:2015 Certified</span>
+        <span class="text-brand-400">|</span>
+        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> BIS Certified Panels</span>
+        <span class="text-brand-400">|</span>
+        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> Government Subsidy Assistance</span>
+        <span class="text-brand-400">|</span>
+        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> PM SURYA GHAR YOJNA</span>
+        <span class="text-brand-400">|</span>
+        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> 25 Years Performance Warranty</span>
+        <span class="text-brand-400">|</span>
+        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> MNRE Approved</span>
+        <span class="text-brand-400">|</span>
+        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> ISO 9001:2015 Certified</span>
+        <span class="text-brand-400">|</span>
+        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> BIS Certified Panels</span>
+        <span class="text-brand-400">|</span>
+        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> Government Subsidy Assistance</span>
+        <span class="text-brand-400">|</span>
+        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> PM SURYA GHAR YOJNA</span>
+        <span class="text-brand-400">|</span>
+        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> 25 Years Performance Warranty</span>
+      </div>
+    </div>
+
     <!-- Background Image -->
     <div class="absolute inset-0 z-0 overflow-hidden">
       <div id="heroSlides" class="absolute inset-0">
@@ -1237,11 +1364,11 @@
           </p>
           
           <div class="flex flex-col sm:flex-row gap-4 mb-10 animate-fade-in-up delay-300">
-            <a href="#contact" class="btn-primary text-base py-4 px-8 justify-center">
+            <a href="contact.html" class="btn-primary text-base py-4 px-8 justify-center">
               Get a Free Quote
               <i class="fas fa-arrow-right"></i>
             </a>
-            <a href="#solutions" class="btn-secondary text-base py-4 px-8 justify-center">
+            <a href="solutions.html" class="btn-secondary text-base py-4 px-8 justify-center">
               Explore Solutions
               <i class="fas fa-chevron-right text-xs"></i>
             </a>
@@ -1330,285 +1457,202 @@
     </div>
   </section>
 
-  <!-- ===== MARQUEE / TRUST BAR ===== -->
-  <div class="bg-brand-950 py-4 overflow-hidden">
-    <div class="marquee-track flex items-center gap-12 whitespace-nowrap">
-      <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> MNRE Approved</span>
-      <span class="text-brand-400">|</span>
-      <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> ISO 9001:2015 Certified</span>
-      <span class="text-brand-400">|</span>
-      <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> BIS Certified Panels</span>
-      <span class="text-brand-400">|</span>
-      <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> Government Subsidy Assistance</span>
-      <span class="text-brand-400">|</span>
-      <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> PM SURYA GHAR YOJNA</span>
-      <span class="text-brand-400">|</span>
-      <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> 25 Years Performance Warranty</span>
-      <span class="text-brand-400">|</span>
-      <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> MNRE Approved</span>
-      <span class="text-brand-400">|</span>
-      <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> ISO 9001:2015 Certified</span>
-      <span class="text-brand-400">|</span>
-      <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> BIS Certified Panels</span>
-      <span class="text-brand-400">|</span>
-      <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> Government Subsidy Assistance</span>
-      <span class="text-brand-400">|</span>
-      <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> PM SURYA GHAR YOJNA</span>
-      <span class="text-brand-400">|</span>
-      <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> 25 Years Performance Warranty</span>
+  <!-- ===== WHAT WE OFFER ===== -->
+  <section class="what-we-offer py-20 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-5xl mx-auto mb-14 reveal">
+        <p class="text-white/75 text-xs font-bold uppercase tracking-[0.22em] mb-3">VAISH Solar Services</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-white mb-5">What We Offer</h2>
+        <p class="text-slate-200 text-base sm:text-lg leading-relaxed">We provide innovative solar-panel solutions for every roof, with reliable service and uncompromising quality from planning through long-term support.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-7 lg:gap-8">
+        <article class="offer-card reveal">
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=900&q=85" alt="Engineers installing rooftop solar panels" loading="lazy">
+          <div class="p-7">
+            <h3 class="text-xl font-extrabold text-slate-900 leading-snug mb-4">Engineering, Procurement &amp; Construction <span class="whitespace-nowrap">(EPC)</span></h3>
+            <p class="text-slate-600 leading-relaxed">We take solar projects from start to finish—from system design and equipment procurement to construction, commissioning, and ongoing support.</p>
+            <a href="services.html" class="service-link mt-6">Explore EPC solutions <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="offer-card reveal">
+          <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=900&q=85" alt="Solar panel installation in progress" loading="lazy">
+          <div class="p-7">
+            <h3 class="text-xl font-extrabold text-slate-900 leading-snug mb-4">Installation &amp; Commissioning <span class="whitespace-nowrap">(I&amp;C)</span></h3>
+            <p class="text-slate-600 leading-relaxed">Professional on-grid and off-grid solar power-plant installation and commissioning, tailored for projects from 1 kW to 500 kW.</p>
+            <a href="services.html" class="service-link mt-6">Plan your installation <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="offer-card reveal">
+          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=900&q=85" alt="Technicians maintaining solar panels" loading="lazy">
+          <div class="p-7">
+            <h3 class="text-xl font-extrabold text-slate-900 leading-snug mb-4">Operation &amp; Maintenance <span class="whitespace-nowrap">(O&amp;M)</span></h3>
+            <p class="text-slate-600 leading-relaxed">Keep your system performing at its best with rapid fault identification, downtime reduction, panel cleaning, reporting, and transparent maintenance.</p>
+            <a href="services.html" class="service-link mt-6">View maintenance support <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ===== OUR SERVICES ===== -->
-  <section id="services" class="services-bg py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-        <span class="inline-block px-4 py-1.5 bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4">Our Services</span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-5 leading-tight">Comprehensive Solar Solutions</h2>
-        <p class="text-slate-500 text-lg leading-relaxed">From residential rooftops to large-scale industrial installations, we deliver end-to-end solar services tailored to your energy needs.</p>
+  <!-- ===== OUR SERVICES QUICK LINKS ===== -->
+  <section class="bg-white py-20 lg:py-24" aria-labelledby="our-services-title">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10 reveal">
+        <p class="text-brand-600 text-xs font-bold uppercase tracking-[0.22em] mb-3">Explore solutions</p>
+        <h2 id="our-services-title" class="text-3xl sm:text-4xl font-extrabold text-brand-950">Our Services</h2>
       </div>
 
-      <div class="space-y-5">
-        <!-- Service 1 -->
-        <div class="service-card bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-slate-100/80 flex flex-col lg:flex-row items-start lg:items-center gap-6 reveal">
-          <div class="card-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center flex-shrink-0 border border-brand-100">
-            <i class="fas fa-home text-2xl text-brand-600"></i>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold text-brand-950 mb-2">Rooftop Solar Solutions</h3>
-            <p class="text-slate-500 leading-relaxed">Custom-designed rooftop solar systems for residential and commercial buildings. Maximize your roof space with high-efficiency panels that blend seamlessly with your architecture.</p>
-          </div>
-          <a href="#contact" class="btn-secondary text-sm py-3 px-6 flex-shrink-0">
-            Learn More
-            <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-        </div>
-
-        <!-- Service 2 -->
-        <div class="service-card bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-slate-100/80 flex flex-col lg:flex-row items-start lg:items-center gap-6 reveal">
-          <div class="card-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center flex-shrink-0 border border-green-100">
-            <i class="fas fa-tools text-2xl text-green-600"></i>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold text-brand-950 mb-2">Solar Installation</h3>
-            <p class="text-slate-500 leading-relaxed">Professional end-to-end installation by certified technicians. We handle everything from site assessment and design to mounting, wiring, and grid connection with precision engineering.</p>
-          </div>
-          <a href="#contact" class="btn-secondary text-sm py-3 px-6 flex-shrink-0">
-            Learn More
-            <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-        </div>
-
-        <!-- Service 3 -->
-        <div class="service-card bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-slate-100/80 flex flex-col lg:flex-row items-start lg:items-center gap-6 reveal">
-          <div class="card-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-50 to-indigo-100 flex items-center justify-center flex-shrink-0 border border-indigo-100">
-            <i class="fas fa-wrench text-2xl text-indigo-600"></i>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold text-brand-950 mb-2">Maintenance & AMC</h3>
-            <p class="text-slate-500 leading-relaxed">Comprehensive Annual Maintenance Contracts to keep your solar system performing at peak efficiency. Regular cleaning, inspection, and preventive maintenance by our expert team.</p>
-          </div>
-          <a href="#contact" class="btn-secondary text-sm py-3 px-6 flex-shrink-0">
-            Learn More
-            <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-        </div>
-
-        <!-- Service 4 -->
-        <div class="service-card bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-slate-100/80 flex flex-col lg:flex-row items-start lg:items-center gap-6 reveal">
-          <div class="card-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center flex-shrink-0 border border-amber-100">
-            <i class="fas fa-battery-full text-2xl text-amber-600"></i>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold text-brand-950 mb-2">Solar Battery Solutions</h3>
-            <p class="text-slate-500 leading-relaxed">Advanced lithium-ion and tubular battery storage solutions for uninterrupted power supply. Store excess solar energy and use it during power cuts or nighttime.</p>
-          </div>
-          <a href="#contact" class="btn-secondary text-sm py-3 px-6 flex-shrink-0">
-            Learn More
-            <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-        </div>
-
-        <!-- Service 5 -->
-        <div class="service-card bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-slate-100/80 flex flex-col lg:flex-row items-start lg:items-center gap-6 reveal">
-          <div class="card-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-50 to-rose-100 flex items-center justify-center flex-shrink-0 border border-rose-100">
-            <i class="fas fa-industry text-2xl text-rose-600"></i>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold text-brand-950 mb-2">Commercial & Industrial Solar</h3>
-            <p class="text-slate-500 leading-relaxed">Large-scale solar power plants for factories, warehouses, and commercial complexes. Reduce operational costs significantly with MW-scale installations and power purchase agreements.</p>
-          </div>
-          <a href="#contact" class="btn-secondary text-sm py-3 px-6 flex-shrink-0">
-            Learn More
-            <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="text-center mt-12 reveal">
-        <a href="#services" class="btn-primary text-base py-4 px-10">
-          View All Services
-          <i class="fas fa-arrow-right"></i>
+      <nav aria-label="Our services" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
+        <a href="services.html#on-grid" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-brand-950 font-bold hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-colors">
+          On-Grid Solar System <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
         </a>
-      </div>
+        <a href="services.html#off-grid" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-brand-950 font-bold hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-colors">
+          Off-Grid Solar System <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
+        </a>
+        <a href="services.html#hybrid" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-brand-950 font-bold hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-colors">
+          Hybrid Solar System <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
+        </a>
+        <a href="services.html#solar-led" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-brand-950 font-bold hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-colors">
+          Solar LED Street Light <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
+        </a>
+        <a href="services.html#water-heating" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-brand-950 font-bold hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-colors">
+          Solar Water Heating <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
+        </a>
+        <a href="services.html#water-pumping" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-brand-950 font-bold hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-colors">
+          Solar Water Pumping &amp; Atta Chakki <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
+        </a>
+      </nav>
     </div>
   </section>
 
-  <!-- ===== WHY CHOOSE US ===== -->
-  <section id="about" class="why-choose-bg py-24 lg:py-32">
+  <!-- Detailed solar-system content is available on the Services page. -->
+  <section id="services" class="bg-white py-24 lg:py-32" hidden>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <!-- Left - Image -->
-        <div class="relative reveal-left">
-          <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-slate-900/10">
-            <img 
-              src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=85" 
-              alt="Solar installation workers wearing safety helmets" 
-              class="w-full h-[500px] lg:h-[600px] object-cover"
-            >
-            <div class="absolute inset-0 bg-gradient-to-t from-brand-900/30 via-transparent to-transparent"></div>
+      <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+        <span class="inline-block px-4 py-1.5 bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4">Solar System Solutions</span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-5 leading-tight">Our Services</h2>
+      </div>
+
+      <nav aria-label="Solar system solutions" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14 reveal">
+        <a href="#on-grid" class="group rounded-2xl border border-slate-100 bg-slate-50 p-4 hover:bg-brand-50 hover:border-brand-100 transition-colors flex items-center gap-4">
+          <div class="w-28 h-16 rounded-lg overflow-hidden bg-slate-100">
+            <video class="w-full h-full object-cover" autoplay muted loop playsinline preload="metadata" aria-label="On-Grid solar system preview"><source src="assests/on%20grid%20solar.mp4" type="video/mp4"></video>
           </div>
-          
-          <!-- Floating Badge -->
-          <div class="absolute -bottom-6 -right-4 lg:-right-8 bg-white rounded-2xl shadow-xl shadow-slate-900/10 p-5 border border-slate-100 animate-float">
-            <div class="flex items-center gap-4">
-              <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg shadow-green-500/20">
-                <i class="fas fa-leaf text-white text-xl"></i>
-              </div>
-              <div>
-                <p class="text-2xl font-extrabold text-brand-950">15,000+</p>
-                <p class="text-sm text-slate-500 font-medium">Tonnes CO<sub>2</sub> Saved</p>
-              </div>
-            </div>
+          <div>
+            <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">01</span>
+            <span class="block mt-1 font-bold text-brand-950 group-hover:text-brand-700">On-Grid Solar System <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
           </div>
-
-          <!-- Top Badge -->
-          <div class="absolute -top-4 -left-4 lg:-left-8 bg-white rounded-2xl shadow-xl shadow-slate-900/10 p-4 border border-slate-100">
-            <div class="flex items-center gap-3">
-              <div class="flex -space-x-2">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="Team member">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="Team member">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="Team member">
-              </div>
-              <div>
-                <p class="text-sm font-bold text-brand-950">Expert Team</p>
-                <p class="text-xs text-slate-500">50+ Certified Engineers</p>
-              </div>
-            </div>
+        </a>
+        <a href="#off-grid" class="group rounded-2xl border border-slate-100 bg-slate-50 p-4 hover:bg-brand-50 hover:border-brand-100 transition-colors flex items-center gap-4">
+          <div class="w-28 h-16 rounded-lg overflow-hidden bg-slate-100">
+            <img src="assests/off%20grid.png" alt="Off-Grid solar system" class="w-full h-full object-cover">
           </div>
-        </div>
-
-        <!-- Right - Content -->
-        <div class="reveal-right">
-          <span class="inline-block px-4 py-1.5 bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4">Why Choose Us</span>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-6 leading-tight">Why Choose VAISH Solar Services?</h2>
-          <p class="text-slate-500 text-lg leading-relaxed mb-10">With over a decade of experience in the solar industry, we combine cutting-edge technology with personalized service to deliver solutions that truly make a difference for your energy needs and the environment.</p>
-
-          <div class="space-y-6">
-            <div class="feature-check flex items-start gap-5 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all cursor-default">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center flex-shrink-0 border border-brand-100">
-                <i class="fas fa-solar-panel text-brand-600"></i>
-              </div>
-              <div>
-                <h4 class="text-lg font-bold text-brand-950 mb-1">High Efficiency Solar Panels</h4>
-                <p class="text-slate-500 text-sm leading-relaxed">We use Tier-1 solar panels with efficiency ratings above 21%, ensuring maximum energy generation even in limited space.</p>
-              </div>
-            </div>
-
-            <div class="feature-check flex items-start gap-5 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all cursor-default">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center flex-shrink-0 border border-green-100">
-                <i class="fas fa-sliders-h text-green-600"></i>
-              </div>
-              <div>
-                <h4 class="text-lg font-bold text-brand-950 mb-1">Custom Solutions</h4>
-                <p class="text-slate-500 text-sm leading-relaxed">Every installation is uniquely designed based on your roof structure, energy consumption patterns, and budget requirements.</p>
-              </div>
-            </div>
-
-            <div class="feature-check flex items-start gap-5 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all cursor-default">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-50 to-indigo-100 flex items-center justify-center flex-shrink-0 border border-indigo-100">
-                <i class="fas fa-certificate text-indigo-600"></i>
-              </div>
-              <div>
-                <h4 class="text-lg font-bold text-brand-950 mb-1">Government Approved Vendor</h4>
-                <p class="text-slate-500 text-sm leading-relaxed">MNRE empanelled vendor with full assistance for government subsidies, net metering, and regulatory approvals.</p>
-              </div>
-            </div>
-
-            <div class="feature-check flex items-start gap-5 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all cursor-default">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center flex-shrink-0 border border-amber-100">
-                <i class="fas fa-map-marker-alt text-amber-600"></i>
-              </div>
-              <div>
-                <h4 class="text-lg font-bold text-brand-950 mb-1">Local Support</h4>
-                <p class="text-slate-500 text-sm leading-relaxed">Dedicated local service teams across multiple cities ensuring quick response times and reliable after-sales support.</p>
-              </div>
-            </div>
+          <div>
+            <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">02</span>
+            <span class="block mt-1 font-bold text-brand-950 group-hover:text-brand-700">Off-Grid Solar System <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
           </div>
-        </div>
+        </a>
+        <a href="#hybrid" class="group rounded-2xl border border-slate-100 bg-slate-50 p-4 hover:bg-brand-50 hover:border-brand-100 transition-colors flex items-center gap-4">
+          <div class="w-28 h-16 rounded-lg overflow-hidden bg-slate-100">
+            <img src="assests/hybrid.png" alt="Hybrid solar system" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">03</span>
+            <span class="block mt-1 font-bold text-brand-950 group-hover:text-brand-700">Hybrid Solar System <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
+          </div>
+        </a>
+        <a href="#solar-led" class="group rounded-2xl border border-slate-100 bg-slate-50 p-4 hover:bg-brand-50 hover:border-brand-100 transition-colors flex items-center gap-4">
+          <div class="w-28 h-16 rounded-lg overflow-hidden bg-slate-100">
+            <img src="assests/street%20light.png" alt="Solar LED street light" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">04</span>
+            <span class="block mt-1 font-bold text-brand-950 group-hover:text-brand-700">Solar LED Street Light <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
+          </div>
+        </a>
+        <a href="#water-heating" class="group rounded-2xl border border-slate-100 bg-slate-50 p-4 hover:bg-brand-50 hover:border-brand-100 transition-colors flex items-center gap-4">
+          <div class="w-28 h-16 rounded-lg overflow-hidden bg-slate-100">
+            <img src="assests/solar%20water%20heterr.png" alt="Solar water heating" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">05</span>
+            <span class="block mt-1 font-bold text-brand-950 group-hover:text-brand-700">Solar Water Heating <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
+          </div>
+        </a>
+        <a href="#water-pumping" class="group rounded-2xl border border-slate-100 bg-slate-50 p-4 hover:bg-brand-50 hover:border-brand-100 transition-colors flex items-center gap-4">
+          <div class="w-28 h-16 rounded-lg overflow-hidden bg-slate-100">
+            <img src="assests/solar%20water%20pumping%20sysytem.png" alt="Solar water pumping" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">06</span>
+            <span class="block mt-1 font-bold text-brand-950 group-hover:text-brand-700">Pumping &amp; Atta Chakki <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
+          </div>
+        </a>
+      </nav>
+
+      <div class="space-y-10">
+        <article id="on-grid" class="scroll-mt-28 rounded-[2rem] border border-slate-100 bg-slate-50 p-6 sm:p-8 lg:p-10 shadow-sm reveal">
+          <div class="mb-6 img-zoom rounded-2xl overflow-hidden bg-slate-200"><video class="block w-full h-64 object-cover rounded-2xl" autoplay muted loop playsinline preload="auto" controls aria-label="On-Grid solar system video"><source src="assests/on%20grid%20solar.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+          <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">01</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">On-Grid Solar System</h2><p class="text-slate-600 leading-relaxed">An on-grid solar power system is connected to the utility grid. The electricity it produces is routed to the grid and used to run appliances, making installation fuss-free and maintenance simple.</p></div></div>
+          <div class="grid lg:grid-cols-2 gap-8"><div class="rounded-2xl bg-white p-6 border border-slate-100"><h3 class="text-lg font-bold text-brand-950 mb-3">How does an on-grid solar power system work?</h3><p class="text-slate-600 leading-relaxed">Solar modules absorb sunlight and convert it into direct current (DC). A solar inverter changes the DC into alternating current (AC) to power electrical items. The electricity is then routed to the grid for day-to-day use. A net meter records energy supplied to the grid and energy consumed; the monthly bill reflects the outstanding balance.</p></div><div class="rounded-2xl bg-white p-6 border border-slate-100"><h3 class="text-lg font-bold text-brand-950 mb-4">Benefits of on-grid solar</h3><ol class="space-y-4 text-slate-600 leading-relaxed"><li><strong class="text-brand-950">Zero electricity bills:</strong> You pay only for surplus electricity consumed. When you use less than your system generates, the excess can be fed back to the grid.</li><li><strong class="text-brand-950">Easy maintenance:</strong> Fewer components and no batteries make the system simple to install and maintain.</li><li><strong class="text-brand-950">Passive income generation:</strong> Surplus electricity sent to the grid can earn credits, reducing bills and creating value from excess generation.</li></ol></div></div>
+        </article>
+
+        <article id="off-grid" class="scroll-mt-28 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 lg:p-10 shadow-sm reveal">
+          <div class="mb-6 img-zoom rounded-2xl overflow-hidden"><img src="assests/off%20grid.png" alt="Off-grid solar setup" class="w-full h-64 object-cover rounded-2xl"></div>
+          <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">02</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Off-Grid Solar System</h2><p class="text-slate-600 leading-relaxed">Also known as a stand-alone power system (SAPS), an off-grid system generates electricity from solar panels and stores it in solar batteries through a charge controller. An inverter then powers home or business appliances, including at night or during lower sun exposure.</p></div></div>
+          <div class="grid lg:grid-cols-2 gap-8"><div><h3 class="text-lg font-bold text-brand-950 mb-4">Components of an off-grid system</h3><ul class="space-y-4 text-slate-600 leading-relaxed"><li><strong class="text-brand-950">Solar panels:</strong> The array size and output depend on available sunlight, usable roof space, and energy-consumption needs.</li><li><strong class="text-brand-950">Solar batteries:</strong> Storage keeps the home running after sunset by saving excess power generated during the day.</li><li><strong class="text-brand-950">Solar inverter:</strong> A stand-alone inverter converts solar DC into AC for most household appliances and electronics.</li><li><strong class="text-brand-950">Solar charge controller:</strong> Regulates voltage and current to protect batteries from overcharging and damage.</li><li><strong class="text-brand-950">Alternative energy source:</strong> A backup generator can support the system during periods of very low solar production.</li></ul></div><div class="rounded-2xl bg-brand-50 p-6"><h3 class="text-lg font-bold text-brand-950 mb-4">Advantages of off-grid solar</h3><ol class="space-y-4 text-slate-600 leading-relaxed"><li><strong class="text-brand-950">No utility-grid access required:</strong> In remote areas, off-grid solar can be more affordable than extending power lines.</li><li><strong class="text-brand-950">Energy self-sufficiency:</strong> Become independent of electricity retailers and rising power prices while remaining protected from grid failures and blackouts.</li></ol></div></div>
+
+        <article id="hybrid" class="scroll-mt-28 rounded-[2rem] border border-slate-100 bg-slate-50 p-6 sm:p-8 lg:p-10 shadow-sm reveal">
+          <div class="mb-6 img-zoom rounded-2xl overflow-hidden"><img src="assests/hybrid.png" alt="Hybrid solar system" class="w-full h-64 object-cover rounded-2xl"></div>
+          <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">03</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Hybrid Solar System</h2><p class="text-slate-600 leading-relaxed">Hybrid solar systems combine the strengths of grid-tied and off-grid systems. They can be described as off-grid solar with utility backup power, or grid-tied solar with additional battery storage.</p></div></div>
+          <div class="grid lg:grid-cols-2 gap-8"><div class="rounded-2xl bg-white p-6 border border-slate-100"><h3 class="text-lg font-bold text-brand-950 mb-4">Advantages of hybrid solar</h3><ol class="space-y-4 text-slate-600 leading-relaxed"><li><strong class="text-brand-950">Lower cost than off-grid:</strong> Hybrid systems generally need a smaller battery bank and no backup generator. Off-peak utility electricity can be less expensive than diesel.</li><li><strong class="text-brand-950">Smart solar potential:</strong> Modern inverters can respond to changing utility rates. You can use lower-cost power off-peak, store excess solar energy, and export it when grid rates are highest.</li></ol></div><div class="rounded-2xl bg-white p-6 border border-slate-100"><h3 class="text-lg font-bold text-brand-950 mb-4">Equipment for hybrid solar systems</h3><ul class="list-disc pl-5 space-y-2 text-slate-600 leading-relaxed"><li>Charge controller</li><li>Battery bank</li><li>Additional DC disconnect</li><li>Battery-based grid-tie inverter</li><li>Power meter</li></ul><h4 class="font-bold text-brand-950 mt-5 mb-2">Battery-based grid-tie inverter</h4><p class="text-slate-600 leading-relaxed">These devices draw power to and from battery banks while synchronizing with the utility grid. For most homeowners, using the utility grid for backup electricity remains more practical and economical than relying only on battery banks or generators.</p></div></div>
+
+        <article id="solar-led" class="scroll-mt-28 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 lg:p-10 shadow-sm reveal">
+          <div class="mb-6 img-zoom rounded-2xl overflow-hidden"><img src="assests/street%20light.png" alt="Solar LED street light" class="w-full h-64 object-cover rounded-2xl"></div>
+          <div class="flex flex-col sm:flex-row sm:items-start gap-5"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">04</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Solar LED Street Light</h2><p class="text-slate-600 leading-relaxed mb-5">A solar lamp, also known as a solar light or solar lantern, is a lighting system made up of an LED lamp, solar panels, battery, charge controller, and sometimes an inverter. The lamp operates using electricity stored in batteries charged through solar photovoltaic panels.</p><div class="rounded-2xl bg-brand-50 p-6"><h3 class="text-lg font-bold text-brand-950 mb-2">All-in-One Solar Light</h3><p class="text-slate-600 leading-relaxed">All-in-one solar street lights are compact, new-age lighting solutions that integrate solar panels, an LED light, a lithium-ion battery, and a PIR motion sensor. They use high-quality materials and are designed for Indian environments.</p></div></div></div>
+
+        <article id="water-heating" class="scroll-mt-28 rounded-[2rem] border border-slate-100 bg-slate-50 p-6 sm:p-8 lg:p-10 shadow-sm reveal">
+          <div class="mb-6 img-zoom rounded-2xl overflow-hidden"><img src="assests/solar%20water%20heterr.png" alt="Solar water heating" class="w-full h-64 object-cover rounded-2xl"></div>
+          <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">05</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Solar Water Heating System</h2><p class="text-slate-600 leading-relaxed">Solar water heating converts sunlight into heat for water heating using a solar thermal collector. We provide direct, indirect, and pressurized heating systems for domestic and commercial use, reducing the need for electricity to produce hot water.</p></div></div>
+
+          <div class="grid lg:grid-cols-2 gap-8"><div class="rounded-2xl bg-white p-6 border border-slate-100"><h3 class="text-lg font-bold text-brand-950 mb-3">How do solar water heating systems work?</h3><p class="text-slate-600 leading-relaxed">Heat is transferred from the collector to the tank through a separate circuit and heat exchanger. The panel heats water, oil, or another fluid flowing through pipes into a copper coil inside the hot-water tank.</p></div><div class="rounded-2xl bg-white p-6 border border-slate-100"><h3 class="text-lg font-bold text-brand-950 mb-3">Types of solar water heating systems</h3><ul class="list-disc pl-5 space-y-2 text-slate-600 leading-relaxed"><li>Flat Plate Collector Technology</li><li>Evacuated Glass Tube Technology</li><li>Heat Pipe Technology</li></ul></div></div>
+
+        <article id="water-pumping" class="scroll-mt-28 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 lg:p-10 shadow-sm reveal">
+          <div class="mb-6 img-zoom rounded-2xl overflow-hidden"><img src="assests/solar%20water%20pumping%20sysytem.png" alt="Solar water pumping" class="w-full h-64 object-cover rounded-2xl"></div>
+          <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">06</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Solar Water Pumping System &amp; Solar Atta Chakki</h2><p class="text-slate-600 leading-relaxed">Solar water pumping systems support irrigation, drinking-water, and other water requirements. The pump runs on electricity generated by solar panels, making operation economical and environmentally friendly. A typical system includes a solar charge controller, customised pump, and solar PV module.</p></div></div>
+
+          <div class="grid lg:grid-cols-2 gap-8"><div><h3 class="text-lg font-bold text-brand-950 mb-4">Types of solar water pumping systems</h3><ol class="list-decimal pl-5 space-y-2 text-slate-600 leading-relaxed"><li>Solar submersible pumps</li><li>Solar open-well pumps</li><li>Solar monoblock pumps</li><li>Solar AC water pumping systems</li></ol><h3 class="text-lg font-bold text-brand-950 mt-7 mb-4">Major applications</h3><ul class="list-disc pl-5 space-y-2 text-slate-600 leading-relaxed"><li>Domestic drinking water</li><li>Industrial water requirements</li><li>Irrigation</li><li>Hospitals, schools, colleges, and universities</li></ul></div><div><div class="rounded-2xl bg-brand-50 p-6 mb-6"><h3 class="text-lg font-bold text-brand-950 mb-4">Key features</h3><ul class="space-y-2 text-slate-600 leading-relaxed"><li><i class="fas fa-check text-green-600 mr-2"></i>Eco-friendly model</li><li><i class="fas fa-check text-green-600 mr-2"></i>Economical water pumping system</li><li><i class="fas fa-check text-green-600 mr-2"></i>Inbuilt protection system</li><li><i class="fas fa-check text-green-600 mr-2"></i>2-year warranty</li></ul></div><div class="rounded-2xl bg-slate-50 p-6"><h3 class="text-lg font-bold text-brand-950 mb-3">Solar Atta Chakki</h3><p class="text-slate-600 leading-relaxed">Solar Atta Chakki is especially useful in villages, where it can reduce running costs. Traditional Atta Chakki units often run on diesel, which becomes more expensive over time. A one-time solar project investment provides long-term benefits with minimal maintenance.</p></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SOLAR SAVINGS CALCULATOR ===== -->
+  <!-- Reordered: SOLAR SAVINGS CALCULATOR (placed before Why Choose) -->
   <section id="solutions" class="calculator-bg py-24 lg:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <!-- Left - Calculator -->
-        <div class="reveal-left">
+        <!-- Left - Calculator Call To Action -->
+        <a href="calculator.html" class="reveal-left group block" aria-label="Open the solar savings calculator">
           <span class="inline-block px-4 py-1.5 bg-white text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4 shadow-sm">Solar Calculator</span>
           <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-5 leading-tight">Calculate Your Solar Savings</h2>
-          <p class="text-slate-500 text-lg leading-relaxed mb-10">Discover how much you can save by switching to solar. Enter your details below for an instant estimate.</p>
+          <p class="text-slate-500 text-lg leading-relaxed mb-8">Find your recommended solar system size, estimated savings, and return on investment in a few simple steps.</p>
 
-          <div class="bg-white rounded-3xl p-8 shadow-xl shadow-slate-900/5 border border-slate-100">
-            <div class="space-y-6">
+          <div class="bg-white rounded-3xl p-8 shadow-xl shadow-slate-900/5 border border-slate-100 group-hover:shadow-2xl group-hover:-translate-y-1 transition-all">
+            <div class="flex items-start gap-5">
+              <div class="w-16 h-16 rounded-2xl bg-brand-600 text-white flex items-center justify-center text-2xl flex-shrink-0"><i class="fas fa-calculator"></i></div>
               <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-2.5">Monthly Electricity Bill (Rs.)</label>
-                <input type="number" id="billAmount" placeholder="e.g. 5000" class="form-input" value="5000">
+                <h3 class="text-xl font-extrabold text-brand-950 mb-2">Get your personalised estimate</h3>
+                <p class="text-slate-500 leading-relaxed">Enter your bill and household details on our dedicated calculator page.</p>
               </div>
-              <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-2.5">Average Units Consumed (kWh)</label>
-                <input type="number" id="unitsConsumed" placeholder="e.g. 400" class="form-input" value="400">
-              </div>
-              <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-2.5">System Size (kW) <span class="text-slate-400 font-normal">- Optional</span></label>
-                <input type="number" id="systemSize" placeholder="Auto-calculated" class="form-input bg-slate-50" readonly>
-              </div>
-              <button id="calculateBtn" class="btn-primary w-full justify-center text-base py-4">
-                <i class="fas fa-calculator"></i>
-                Calculate Savings
-              </button>
             </div>
-
-            <!-- Results -->
-            <div id="savingsResult" class="savings-result mt-8 pt-8 border-t border-slate-100 hidden">
-              <div class="grid grid-cols-2 gap-4">
-                <div class="bg-gradient-to-br from-brand-50 to-brand-100/50 rounded-2xl p-5 text-center border border-brand-100">
-                  <p class="text-xs font-semibold text-brand-600 uppercase tracking-wider mb-2">Monthly Savings</p>
-                  <p class="text-2xl font-extrabold text-brand-700" id="monthlySavings">Rs. 0</p>
-                </div>
-                <div class="bg-gradient-to-br from-green-50 to-green-100/50 rounded-2xl p-5 text-center border border-green-100">
-                  <p class="text-xs font-semibold text-green-600 uppercase tracking-wider mb-2">Yearly Savings</p>
-                  <p class="text-2xl font-extrabold text-green-700" id="yearlySavings">Rs. 0</p>
-                </div>
-                <div class="bg-gradient-to-br from-indigo-50 to-indigo-100/50 rounded-2xl p-5 text-center border border-indigo-100">
-                  <p class="text-xs font-semibold text-indigo-600 uppercase tracking-wider mb-2">Payback Period</p>
-                  <p class="text-2xl font-extrabold text-indigo-700" id="paybackPeriod">0 Years</p>
-                </div>
-                <div class="bg-gradient-to-br from-amber-50 to-amber-100/50 rounded-2xl p-5 text-center border border-amber-100">
-                  <p class="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-2">CO<sub>2</sub> Reduction</p>
-                  <p class="text-2xl font-extrabold text-amber-700" id="co2Reduction">0 Tonnes</p>
-                </div>
-              </div>
-              <div class="mt-6 p-4 bg-green-50 rounded-xl border border-green-100">
-                <p class="text-sm text-green-800 text-center font-medium">
-                  <i class="fas fa-leaf mr-2"></i>
-                  You could save up to <span id="lifetimeSavings" class="font-bold">Rs. 0</span> over 25 years!
-                </p>
-              </div>
+            <div class="mt-7 flex items-center justify-between border-t border-slate-100 pt-6 text-brand-700 font-bold">
+              <span>Calculate Savings &amp; ROI</span>
+              <span class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-colors"><i class="fas fa-arrow-right"></i></span>
             </div>
           </div>
-        </div>
+        </a>
 
         <!-- Right - Image & Info -->
         <div class="relative reveal-right">
@@ -1644,7 +1688,439 @@
     </div>
   </section>
 
-  <!-- ===== PROJECTS / GALLERY ===== -->
+  <!-- Reordered: WHY CHOOSE US (moved after calculator) -->
+  <section id="about" class="why-choose-bg py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Left - Image -->
+        <div class="relative reveal-left">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-slate-900/10">
+            <img 
+              src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=85" 
+              alt="Solar installation workers wearing safety helmets" 
+              class="w-full h-[500px] lg:h-[600px] object-cover"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-900/30 via-transparent to-transparent"></div>
+          </div>
+          
+          <div class="absolute -bottom-6 -right-4 lg:-right-8 bg-white rounded-2xl shadow-xl shadow-slate-900/10 px-7 py-5 border border-slate-100 animate-float text-center">
+            <div class="flex items-center justify-center gap-3 mb-1">
+              <i class="fas fa-trophy text-orange-500 text-2xl"></i>
+              <p class="text-4xl font-extrabold text-brand-950">8+</p>
+            </div>
+            <p class="text-sm text-slate-600 font-bold">Years of Experience</p>
+          </div>
+        </div>
+
+        <!-- Right - Content -->
+        <div class="reveal-right">
+          <span class="inline-block px-4 py-1.5 bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4">About Us</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-6 leading-tight">VAISH Solar Services</h2>
+          <p class="text-slate-600 text-lg leading-relaxed mb-10">Big vision always starts with a small idea. VAISH Solar Services began in July 2019 with a dynamic vision: dedicate our expertise and services to people and communities for a better, healthier future.</p>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="feature-check flex items-center gap-4 p-5 rounded-xl bg-white border border-slate-100 shadow-sm"><i class="fas fa-check text-white bg-green-500 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0"></i><p class="font-bold text-brand-950">Save money with solar panels</p></div>
+            <div class="feature-check flex items-center gap-4 p-5 rounded-xl bg-white border border-slate-100 shadow-sm"><i class="fas fa-check text-white bg-green-500 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0"></i><p class="font-bold text-brand-950">Healthier renewable energy source</p></div>
+            <div class="feature-check flex items-center gap-4 p-5 rounded-xl bg-white border border-slate-100 shadow-sm"><i class="fas fa-check text-white bg-green-500 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0"></i><p class="font-bold text-brand-950">Flat roof mounting system</p></div>
+            <div class="feature-check flex items-center gap-4 p-5 rounded-xl bg-white border border-slate-100 shadow-sm"><i class="fas fa-check text-white bg-green-500 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0"></i><p class="font-bold text-brand-950">Effective use of the sun</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reordered: OUR PROCESS / SOLAR JOURNEY (moved after Why Choose) -->
+  <section class="how-works-bg py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <span class="inline-block px-4 py-1.5 bg-white text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4 shadow-sm">How It Works</span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-5 leading-tight">Your Solar Journey in 4 Simple Steps</h2>
+        <p class="text-slate-500 text-lg leading-relaxed">From the first consultation to powering your home, we make the transition to solar energy simple and hassle-free.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Step 1 -->
+        <div class="process-step text-center reveal">
+          <div class="relative inline-block mb-6">
+            <div class="number-badge w-20 h-20 rounded-2xl flex items-center justify-center text-white text-2xl font-extrabold mx-auto">1</div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-lg shadow-slate-900/5 border border-slate-100 h-full">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center mx-auto mb-4 border border-brand-100">
+              <i class="fas fa-clipboard-check text-brand-600 text-xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-brand-950 mb-2">Free Site Assessment</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Our experts visit your location to analyze roof space, sunlight exposure, and energy needs.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="process-step text-center reveal">
+          <div class="relative inline-block mb-6">
+            <div class="number-badge w-20 h-20 rounded-2xl flex items-center justify-center text-white text-2xl font-extrabold mx-auto">2</div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-lg shadow-slate-900/5 border border-slate-100 h-full">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center mx-auto mb-4 border border-green-100">
+              <i class="fas fa-drafting-compass text-green-600 text-xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-brand-950 mb-2">Custom Design</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">We design a tailored solar system optimized for your specific requirements and budget.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="process-step text-center reveal">
+          <div class="relative inline-block mb-6">
+            <div class="number-badge w-20 h-20 rounded-2xl flex items-center justify-center text-white text-2xl font-extrabold mx-auto">3</div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-lg shadow-slate-900/5 border border-slate-100 h-full">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-50 to-indigo-100 flex items-center justify-center mx-auto mb-4 border border-indigo-100">
+              <i class="fas fa-hard-hat text-indigo-600 text-xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-brand-950 mb-2">Expert Installation</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Certified technicians install your system with precision, typically completed within 2-5 days.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="process-step text-center reveal">
+          <div class="relative inline-block mb-6">
+            <div class="number-badge w-20 h-20 rounded-2xl flex items-center justify-center text-white text-2xl font-extrabold mx-auto">4</div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-lg shadow-slate-900/5 border border-slate-100 h-full">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center mx-auto mb-4 border border-amber-100">
+              <i class="fas fa-plug text-amber-600 text-xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-brand-950 mb-2">Start Saving</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">System activation and grid connection. Monitor performance and watch your savings grow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WE DEAL IN / BRANDS CAROUSEL ===== -->
+  <section class="bg-white py-16 lg:py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 reveal">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-4 leading-tight">We Deal In</h2>
+        <p class="text-slate-600 text-lg">Trusted partnerships with leading solar equipment providers</p>
+      </div>
+
+      <!-- Scrolling Brands Container -->
+      <div class="relative w-full overflow-hidden">
+        <style>
+          @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .brands-scroll {
+            display: flex;
+            animation: scroll-left 20s linear infinite;
+            width: max-content;
+          }
+          .brands-scroll:hover {
+            animation-play-state: paused;
+          }
+          .brand-item {
+            flex: 0 0 clamp(180px, 20vw, 252px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+          }
+          .deal-logo {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1;
+            white-space: nowrap;
+          }
+          .brand-logo-image {
+            width: 100%;
+            max-width: 210px;
+            height: 80px;
+            object-fit: contain;
+            transition: transform .2s ease;
+          }
+          .brand-logo-image:hover { transform: scale(1.05); }
+        </style>
+        
+        <div class="brands-scroll">
+          <div class="brand-item"><img src="assests/Entertech.png" alt="EnerTech" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/sinfin%20(1).png" alt="Sinfin" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/M%2B.png" alt="Amplus Solar" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/statcon.png" alt="Statcon Powtech" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/intersolar.png" alt="Inter Solar Systems" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/goldi.png" alt="Goldi Solar" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/livguard.png" alt="Livguard" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/utl.png" alt="UTL Solar" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/vikram%20solart.png" alt="Vikram Solar" class="brand-logo-image"></div>
+
+          <!-- Duplicate for seamless loop -->
+          <div class="brand-item"><img src="assests/Entertech.png" alt="EnerTech" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/sinfin%20(1).png" alt="Sinfin" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/M%2B.png" alt="Amplus Solar" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/statcon.png" alt="Statcon Powtech" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/intersolar.png" alt="Inter Solar Systems" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/goldi.png" alt="Goldi Solar" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/livguard.png" alt="Livguard" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/utl.png" alt="UTL Solar" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="assests/vikram%20solart.png" alt="Vikram Solar" class="brand-logo-image"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHANNEL PARTNERS CAROUSEL ===== -->
+  <section class="bg-slate-50 py-16 lg:py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 reveal">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 leading-tight">Our Channel Partners</h2>
+      </div>
+
+      <div class="relative w-full overflow-hidden">
+        <style>
+          .partners-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll-left 24s linear infinite;
+          }
+          .partners-scroll:hover {
+            animation-play-state: paused;
+          }
+          .partner-item {
+            flex: 0 0 clamp(180px, 20vw, 252px);
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+          }
+          .partner-logo {
+            width: 100%;
+            max-width: 220px;
+            min-height: 88px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, .06);
+            transition: transform .2s ease, box-shadow .2s ease;
+          }
+          .partner-logo:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(15, 23, 42, .12);
+          }
+          .partner-logo img {
+            width: 100%;
+            height: 70px;
+            object-fit: contain;
+          }
+        </style>
+
+        <div class="partners-scroll" aria-label="Our channel partners">
+          <div class="partner-item"><div class="partner-logo"><img src="assests/Entertech.png" alt="EnerTech"></div></div>
+          <div class="partner-item"><div class="partner-logo"><img src="assests/sinfin%20(1).png" alt="Sinfin"></div></div>
+          <div class="partner-item"><div class="partner-logo"><img src="assests/M%2B.png" alt="Amplus Solar"></div></div>
+          <div class="partner-item"><div class="partner-logo"><img src="assests/statcon.png" alt="Statcon Powtech"></div></div>
+          <div class="partner-item"><div class="partner-logo"><img src="assests/exide.png" alt="Exide"></div></div>
+
+          <!-- Duplicate items for a seamless continuous loop -->
+          <div class="partner-item"><div class="partner-logo"><img src="assests/Entertech.png" alt="EnerTech"></div></div>
+          <div class="partner-item"><div class="partner-logo"><img src="assests/sinfin%20(1).png" alt="Sinfin"></div></div>
+          <div class="partner-item"><div class="partner-logo"><img src="assests/M%2B.png" alt="Amplus Solar"></div></div>
+          <div class="partner-item"><div class="partner-logo"><img src="assests/statcon.png" alt="Statcon Powtech"></div></div>
+          <div class="partner-item"><div class="partner-logo"><img src="assests/exide.png" alt="Exide"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reordered: TESTIMONIALS (client reviews) -->
+  <section id="reviews" class="testimonial-bg py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <span class="inline-block px-4 py-1.5 bg-white text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4 shadow-sm">Testimonials</span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-5 leading-tight">What Our Customers Say</h2>
+        <p class="text-slate-500 text-lg leading-relaxed">Don't just take our word for it. Here's what homeowners and businesses across India say about their solar journey with us.</p>
+      </div>
+
+      <!-- Google Reviews Badge -->
+      <div class="flex justify-center mb-14 reveal">
+        <a href="https://www.google.com/search?q=vaish+solar+services#lrd=0x3909295fe4bc9d17:0xdb293227b0bc951b,1,,,," target="_blank" rel="noreferrer" aria-label="Read VAISH Solar Services Google reviews" class="google-badge rounded-2xl px-8 py-5 shadow-lg shadow-slate-900/5 flex items-center gap-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+              <svg viewBox="0 0 24 24" class="w-7 h-7">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-1 mb-0.5">
+                <span class="text-2xl font-extrabold text-brand-950">5.0</span>
+                <div class="flex gap-0.5 ml-1">
+                  <i class="fas fa-star star-filled text-sm"></i>
+                  <i class="fas fa-star star-filled text-sm"></i>
+                  <i class="fas fa-star star-filled text-sm"></i>
+                  <i class="fas fa-star star-filled text-sm"></i>
+                  <i class="fas fa-star star-filled text-sm"></i>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 font-medium">Based on 17 Google Reviews</p>
+            </div>
+          </div>
+          <div class="hidden sm:block w-px h-12 bg-slate-200"></div>
+          <div class="hidden sm:block text-center">
+            <p class="text-2xl font-extrabold text-brand-950">17</p>
+            <p class="text-xs text-slate-500 font-medium">Verified Reviews</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg shadow-slate-900/5 border border-slate-100 reveal">
+          <div class="flex items-center gap-1 mb-5">
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+          </div>
+          <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"VAISH Solar transformed our home energy consumption completely. Our electricity bill dropped from Rs. 8,500 to just Rs. 1,200 per month. The installation team was professional and completed the work in just 3 days. Highly recommended!"</p>
+          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
+            <img 
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" 
+              alt="Rajesh Kumar" 
+              class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-100"
+            >
+            <div>
+              <p class="font-bold text-brand-950 text-sm">Rajesh Kumar</p>
+              <p class="text-xs text-slate-500">Homeowner, Bengaluru</p>
+            </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-5 h-5 ml-auto opacity-50">
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg shadow-slate-900/5 border border-slate-100 reveal">
+          <div class="flex items-center gap-1 mb-5">
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+          </div>
+          <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"As a factory owner, I was skeptical about the ROI. But VAISH Solar proved me wrong. Our 250kW system is generating exactly what was promised. The maintenance team is responsive and the monitoring dashboard is excellent."</p>
+          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
+            <img 
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" 
+              alt="Amit Patel" 
+              class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-100"
+            >
+            <div>
+              <p class="font-bold text-brand-950 text-sm">Amit Patel</p>
+              <p class="text-xs text-slate-500">Factory Owner, Ahmedabad</p>
+            </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-5 h-5 ml-auto opacity-50">
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg shadow-slate-900/5 border border-slate-100 reveal">
+          <div class="flex items-center gap-1 mb-5">
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+          </div>
+          <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"The entire process from consultation to installation was seamless. They helped us get the government subsidy which saved us Rs. 1.5 lakhs. Our 5kW system powers our entire home including ACs. Best investment we've made!"</p>
+          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
+            <img 
+              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" 
+              alt="Priya Sharma" 
+              class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-100"
+            >
+            <div>
+              <p class="font-bold text-brand-950 text-sm">Priya Sharma</p>
+              <p class="text-xs text-slate-500">Homeowner, Hyderabad</p>
+            </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-5 h-5 ml-auto opacity-50">
+          </div>
+        </div>
+
+        <!-- Testimonial 6 -->
+        <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg shadow-slate-900/5 border border-slate-100 reveal">
+          <div class="flex items-center gap-1 mb-5">
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+          </div>
+          <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"The project was completed on schedule and is operating profitably compared to the investment costs. Thanks to Vaish Solar Services. They are the best."</p>
+          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
+            <div class="w-12 h-12 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center ring-2 ring-brand-100"><i class="fas fa-user"></i></div>
+            <div>
+              <p class="font-bold text-brand-950 text-sm">Omveer Singh</p>
+              <p class="text-xs text-slate-500">Client</p>
+            </div>
+            <i class="fas fa-quote-right text-brand-200 ml-auto"></i>
+          </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg shadow-slate-900/5 border border-slate-100 reveal">
+          <div class="flex items-center gap-1 mb-5">
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+          </div>
+          <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"Excellent quality material provided by Vaish Solar Service. All the workers are cooperative, and I was satisfied with the work they have done."</p>
+          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
+            <div class="w-12 h-12 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center ring-2 ring-brand-100"><i class="fas fa-user"></i></div>
+            <div>
+              <p class="font-bold text-brand-950 text-sm">Nikhil Gupta</p>
+              <p class="text-xs text-slate-500">Client</p>
+            </div>
+            <i class="fas fa-quote-right text-brand-200 ml-auto"></i>
+          </div>
+        </div>
+
+        <!-- Testimonial 5 -->
+        <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg shadow-slate-900/5 border border-slate-100 reveal">
+          <div class="flex items-center gap-1 mb-5">
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+            <i class="fas fa-star star-filled text-sm"></i>
+          </div>
+          <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"I recommend installing solar energy from Vaish Solar Services team. They work very professionally and conscientiously at a very good price."</p>
+          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
+            <div class="w-12 h-12 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center ring-2 ring-brand-100"><i class="fas fa-user"></i></div>
+            <div>
+              <p class="font-bold text-brand-950 text-sm">Mukesh Agarwal</p>
+              <p class="text-xs text-slate-500">Client</p>
+            </div>
+            <i class="fas fa-quote-right text-brand-200 ml-auto"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reordered: PROJECTS / GALLERY (moved after reviews) -->
   <section id="projects" class="projects-bg py-24 lg:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16 reveal">
@@ -1764,198 +2240,10 @@
       </div>
 
       <div class="text-center mt-12 reveal">
-        <a href="#projects" class="btn-secondary text-base py-4 px-10">
+        <a href="projects.html" class="btn-secondary text-base py-4 px-10">
           View All Projects
           <i class="fas fa-arrow-right"></i>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TESTIMONIALS ===== -->
-  <section id="reviews" class="testimonial-bg py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-        <span class="inline-block px-4 py-1.5 bg-white text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4 shadow-sm">Testimonials</span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-5 leading-tight">What Our Customers Say</h2>
-        <p class="text-slate-500 text-lg leading-relaxed">Don't just take our word for it. Here's what homeowners and businesses across India say about their solar journey with us.</p>
-      </div>
-
-      <!-- Google Reviews Badge -->
-      <div class="flex justify-center mb-14 reveal">
-        <div class="google-badge rounded-2xl px-8 py-5 shadow-lg shadow-slate-900/5 flex items-center gap-6">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm">
-              <svg viewBox="0 0 24 24" class="w-7 h-7">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-              </svg>
-            </div>
-            <div>
-              <div class="flex items-center gap-1 mb-0.5">
-                <span class="text-2xl font-extrabold text-brand-950">4.9</span>
-                <div class="flex gap-0.5 ml-1">
-                  <i class="fas fa-star star-filled text-sm"></i>
-                  <i class="fas fa-star star-filled text-sm"></i>
-                  <i class="fas fa-star star-filled text-sm"></i>
-                  <i class="fas fa-star star-filled text-sm"></i>
-                  <i class="fas fa-star star-filled text-sm"></i>
-                </div>
-              </div>
-              <p class="text-xs text-slate-500 font-medium">Based on 380+ Google Reviews</p>
-            </div>
-          </div>
-          <div class="hidden sm:block w-px h-12 bg-slate-200"></div>
-          <div class="hidden sm:block text-center">
-            <p class="text-2xl font-extrabold text-brand-950">380+</p>
-            <p class="text-xs text-slate-500 font-medium">Verified Reviews</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Testimonial 1 -->
-        <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg shadow-slate-900/5 border border-slate-100 reveal">
-          <div class="flex items-center gap-1 mb-5">
-            <i class="fas fa-star star-filled text-sm"></i>
-            <i class="fas fa-star star-filled text-sm"></i>
-            <i class="fas fa-star star-filled text-sm"></i>
-            <i class="fas fa-star star-filled text-sm"></i>
-            <i class="fas fa-star star-filled text-sm"></i>
-          </div>
-          <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"VAISH Solar transformed our home energy consumption completely. Our electricity bill dropped from Rs. 8,500 to just Rs. 1,200 per month. The installation team was professional and completed the work in just 3 days. Highly recommended!"</p>
-          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
-            <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" 
-              alt="Rajesh Kumar" 
-              class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-100"
-            >
-            <div>
-              <p class="font-bold text-brand-950 text-sm">Rajesh Kumar</p>
-              <p class="text-xs text-slate-500">Homeowner, Bengaluru</p>
-            </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-5 h-5 ml-auto opacity-50">
-          </div>
-        </div>
-
-        <!-- Testimonial 2 -->
-        <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg shadow-slate-900/5 border border-slate-100 reveal">
-          <div class="flex items-center gap-1 mb-5">
-            <i class="fas fa-star star-filled text-sm"></i>
-            <i class="fas fa-star star-filled text-sm"></i>
-            <i class="fas fa-star star-filled text-sm"></i>
-            <i class="fas fa-star star-filled text-sm"></i>
-            <i class="fas fa-star star-filled text-sm"></i>
-          </div>
-          <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"As a factory owner, I was skeptical about the ROI. But VAISH Solar proved me wrong. Our 250kW system is generating exactly what was promised. The maintenance team is responsive and the monitoring dashboard is excellent."</p>
-          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
-            <img 
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" 
-              alt="Amit Patel" 
-              class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-100"
-            >
-            <div>
-              <p class="font-bold text-brand-950 text-sm">Amit Patel</p>
-              <p class="text-xs text-slate-500">Factory Owner, Ahmedabad</p>
-            </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-5 h-5 ml-auto opacity-50">
-          </div>
-        </div>
-
-        <!-- Testimonial 3 -->
-        <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg shadow-slate-900/5 border border-slate-100 reveal">
-          <div class="flex items-center gap-1 mb-5">
-            <i class="fas fa-star star-filled text-sm"></i>
-            <i class="fas fa-star star-filled text-sm"></i>
-            <i class="fas fa-star star-filled text-sm"></i>
-            <i class="fas fa-star star-filled text-sm"></i>
-            <i class="fas fa-star star-filled text-sm"></i>
-          </div>
-          <p class="text-slate-600 leading-relaxed mb-8 text-[15px]">"The entire process from consultation to installation was seamless. They helped us get the government subsidy which saved us Rs. 1.5 lakhs. Our 5kW system powers our entire home including ACs. Best investment we've made!"</p>
-          <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
-            <img 
-              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" 
-              alt="Priya Sharma" 
-              class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-100"
-            >
-            <div>
-              <p class="font-bold text-brand-950 text-sm">Priya Sharma</p>
-              <p class="text-xs text-slate-500">Homeowner, Hyderabad</p>
-            </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-5 h-5 ml-auto opacity-50">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== HOW SOLAR WORKS ===== -->
-  <section class="how-works-bg py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-        <span class="inline-block px-4 py-1.5 bg-white text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4 shadow-sm">How It Works</span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-5 leading-tight">Your Solar Journey in 4 Simple Steps</h2>
-        <p class="text-slate-500 text-lg leading-relaxed">From the first consultation to powering your home, we make the transition to solar energy simple and hassle-free.</p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Step 1 -->
-        <div class="process-step text-center reveal">
-          <div class="relative inline-block mb-6">
-            <div class="number-badge w-20 h-20 rounded-2xl flex items-center justify-center text-white text-2xl font-extrabold mx-auto">1</div>
-          </div>
-          <div class="bg-white rounded-2xl p-6 shadow-lg shadow-slate-900/5 border border-slate-100 h-full">
-            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center mx-auto mb-4 border border-brand-100">
-              <i class="fas fa-clipboard-check text-brand-600 text-xl"></i>
-            </div>
-            <h4 class="text-lg font-bold text-brand-950 mb-2">Free Site Assessment</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Our experts visit your location to analyze roof space, sunlight exposure, and energy needs.</p>
-          </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="process-step text-center reveal">
-          <div class="relative inline-block mb-6">
-            <div class="number-badge w-20 h-20 rounded-2xl flex items-center justify-center text-white text-2xl font-extrabold mx-auto">2</div>
-          </div>
-          <div class="bg-white rounded-2xl p-6 shadow-lg shadow-slate-900/5 border border-slate-100 h-full">
-            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center mx-auto mb-4 border border-green-100">
-              <i class="fas fa-drafting-compass text-green-600 text-xl"></i>
-            </div>
-            <h4 class="text-lg font-bold text-brand-950 mb-2">Custom Design</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">We design a tailored solar system optimized for your specific requirements and budget.</p>
-          </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="process-step text-center reveal">
-          <div class="relative inline-block mb-6">
-            <div class="number-badge w-20 h-20 rounded-2xl flex items-center justify-center text-white text-2xl font-extrabold mx-auto">3</div>
-          </div>
-          <div class="bg-white rounded-2xl p-6 shadow-lg shadow-slate-900/5 border border-slate-100 h-full">
-            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-50 to-indigo-100 flex items-center justify-center mx-auto mb-4 border border-indigo-100">
-              <i class="fas fa-hard-hat text-indigo-600 text-xl"></i>
-            </div>
-            <h4 class="text-lg font-bold text-brand-950 mb-2">Expert Installation</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Certified technicians install your system with precision, typically completed within 2-5 days.</p>
-          </div>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="process-step text-center reveal">
-          <div class="relative inline-block mb-6">
-            <div class="number-badge w-20 h-20 rounded-2xl flex items-center justify-center text-white text-2xl font-extrabold mx-auto">4</div>
-          </div>
-          <div class="bg-white rounded-2xl p-6 shadow-lg shadow-slate-900/5 border border-slate-100 h-full">
-            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center mx-auto mb-4 border border-amber-100">
-              <i class="fas fa-plug text-amber-600 text-xl"></i>
-            </div>
-            <h4 class="text-lg font-bold text-brand-950 mb-2">Start Saving</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">System activation and grid connection. Monitor performance and watch your savings grow.</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1973,7 +2261,7 @@
         <p class="text-lg text-white/70 leading-relaxed mb-10 max-w-2xl mx-auto">Join hundreds of satisfied customers who have already made the switch. Get your free consultation today and take the first step towards energy independence.</p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#contact" class="btn-primary text-base py-4 px-10 justify-center bg-white text-brand-700 hover:bg-brand-50 shadow-xl shadow-black/20">
+          <a href="contact.html" class="btn-primary text-base py-4 px-10 justify-center bg-white text-brand-700 hover:bg-brand-50 shadow-xl shadow-black/20">
             Get a Free Quote
             <i class="fas fa-arrow-right"></i>
           </a>
@@ -2022,12 +2310,11 @@
         <div>
           <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Quick Links</h4>
           <ul class="space-y-3.5">
-            <li><a href="#home" class="footer-link text-sm">Home</a></li>
-            <li><a href="#about" class="footer-link text-sm">About Us</a></li>
-            <li><a href="#services" class="footer-link text-sm">Services</a></li>
-            <li><a href="#projects" class="footer-link text-sm">Projects</a></li>
-            <li><a href="#reviews" class="footer-link text-sm">Reviews</a></li>
-            <li><a href="#blog" class="footer-link text-sm">Blog</a></li>
+            <li><a href="index.html" class="footer-link text-sm">Home</a></li>
+            <li><a href="about.html" class="footer-link text-sm">About Us</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Services</a></li>
+            <li><a href="projects.html" class="footer-link text-sm">Projects</a></li>
+            <li><a href="about.html#certificates" class="footer-link text-sm">View Certificates</a></li>
           </ul>
         </div>
 
@@ -2035,12 +2322,12 @@
         <div>
           <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Services</h4>
           <ul class="space-y-3.5">
-            <li><a href="#services" class="footer-link text-sm">Rooftop Solar</a></li>
-            <li><a href="#services" class="footer-link text-sm">Solar Installation</a></li>
-            <li><a href="#services" class="footer-link text-sm">Maintenance & AMC</a></li>
-            <li><a href="#services" class="footer-link text-sm">Solar Batteries</a></li>
-            <li><a href="#services" class="footer-link text-sm">Commercial Solar</a></li>
-            <li><a href="#services" class="footer-link text-sm">Industrial Solar</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Rooftop Solar</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Solar Installation</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Maintenance & AMC</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Solar Batteries</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Commercial Solar</a></li>
+            <li><a href="services.html" class="footer-link text-sm">Industrial Solar</a></li>
           </ul>
         </div>
 
@@ -2079,7 +2366,7 @@
       <div class="section-divider mb-8"></div>
 
       <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p class="text-slate-500 text-sm">2025 VAISH Solar Services. All rights reserved.</p>
+        <p class="text-slate-500 text-sm">2026 VAISH Solar Services. All rights reserved.</p>
         <div class="flex gap-6">
           <a href="#" class="footer-link text-sm">Privacy Policy</a>
           <a href="#" class="footer-link text-sm">Terms of Service</a>
@@ -2089,17 +2376,15 @@
     </div>
   </footer>
 
-  <!-- Back to Top -->
-  <button id="backToTop" class="back-to-top fixed bottom-8 right-8 w-12 h-12 bg-brand-600 text-white rounded-xl shadow-xl shadow-brand-600/30 flex items-center justify-center hover:bg-brand-700 transition-all z-40 hover:scale-110">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
-  <!-- Floating Actions: WhatsApp + Contact -->
+  <!-- Floating Actions: Back to Top, WhatsApp, Contact -->
   <div class="floating-actions" aria-hidden="false">
+    <button id="backToTop" class="back-to-top w-12 h-12 bg-brand-600 text-white rounded-full shadow-xl shadow-brand-600/30 flex items-center justify-center hover:bg-brand-700 transition-all hover:scale-110" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
     <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" class="floating-btn floating-whatsapp" aria-label="Chat on WhatsApp">
       <i class="fab fa-whatsapp"></i>
     </a>
-    <a href="#contact" class="floating-btn floating-contact" aria-label="Contact Us">
+    <a href="contact.html" class="floating-btn floating-contact" aria-label="Contact Us">
       <i class="fas fa-envelope"></i>
     </a>
   </div>
@@ -2196,43 +2481,21 @@
 
     counters.forEach(counter => counterObserver.observe(counter));
 
-    // ===== SAVINGS CALCULATOR =====
-    const calculateBtn = document.getElementById('calculateBtn');
-    const savingsResult = document.getElementById('savingsResult');
-
-    calculateBtn.addEventListener('click', () => {
-      const bill = parseFloat(document.getElementById('billAmount').value) || 0;
-      const units = parseFloat(document.getElementById('unitsConsumed').value) || 0;
-      
-      // Calculate system size (rough estimate: 1kW ~ 4-5 units/day = 120-150 units/month)
-      const systemSize = Math.ceil(units / 130);
-      document.getElementById('systemSize').value = systemSize + ' kW';
-      
-      // Calculate savings (rough estimate: 80% bill reduction)
-      const monthlySavings = Math.round(bill * 0.8);
-      const yearlySavings = monthlySavings * 12;
-      const paybackYears = (systemSize * 50000 / yearlySavings).toFixed(1);
-      const co2Reduction = (units * 12 * 0.82 / 1000).toFixed(1);
-      const lifetimeSavings = yearlySavings * 25;
-      
-      document.getElementById('monthlySavings').textContent = 'Rs. ' + monthlySavings.toLocaleString('en-IN');
-      document.getElementById('yearlySavings').textContent = 'Rs. ' + yearlySavings.toLocaleString('en-IN');
-      document.getElementById('paybackPeriod').textContent = paybackYears + ' Years';
-      document.getElementById('co2Reduction').textContent = co2Reduction + ' Tonnes';
-      document.getElementById('lifetimeSavings').textContent = 'Rs. ' + lifetimeSavings.toLocaleString('en-IN');
-      
-      savingsResult.classList.remove('hidden');
-      savingsResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-
     // ===== BACK TO TOP =====
     const backToTop = document.getElementById('backToTop');
+    const floatingActions = document.querySelector('.floating-actions');
     
     window.addEventListener('scroll', () => {
       if (window.scrollY > 500) {
         backToTop.classList.add('visible');
+        if (floatingActions) {
+          floatingActions.classList.add('shift-up');
+        }
       } else {
         backToTop.classList.remove('visible');
+        if (floatingActions) {
+          floatingActions.classList.remove('shift-up');
+        }
       }
     });
 
