@@ -747,6 +747,206 @@
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 20px rgba(0, 0, 0, 0.03);
     }
 
+    /* ===== REFERENCE HERO HEADER ===== */
+    .hero-header {
+      height: 102px;
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    .hero-header-inner {
+      height: 100%;
+      display: grid;
+      grid-template-columns: clamp(120px, 15vw, 150px) minmax(0, 1fr) 40px;
+      align-items: center;
+      column-gap: clamp(16px, 3vw, 25px);
+    }
+
+    .hero-brand-logo {
+      width: 100%;
+      height: 78px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .certification-strip {
+      justify-self: center;
+      width: min(100%, 720px);
+      min-height: 70px;
+      overflow: hidden;
+      color: #FFFFFF;
+      background: #0B2E7A;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 96.5% 88%, 0 88%);
+      box-shadow: 0 14px 28px rgba(15, 29, 74, 0.13);
+    }
+
+    @keyframes certification-marquee {
+      to { transform: translateX(-50%); }
+    }
+
+    .certification-track {
+      display: flex;
+      width: max-content;
+      min-width: 100%;
+      height: 70px;
+      animation: certification-marquee 6s linear infinite;
+      will-change: transform;
+    }
+
+    .certification-strip:hover .certification-track {
+      animation-play-state: paused;
+    }
+
+    .certification-set {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: clamp(18px, 3vw, 34px);
+      height: 100%;
+      padding: 0 clamp(24px, 4vw, 46px) 4px clamp(90px, 17vw, 180px);
+    }
+
+    .certification-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      white-space: nowrap;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .certification-item + .certification-item {
+      border-left: 1px solid rgba(255, 255, 255, 0.48);
+      padding-left: clamp(18px, 3vw, 34px);
+    }
+
+    .certification-item i {
+      color: #FFFFFF;
+      background: #22C55E;
+      width: 17px;
+      height: 17px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.58rem;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.12);
+    }
+
+    .hero-menu-button {
+      width: 40px;
+      height: 40px;
+      padding: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: end;
+      color: #2563EB;
+    }
+
+    .hero-menu-button .hamburger-line {
+      height: 2px;
+      background: currentColor;
+      border-radius: 9999px;
+    }
+
+    .hero-reference {
+      min-height: 680px;
+      padding-top: 102px;
+      background: #F8FBFF;
+    }
+
+    .hero-sky {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 45% 32% at 84% 30%, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.72) 36%, rgba(255,255,255,0) 72%),
+        radial-gradient(ellipse 38% 25% at 72% 48%, rgba(255,255,255,0.91) 0%, rgba(255,255,255,0.48) 46%, rgba(255,255,255,0) 74%),
+        radial-gradient(ellipse 46% 31% at 105% 73%, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0) 72%),
+        linear-gradient(112deg, #FFFFFF 0%, #F8FBFF 36%, #DFF0FF 64%, #92CEFF 100%);
+    }
+
+    .hero-sky::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0.96) 29%, rgba(255,255,255,0.46) 57%, rgba(255,255,255,0.04) 100%);
+    }
+
+    .hero-content {
+      padding-top: clamp(72px, 11vw, 122px);
+      padding-bottom: 72px;
+    }
+
+    .hero-reference .hero-title {
+      font-size: clamp(2.5rem, 5.4vw, 4.5rem);
+      letter-spacing: -0.055em;
+      max-width: 760px;
+    }
+
+    @media (max-width: 640px) {
+      .hero-header {
+        height: 84px;
+      }
+
+      .hero-header-inner {
+        grid-template-columns: 112px minmax(0, 1fr) 36px;
+        column-gap: 10px;
+      }
+
+      .hero-brand-logo {
+        height: 64px;
+      }
+
+      .certification-strip {
+        min-height: 54px;
+        clip-path: none;
+        border-radius: 0 0 10px 10px;
+        background: #0B2E7A;
+      }
+
+      .certification-track {
+        height: 54px;
+        animation-duration: 5s;
+      }
+
+      .certification-set {
+        gap: 12px;
+        padding: 0 15px 3px;
+      }
+
+      .certification-item {
+        font-size: 0.58rem;
+        gap: 5px;
+      }
+
+      .certification-item + .certification-item {
+        padding-left: 12px;
+      }
+
+      .certification-item i {
+        width: 13px;
+        height: 13px;
+        font-size: 0.45rem;
+      }
+
+      .hero-reference {
+        min-height: 640px;
+        padding-top: 84px;
+      }
+
+      .hero-content {
+        padding-top: 72px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .certification-track {
+        animation: none;
+      }
+    }
+
     /* ===== MOBILE MENU ===== */
     .mobile-menu {
       transform: translateX(100%);
@@ -989,6 +1189,75 @@
       box-shadow: 0 10px 30px rgba(2,6,23,0.08);
       transform-origin: center;
       animation: loader-pulse 1.6s ease-in-out infinite;
+    }
+
+    /* Calculator prompt shown after the page loader */
+    .calculator-prompt {
+      position: fixed;
+      inset: 0;
+      z-index: 9990;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(15, 29, 74, 0.52);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+    }
+
+    .calculator-prompt.visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .calculator-prompt-card {
+      width: min(100%, 460px);
+      padding: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 24px;
+      background: #FFFFFF;
+      box-shadow: 0 28px 80px rgba(15, 29, 74, 0.28);
+      text-align: center;
+      transform: translateY(18px) scale(0.98);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .calculator-prompt.visible .calculator-prompt-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .calculator-prompt-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      color: #FFFFFF;
+      background: linear-gradient(135deg, #2563EB, #0F3A9A);
+      box-shadow: 0 14px 28px rgba(37, 99, 235, 0.25);
+      font-size: 1.55rem;
+    }
+
+    body.calculator-prompt-open {
+      overflow: hidden;
+    }
+
+    @media (max-width: 480px) {
+      .calculator-prompt {
+        padding: 16px;
+      }
+
+      .calculator-prompt-card {
+        padding: 28px 22px;
+        border-radius: 20px;
+      }
     }
 
     @keyframes loader-pulse {
@@ -1250,51 +1519,56 @@
     </div>
   </div>
 
+  <div id="calculatorPrompt" class="calculator-prompt" role="dialog" aria-modal="true" aria-labelledby="calculatorPromptTitle" aria-describedby="calculatorPromptDescription" aria-hidden="true">
+    <div class="calculator-prompt-card">
+      <div class="calculator-prompt-icon" aria-hidden="true"><i class="fas fa-calculator"></i></div>
+      <p class="text-brand-600 text-xs font-bold uppercase tracking-[0.2em] mb-3">Solar Savings Calculator</p>
+      <h2 id="calculatorPromptTitle" class="text-2xl sm:text-3xl font-extrabold text-brand-950 leading-tight mb-3">Want to calculate your electricity savings?</h2>
+      <p id="calculatorPromptDescription" class="text-slate-600 leading-relaxed mb-7">Enter your monthly bill to get a personalised solar recommendation and savings estimate.</p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a id="calculateBillNow" href="calculator.html" class="btn-primary flex-1 justify-center py-3.5">Calculate My Bill <i class="fas fa-arrow-right text-xs"></i></a>
+        <button id="continueToWebsite" type="button" class="btn-secondary flex-1 justify-center py-3.5">Continue to Website</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== HEADER ===== -->
-  <header id="header" class="header-sticky fixed top-0 left-0 right-0 z-50 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <!-- Logo -->
-        <a href="index.html" class="flex items-center group">
-          <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-14 h-14 object-contain" />
+  <header id="header" class="header-sticky hero-header fixed top-0 left-0 right-0 z-50">
+    <div class="w-full px-4 sm:px-7 lg:px-12">
+      <div class="hero-header-inner">
+        <a href="index.html" class="flex items-center" aria-label="VAISH Solar Services home">
+          <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="hero-brand-logo" />
         </a>
 
-        <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center gap-1">
-          <a href="index.html" class="nav-link px-3 py-2">Home</a>
-          <a href="about.html" class="nav-link px-3 py-2">About Us</a>
-          <a href="services.html" class="nav-link px-3 py-2">Services</a>
-          <a href="projects.html" class="nav-link px-3 py-2">Projects</a>
-          <a href="contact.html" class="nav-link px-3 py-2">Contact Us</a>
-        </nav>
-
-        <!-- Right Side -->
-        <div class="hidden lg:flex items-center gap-5">
-          <a href="tel:+919876543210" class="flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800 transition-colors">
-            <div class="w-9 h-9 rounded-full bg-brand-50 flex items-center justify-center">
-              <i class="fas fa-phone text-brand-500 text-xs"></i>
+        <div class="certification-strip" aria-label="Certifications">
+          <div class="certification-track">
+            <div class="certification-set">
+              <span class="certification-item"><i class="fas fa-check"></i> ISO 9001:2015 Certified</span>
+              <span class="certification-item"><i class="fas fa-check"></i> BIS Certified Panels</span>
+              <span class="certification-item"><i class="fas fa-check"></i> ISO 9001:2015 Certified</span>
+              <span class="certification-item"><i class="fas fa-check"></i> BIS Certified Panels</span>
             </div>
-            <span>+91 98765 43210</span>
-          </a>
-          <a href="contact.html" class="btn-primary text-sm py-3 px-6">
-            Get a Free Quote
-            <i class="fas fa-arrow-right text-xs"></i>
-          </a>
+            <div class="certification-set" aria-hidden="true">
+              <span class="certification-item"><i class="fas fa-check"></i> ISO 9001:2015 Certified</span>
+              <span class="certification-item"><i class="fas fa-check"></i> BIS Certified Panels</span>
+              <span class="certification-item"><i class="fas fa-check"></i> ISO 9001:2015 Certified</span>
+              <span class="certification-item"><i class="fas fa-check"></i> BIS Certified Panels</span>
+            </div>
+          </div>
         </div>
 
-        <!-- Mobile Menu Button -->
-        <button id="mobileMenuBtn" class="lg:hidden hamburger p-2" aria-label="Toggle menu">
-          <div class="w-6 flex flex-col gap-1.5">
-            <span class="hamburger-line block w-full h-0.5 bg-brand-800 rounded-full"></span>
-            <span class="hamburger-line block w-4 h-0.5 bg-brand-800 rounded-full ml-auto"></span>
-            <span class="hamburger-line block w-full h-0.5 bg-brand-800 rounded-full"></span>
+        <button id="mobileMenuBtn" class="hamburger hero-menu-button" aria-label="Toggle menu" aria-expanded="false">
+          <div class="w-7 flex flex-col gap-1.5">
+            <span class="hamburger-line block w-full"></span>
+            <span class="hamburger-line block w-full"></span>
+            <span class="hamburger-line block w-full"></span>
           </div>
         </button>
       </div>
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 lg:hidden">
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50">
       <div class="p-6">
         <div class="flex items-center justify-between mb-10">
           <div class="flex items-center">
@@ -1340,59 +1614,21 @@
         </div>
       </div>
     </div>
-    <div id="mobileOverlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+    <div id="mobileOverlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden"></div>
   </header>
 
   <!-- ===== HERO SECTION ===== -->
-  <section id="home" class="relative min-h-screen pt-20 overflow-hidden">
-    <!-- Trust Bar: positioned directly below the fixed navigation -->
-    <div class="absolute top-20 left-0 right-0 z-20 bg-brand-950 py-4 overflow-hidden" aria-label="Certifications and service highlights">
-      <div class="marquee-track flex items-center gap-12 whitespace-nowrap">
-        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> MNRE Approved</span>
-        <span class="text-brand-400">|</span>
-        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> ISO 9001:2015 Certified</span>
-        <span class="text-brand-400">|</span>
-        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> BIS Certified Panels</span>
-        <span class="text-brand-400">|</span>
-        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> Government Subsidy Assistance</span>
-        <span class="text-brand-400">|</span>
-        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> PM SURYA GHAR YOJNA</span>
-        <span class="text-brand-400">|</span>
-        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> 25 Years Performance Warranty</span>
-        <span class="text-brand-400">|</span>
-        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> MNRE Approved</span>
-        <span class="text-brand-400">|</span>
-        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> ISO 9001:2015 Certified</span>
-        <span class="text-brand-400">|</span>
-        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> BIS Certified Panels</span>
-        <span class="text-brand-400">|</span>
-        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> Government Subsidy Assistance</span>
-        <span class="text-brand-400">|</span>
-        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> PM SURYA GHAR YOJNA</span>
-        <span class="text-brand-400">|</span>
-        <span class="text-brand-300 text-sm font-medium flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i> 25 Years Performance Warranty</span>
-      </div>
+  <section id="home" class="hero-reference relative overflow-hidden">
+    <div class="hero-sky" aria-hidden="true">
+      <div class="hero-slide" style="background-image: url('Assests/home1.png'); background-position: center;"></div>
+      <div class="hero-slide" style="background-image: url('Assests/home2.png'); background-position: center;"></div>
+      <div class="hero-slide" style="background-image: url('Assests/solar%20water%20heterr.png'); background-position: center;"></div>
     </div>
 
-    <!-- Background Image -->
-    <div class="absolute inset-0 z-0 overflow-hidden">
-      <div id="heroSlides" class="absolute inset-0">
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&q=85'); background-position: center 30%;"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=1920&q=85'); background-position: center 30%;"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1549399546-48f9b63a6c0b?w=1920&q=85'); background-position: center 30%;"></div>
-      </div>
-      <div class="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/40 lg:via-white/90 lg:to-transparent"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent lg:hidden"></div>
-    </div>
-
-    <!-- Decorative Elements -->
-    <div class="absolute top-32 left-10 w-72 h-72 bg-brand-100/40 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-20 right-20 w-96 h-96 bg-green-100/30 rounded-full blur-3xl pointer-events-none"></div>
-
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
-      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full py-16 lg:py-0">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[578px] flex items-start">
+      <div class="hero-content w-full">
         <!-- Left Content -->
-        <div class="max-w-xl">
+        <div class="max-w-2xl">
           <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-100 rounded-full mb-6 animate-fade-in-up">
             <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
             <span class="text-sm font-semibold text-brand-700">Trusted by 450+ Happy Customers</span>
@@ -1400,7 +1636,7 @@
           
           <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-950 leading-[1.1] mb-6 animate-fade-in-up delay-100">
             Smart Solar Solutions for a 
-            <span class="gradient-text">Brighter Future</span>
+            <span class="text-brand-950">Brighter Future</span>
           </h1>
           
           <p class="text-lg text-slate-600 leading-relaxed mb-8 animate-fade-in-up delay-200">
@@ -1450,53 +1686,6 @@
           </div>
         </div>
 
-        <!-- Right - Stats Card (Floating) -->
-        <div class="hidden lg:block relative">
-          <div class="absolute -bottom-8 -left-8 bg-white rounded-2xl shadow-2xl shadow-slate-900/10 p-6 w-72 animate-float z-20 border border-slate-100">
-            <div class="grid grid-cols-2 gap-4">
-              <div class="text-center p-3">
-                <p class="text-2xl font-extrabold text-brand-700 counter" data-target="500">0</p>
-                <p class="text-xs text-slate-500 font-medium mt-1">Projects Completed</p>
-              </div>
-              <div class="text-center p-3">
-                <p class="text-2xl font-extrabold text-brand-700 counter" data-target="450">0</p>
-                <p class="text-xs text-slate-500 font-medium mt-1">Happy Customers</p>
-              </div>
-              <div class="text-center p-3 border-t border-slate-100">
-                <p class="text-2xl font-extrabold text-brand-700 counter" data-target="10">0</p>
-                <p class="text-xs text-slate-500 font-medium mt-1">Years Experience</p>
-              </div>
-              <div class="text-center p-3 border-t border-slate-100">
-                <p class="text-2xl font-extrabold text-green-600">100%</p>
-                <p class="text-xs text-slate-500 font-medium mt-1">Quality Assurance</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile Stats -->
-    <div class="lg:hidden relative z-10 px-4 pb-12">
-      <div class="bg-white rounded-2xl shadow-xl shadow-slate-900/8 p-5 border border-slate-100">
-        <div class="grid grid-cols-2 gap-4">
-          <div class="text-center p-2">
-            <p class="text-xl font-extrabold text-brand-700">500+</p>
-            <p class="text-xs text-slate-500 font-medium mt-1">Projects Completed</p>
-          </div>
-          <div class="text-center p-2">
-            <p class="text-xl font-extrabold text-brand-700">450+</p>
-            <p class="text-xs text-slate-500 font-medium mt-1">Happy Customers</p>
-          </div>
-          <div class="text-center p-2 border-t border-slate-100">
-            <p class="text-xl font-extrabold text-brand-700">10+</p>
-            <p class="text-xs text-slate-500 font-medium mt-1">Years Experience</p>
-          </div>
-          <div class="text-center p-2 border-t border-slate-100">
-            <p class="text-xl font-extrabold text-green-600">100%</p>
-            <p class="text-xs text-slate-500 font-medium mt-1">Quality Assurance</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1846,7 +2035,7 @@
   <section class="bg-white py-16 lg:py-20 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 reveal">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-4 leading-tight">We Deal In</h2>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 mb-4 leading-tight">Brands We Deal In</h2>
         <p class="text-slate-600 text-lg">Trusted partnerships with leading solar equipment providers</p>
       </div>
 
@@ -1892,94 +2081,24 @@
         </style>
         
         <div class="brands-scroll">
-          <div class="brand-item"><img src="Assests/Entertech.png" alt="EnerTech" class="brand-logo-image"></div>
-          <div class="brand-item"><img src="Assests/sinfin%20(1).png" alt="Sinfin" class="brand-logo-image"></div>
-          <div class="brand-item"><img src="Assests/M%2B.png" alt="Amplus Solar" class="brand-logo-image"></div>
-          <div class="brand-item"><img src="Assests/statcon.png" alt="Statcon Powtech" class="brand-logo-image"></div>
-          <div class="brand-item"><img src="Assests/intersolar.png" alt="Inter Solar Systems" class="brand-logo-image"></div>
-          <div class="brand-item"><img src="Assests/goldi.png" alt="Goldi Solar" class="brand-logo-image"></div>
           <div class="brand-item"><img src="Assests/livguard.png" alt="Livguard" class="brand-logo-image"></div>
-          <div class="brand-item"><img src="Assests/utl.png" alt="UTL Solar" class="brand-logo-image"></div>
           <div class="brand-item"><img src="Assests/vikram%20solart.png" alt="Vikram Solar" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="Assests/adani.png" alt="Adani Solar" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="Assests/eastman.png" alt="Eastman" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="Assests/havells.png" alt="Havells" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="Assests/luminous.png" alt="Luminous" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="Assests/polycab.png" alt="Polycab" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="Assests/tatapowersolar.png" alt="Tata Power Solar" class="brand-logo-image"></div>
 
           <!-- Duplicate for seamless loop -->
-          <div class="brand-item"><img src="Assests/Entertech.png" alt="EnerTech" class="brand-logo-image"></div>
-          <div class="brand-item"><img src="Assests/sinfin%20(1).png" alt="Sinfin" class="brand-logo-image"></div>
-          <div class="brand-item"><img src="Assests/M%2B.png" alt="Amplus Solar" class="brand-logo-image"></div>
-          <div class="brand-item"><img src="Assests/statcon.png" alt="Statcon Powtech" class="brand-logo-image"></div>
-          <div class="brand-item"><img src="Assests/intersolar.png" alt="Inter Solar Systems" class="brand-logo-image"></div>
-          <div class="brand-item"><img src="Assests/goldi.png" alt="Goldi Solar" class="brand-logo-image"></div>
           <div class="brand-item"><img src="Assests/livguard.png" alt="Livguard" class="brand-logo-image"></div>
-          <div class="brand-item"><img src="Assests/utl.png" alt="UTL Solar" class="brand-logo-image"></div>
           <div class="brand-item"><img src="Assests/vikram%20solart.png" alt="Vikram Solar" class="brand-logo-image"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CHANNEL PARTNERS CAROUSEL ===== -->
-  <section class="bg-slate-50 py-16 lg:py-20 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 reveal">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 leading-tight">Our Channel Partners</h2>
-      </div>
-
-      <div class="relative w-full overflow-hidden">
-        <style>
-          .partners-scroll {
-            display: flex;
-            width: max-content;
-            animation: scroll-left 24s linear infinite;
-          }
-          .partners-scroll:hover {
-            animation-play-state: paused;
-          }
-          .partner-item {
-            flex: 0 0 clamp(180px, 20vw, 252px);
-            min-height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-          }
-          .partner-logo {
-            width: 100%;
-            max-width: 220px;
-            min-height: 88px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 18px;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(15, 23, 42, .06);
-            transition: transform .2s ease, box-shadow .2s ease;
-          }
-          .partner-logo:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(15, 23, 42, .12);
-          }
-          .partner-logo img {
-            width: 100%;
-            height: 70px;
-            object-fit: contain;
-          }
-        </style>
-
-        <div class="partners-scroll" aria-label="Our channel partners">
-          <div class="partner-item"><div class="partner-logo"><img src="Assests/Entertech.png" alt="EnerTech"></div></div>
-          <div class="partner-item"><div class="partner-logo"><img src="Assests/sinfin%20(1).png" alt="Sinfin"></div></div>
-          <div class="partner-item"><div class="partner-logo"><img src="Assests/M%2B.png" alt="Amplus Solar"></div></div>
-          <div class="partner-item"><div class="partner-logo"><img src="Assests/statcon.png" alt="Statcon Powtech"></div></div>
-          <div class="partner-item"><div class="partner-logo"><img src="Assests/exide.png" alt="Exide"></div></div>
-
-          <!-- Duplicate items for a seamless continuous loop -->
-          <div class="partner-item"><div class="partner-logo"><img src="Assests/Entertech.png" alt="EnerTech"></div></div>
-          <div class="partner-item"><div class="partner-logo"><img src="Assests/sinfin%20(1).png" alt="Sinfin"></div></div>
-          <div class="partner-item"><div class="partner-logo"><img src="Assests/M%2B.png" alt="Amplus Solar"></div></div>
-          <div class="partner-item"><div class="partner-logo"><img src="Assests/statcon.png" alt="Statcon Powtech"></div></div>
-          <div class="partner-item"><div class="partner-logo"><img src="Assests/exide.png" alt="Exide"></div></div>
+          <div class="brand-item"><img src="Assests/adani.png" alt="Adani Solar" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="Assests/eastman.png" alt="Eastman" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="Assests/havells.png" alt="Havells" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="Assests/luminous.png" alt="Luminous" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="Assests/polycab.png" alt="Polycab" class="brand-logo-image"></div>
+          <div class="brand-item"><img src="Assests/tatapowersolar.png" alt="Tata Power Solar" class="brand-logo-image"></div>
         </div>
       </div>
     </div>
@@ -2435,6 +2554,7 @@
       mobileMenu.classList.add('open');
       mobileOverlay.classList.remove('hidden');
       mobileMenuBtn.classList.add('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
     }
 
@@ -2442,6 +2562,7 @@
       mobileMenu.classList.remove('open');
       mobileOverlay.classList.add('hidden');
       mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     }
 
@@ -2582,6 +2703,39 @@
         idx = (idx + 1) % slides.length;
         slides[idx].classList.add('active');
       }, 6000);
+    })();
+
+    // ===== CALCULATOR PROMPT =====
+    (function() {
+      const calculatorPrompt = document.getElementById('calculatorPrompt');
+      const continueToWebsite = document.getElementById('continueToWebsite');
+      const calculateBillNow = document.getElementById('calculateBillNow');
+      if (!calculatorPrompt || !continueToWebsite || !calculateBillNow) return;
+
+      function showCalculatorPrompt() {
+        calculatorPrompt.classList.add('visible');
+        calculatorPrompt.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('calculator-prompt-open');
+        calculateBillNow.focus();
+      }
+
+      function hideCalculatorPrompt() {
+        calculatorPrompt.classList.remove('visible');
+        calculatorPrompt.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('calculator-prompt-open');
+        document.getElementById('mobileMenuBtn')?.focus();
+      }
+
+      continueToWebsite.addEventListener('click', hideCalculatorPrompt);
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && calculatorPrompt.classList.contains('visible')) {
+          hideCalculatorPrompt();
+        }
+      });
+
+      window.addEventListener('load', () => {
+        setTimeout(showCalculatorPrompt, 550);
+      });
     })();
 
     // ===== PAGE LOADER =====
