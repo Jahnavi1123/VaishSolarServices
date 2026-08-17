@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="navigation.css">
   <script>
     tailwind.config = {
       theme: {
@@ -769,10 +770,14 @@
     }
 
     .certification-strip {
-      justify-self: center;
-      width: min(100%, 720px);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
       min-height: 70px;
       overflow: hidden;
+      transform: translateY(8px);
+      z-index: 1;
       color: #FFFFFF;
       background: #0B2E7A;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 96.5% 88%, 0 88%);
@@ -834,6 +839,7 @@
     }
 
     .hero-menu-button {
+      grid-column: 3;
       width: 40px;
       height: 40px;
       padding: 6px;
@@ -848,6 +854,12 @@
       height: 2px;
       background: currentColor;
       border-radius: 9999px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-menu-button {
+        display: none;
+      }
     }
 
     .hero-reference {
@@ -901,6 +913,7 @@
 
       .certification-strip {
         min-height: 54px;
+        transform: translateY(6px);
         clip-path: none;
         border-radius: 0 0 10px 10px;
         background: #0B2E7A;
@@ -1080,6 +1093,11 @@
       box-shadow: 0 8px 24px rgba(2,6,23,0.08);
     }
 
+    .menu-trigger-hidden {
+      display: none;
+      pointer-events: none;
+    }
+
     /* Icon button used in mobile menu header */
     .icon-btn {
       transition: background 0.2s ease, transform 0.12s ease;
@@ -1090,7 +1108,7 @@
       transform: translateY(-2px);
     }
 
-    /* make sure mobile close button sits above nearby elements and accepts clicks */
+    /* Mobile-menu action controls */
     #closeMobileMenu {
       position: relative;
       z-index: 70;
@@ -1455,10 +1473,28 @@
       }
     }
     /* Mobile menu action buttons */
+    .mobile-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .mobile-menu-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
     #mobileMenu .icon-btn,
     #mobileMenu #closeMobileMenu {
       width: 3rem;
       height: 3rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: 1px solid #E2E8F0;
       border-radius: 1rem;
       box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
@@ -1495,11 +1531,15 @@
     }
 
     #mobileMenu #closeMobileMenu {
-      display: none;
+      background: #FFF1F2;
+      border-color: #FFE4E6;
+      color: #E11D48;
     }
 
-    #mobileMenu #closeMobileMenu .fa-times::before {
-      content: "\f060";
+    #mobileMenu #closeMobileMenu:hover {
+      background: #E11D48;
+      border-color: #E11D48;
+      color: #FFFFFF;
     }
 
     #mobileMenu .icon-btn:focus-visible,
@@ -1540,22 +1580,34 @@
           <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="hero-brand-logo" />
         </a>
 
-        <div class="certification-strip" aria-label="Certifications">
-          <div class="certification-track">
-            <div class="certification-set">
-              <span class="certification-item"><i class="fas fa-check"></i> ISO 9001:2015 Certified</span>
-              <span class="certification-item"><i class="fas fa-check"></i> BIS Certified Panels</span>
-              <span class="certification-item"><i class="fas fa-check"></i> ISO 9001:2015 Certified</span>
-              <span class="certification-item"><i class="fas fa-check"></i> BIS Certified Panels</span>
-            </div>
-            <div class="certification-set" aria-hidden="true">
-              <span class="certification-item"><i class="fas fa-check"></i> ISO 9001:2015 Certified</span>
-              <span class="certification-item"><i class="fas fa-check"></i> BIS Certified Panels</span>
-              <span class="certification-item"><i class="fas fa-check"></i> ISO 9001:2015 Certified</span>
-              <span class="certification-item"><i class="fas fa-check"></i> BIS Certified Panels</span>
+        <nav class="hidden lg:flex items-center justify-center gap-5" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link" aria-current="page">Home</a>
+          <div class="about-dropdown">
+            <a href="about.html" class="nav-link about-dropdown-trigger" aria-haspopup="true">About Us <i class="fas fa-chevron-down about-dropdown-caret" aria-hidden="true"></i></a>
+            <div class="about-dropdown-menu">
+              <a href="about.html#about">About</a>
+              <a href="about.html#purpose">Purpose</a>
+              <a href="about.html#team">Team</a>
+              <a href="about.html#certificates">Certificates</a>
             </div>
           </div>
-        </div>
+          <div class="services-dropdown">
+            <a href="services.html" class="nav-link services-dropdown-trigger" aria-haspopup="true">Services <i class="fas fa-chevron-down services-dropdown-caret" aria-hidden="true"></i></a>
+            <div class="services-dropdown-menu">
+              <a href="services.html#on-grid">On-Grid Solar System</a>
+              <a href="services.html#off-grid">Off-Grid Solar System</a>
+              <a href="services.html#hybrid">Hybrid Solar System</a>
+              <a href="services.html#solar-led">Solar LED Street Light</a>
+              <a href="services.html#water-heating">Solar Water Heating System</a>
+              <a href="services.html#water-pumping">Solar Water Pumping System &amp; Solar Aata Chakki</a>
+            </div>
+          </div>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Us</a>
+          <a href="calculator.html" class="nav-link">Calculator</a>
+          <a href="get-a-quote.html" class="nav-link">Get a Quote</a>
+          <a href="career.html" class="nav-link">Career</a>
+        </nav>
 
         <button id="mobileMenuBtn" class="hamburger hero-menu-button" aria-label="Toggle menu" aria-expanded="false">
           <div class="w-7 flex flex-col gap-1.5">
@@ -1565,24 +1617,41 @@
           </div>
         </button>
       </div>
+
+      <div class="certification-strip" aria-label="Certifications">
+        <div class="certification-track">
+          <div class="certification-set">
+            <span class="certification-item"><i class="fas fa-check"></i> ISO 9001:2015 Certified</span>
+            <span class="certification-item"><i class="fas fa-check"></i> BIS Certified Panels</span>
+            <span class="certification-item"><i class="fas fa-check"></i> ISO 9001:2015 Certified</span>
+            <span class="certification-item"><i class="fas fa-check"></i> BIS Certified Panels</span>
+          </div>
+          <div class="certification-set" aria-hidden="true">
+            <span class="certification-item"><i class="fas fa-check"></i> ISO 9001:2015 Certified</span>
+            <span class="certification-item"><i class="fas fa-check"></i> BIS Certified Panels</span>
+            <span class="certification-item"><i class="fas fa-check"></i> ISO 9001:2015 Certified</span>
+            <span class="certification-item"><i class="fas fa-check"></i> BIS Certified Panels</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50">
       <div class="p-6">
-        <div class="flex items-center justify-between mb-10">
+        <div class="mobile-menu-header">
           <div class="flex items-center">
-            <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-12 h-12 object-contain" />
+            <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-14 h-14 object-contain" />
           </div>
-          <div class="flex items-center gap-3">
-            <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" aria-label="WhatsApp" class="icon-btn w-10 h-10 rounded-full bg-green-50 flex items-center justify-center hover:bg-green-100 transition-colors">
-              <i class="fab fa-whatsapp text-green-600"></i>
+          <div class="mobile-menu-actions">
+            <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" aria-label="WhatsApp" class="icon-btn">
+              <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="contact.html" aria-label="Contact Us" class="icon-btn w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors">
-              <i class="fas fa-envelope text-slate-700"></i>
+            <a href="contact.html" aria-label="Email us" class="icon-btn">
+              <i class="fas fa-envelope"></i>
             </a>
-            <button id="closeMobileMenu" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors">
-              <i class="fas fa-times text-slate-600"></i>
+            <button id="closeMobileMenu" type="button" aria-label="Close menu">
+              <i class="fas fa-times"></i>
             </button>
           </div>
         </div>
@@ -1592,6 +1661,9 @@
           <a href="services.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Services</a>
           <a href="projects.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Projects</a>
           <a href="contact.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Contact Us</a>
+          <a href="calculator.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Calculator</a>
+          <a href="get-a-quote.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Get a Quote</a>
+          <a href="career.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Career</a>
         </nav>
         <div class="mt-8 pt-6 border-t border-slate-100">
           <div class="flex flex-col gap-3">
@@ -1608,7 +1680,7 @@
               Contact Us
             </a>
           </div>
-          <a href="contact.html" class="btn-primary w-full justify-center mt-4 text-sm py-3">
+          <a href="get-a-quote.html" class="btn-primary w-full justify-center mt-4 text-sm py-3">
             Get a Free Quote
           </a>
         </div>
@@ -1644,11 +1716,11 @@
           </p>
           
           <div class="flex flex-col sm:flex-row gap-4 mb-10 animate-fade-in-up delay-300">
-            <a href="contact.html" class="btn-primary text-base py-4 px-8 justify-center">
+            <a href="get-a-quote.html" class="btn-primary text-base py-4 px-8 justify-center">
               Get a Free Quote
               <i class="fas fa-arrow-right"></i>
             </a>
-            <a href="solutions.html" class="btn-secondary text-base py-4 px-8 justify-center">
+            <a href="services.html" class="btn-secondary text-base py-4 px-8 justify-center">
               Explore Solutions
               <i class="fas fa-chevron-right text-xs"></i>
             </a>
@@ -1727,37 +1799,6 @@
           </div>
         </article>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== OUR SERVICES QUICK LINKS ===== -->
-  <section class="bg-white py-20 lg:py-24" aria-labelledby="our-services-title">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10 reveal">
-        <p class="text-brand-600 text-xs font-bold uppercase tracking-[0.22em] mb-3">Explore solutions</p>
-        <h2 id="our-services-title" class="text-3xl sm:text-4xl font-extrabold text-brand-950">Our Services</h2>
-      </div>
-
-      <nav aria-label="Our services" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
-        <a href="services.html#on-grid" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-brand-950 font-bold hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-colors">
-          On-Grid Solar System <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
-        </a>
-        <a href="services.html#off-grid" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-brand-950 font-bold hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-colors">
-          Off-Grid Solar System <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
-        </a>
-        <a href="services.html#hybrid" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-brand-950 font-bold hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-colors">
-          Hybrid Solar System <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
-        </a>
-        <a href="services.html#solar-led" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-brand-950 font-bold hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-colors">
-          Solar LED Street Light <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
-        </a>
-        <a href="services.html#water-heating" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-brand-950 font-bold hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-colors">
-          Solar Water Heating <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
-        </a>
-        <a href="services.html#water-pumping" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-brand-950 font-bold hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-colors">
-          Solar Water Pumping &amp; Atta Chakki <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
-        </a>
-      </nav>
     </div>
   </section>
 
@@ -2397,7 +2438,7 @@
         <p class="text-lg text-white/70 leading-relaxed mb-10 max-w-2xl mx-auto">Join hundreds of satisfied customers who have already made the switch. Get your free consultation today and take the first step towards energy independence.</p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="contact.html" class="btn-primary text-base py-4 px-10 justify-center bg-white text-brand-700 hover:bg-brand-50 shadow-xl shadow-black/20">
+          <a href="get-a-quote.html" class="btn-primary text-base py-4 px-10 justify-center bg-white text-brand-700 hover:bg-brand-50 shadow-xl shadow-black/20">
             Get a Free Quote
             <i class="fas fa-arrow-right"></i>
           </a>
@@ -2553,7 +2594,7 @@
     function openMobileMenu() {
       mobileMenu.classList.add('open');
       mobileOverlay.classList.remove('hidden');
-      mobileMenuBtn.classList.add('active');
+      mobileMenuBtn.classList.add('menu-trigger-hidden');
       mobileMenuBtn.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
     }
@@ -2561,7 +2602,7 @@
     function closeMobileMenuFn() {
       mobileMenu.classList.remove('open');
       mobileOverlay.classList.add('hidden');
-      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.classList.remove('menu-trigger-hidden');
       mobileMenuBtn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     }

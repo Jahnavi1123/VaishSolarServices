@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career | VAISH Solar Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="navigation.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #1e293b; background: #f3f7fc; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .site-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.97); border-bottom: 1px solid #e2e8f0; backdrop-filter: blur(18px); }
+    .header-inner { width: min(100% - 2rem, 1200px); min-height: 84px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .brand img { width: 150px; height: 78px; object-fit: contain; }
+    .site-nav { display: flex; align-items: center; justify-content: center; gap: 1.1rem; }
+    .nav-link { position: relative; padding: .45rem 0; color: #334155; font-size: .8rem; font-weight: 700; text-decoration: none; transition: color .2s ease; }
+    .nav-link::after { content: ''; position: absolute; right: 0; bottom: 0; left: 0; height: 2px; border-radius: 99px; background: #2563eb; transform: scaleX(0); transform-origin: left; transition: transform .2s ease; }
+    .nav-link:hover, .nav-link[aria-current='page'] { color: #2563eb; }
+    .nav-link:hover::after, .nav-link[aria-current='page']::after { transform: scaleX(1); }
+    .mobile-menu-button { display: none; width: 44px; height: 44px; border: 0; border-radius: .6rem; color: #146dcc; background: #eff6ff; font-size: 1.2rem; }
+    .mobile-nav { display: none; padding: 0 1rem 1rem; border-top: 1px solid #e2e8f0; }
+    .mobile-nav.open { display: grid; gap: .35rem; }
+    .mobile-nav a { padding: .85rem 1rem; border-radius: .65rem; color: #334155; font-size: .9rem; font-weight: 700; text-decoration: none; }
+    .mobile-nav a:hover, .mobile-nav a[aria-current='page'] { color: #1d4ed8; background: #eff6ff; }
+    .page-main { padding: 3.5rem 1rem 5rem; }
+    .career-card { width: min(100%, 860px); margin: 0 auto; overflow: hidden; box-shadow: 0 24px 60px rgba(15,23,42,.18); }
+    .career-heading { padding: 1.05rem 1.5rem; color: #fff; background: #116dcb; font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.25rem, 5vw, 3.25rem); font-weight: 800; line-height: 1; letter-spacing: .02em; text-align: center; text-transform: uppercase; }
+    .career-body { padding: 3.8rem 3.75rem 4.4rem; background: #202630; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 2rem 2.4rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .field-control { position: relative; }
+    .field-control input, .field-control select { width: 100%; min-height: 4.5rem; padding: 1rem 1.9rem; border: 2px solid #64748b; border-radius: 0; outline: none; color: #252a33; background: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; transition: border-color .2s ease, box-shadow .2s ease; }
+    .field-control input::placeholder { color: #252a33; opacity: 1; }
+    .field-control select { appearance: none; cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, #ff6b1a 50%), linear-gradient(135deg, #ff6b1a 50%, transparent 50%); background-position: calc(100% - 1.8rem) 50%, calc(100% - 1.3rem) 50%; background-size: .55rem .55rem, .55rem .55rem; background-repeat: no-repeat; }
+    .field-control input:focus, .field-control select:focus, .resume-control:focus-within { border-color: #35a2ff; box-shadow: 0 0 0 4px rgba(53,162,255,.22); }
+    .resume-field { margin-top: 2.25rem; }
+    .resume-label { display: block; margin-bottom: .6rem; color: #fff; font-size: 1rem; font-weight: 600; }
+    .resume-control { display: flex; align-items: center; width: min(100%, 22rem); min-height: 4.2rem; padding: .5rem 1.4rem; border: 2px solid #64748b; background: #fff; transition: border-color .2s ease, box-shadow .2s ease; }
+    .resume-control input { width: 100%; color: #252a33; font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: .02em; }
+    .resume-control input::file-selector-button { margin-right: .8rem; padding: .35rem .6rem; border: 1px solid #64748b; border-radius: .15rem; color: #111827; background: #f8fafc; font-family: inherit; font-weight: 700; cursor: pointer; }
+    .submit-button { width: 100%; margin-top: 2rem; padding: 1.1rem 1.5rem; border: 0; border-radius: .4rem; color: #fff; background: #116dcb; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; cursor: pointer; transition: background .2s ease, transform .2s ease; }
+    .submit-button:hover { background: #0c58ac; transform: translateY(-2px); }
+    .form-status { min-height: 1.4rem; margin: 1rem 0 0; color: #bbf7d0; font-size: .88rem; font-weight: 600; text-align: center; }
+    .footer { padding: 1.5rem; color: #64748b; font-size: .82rem; text-align: center; }
+    @media (max-width: 1120px) { .site-nav { gap: .75rem; } .nav-link { font-size: .75rem; } }
+    @media (max-width: 900px) { .site-nav { display: none; } .mobile-menu-button { display: inline-flex; align-items: center; justify-content: center; } }
+    @media (max-width: 640px) { .header-inner { min-height: 78px; } .brand img { width: 128px; height: 68px; } .page-main { padding: 2rem .75rem 3rem; } .career-body { padding: 2.25rem 1.25rem; } .form-grid { grid-template-columns: 1fr; gap: 1.3rem; } .field-control input, .field-control select { min-height: 4rem; padding: .8rem 1rem; font-size: 1.1rem; } .resume-field { margin-top: 1.5rem; } .resume-control { width: 100%; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="VAISH Solar Services home"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo"></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <div class="about-dropdown">
+          <a href="about.html" class="nav-link about-dropdown-trigger" aria-haspopup="true">About Us <i class="fas fa-chevron-down about-dropdown-caret" aria-hidden="true"></i></a>
+          <div class="about-dropdown-menu"><a href="about.html#about">About</a><a href="about.html#purpose">Purpose</a><a href="about.html#team">Team</a><a href="about.html#certificates">Certificates</a></div>
+        </div>
+        <div class="services-dropdown">
+          <a href="services.html" class="nav-link services-dropdown-trigger" aria-haspopup="true">Services <i class="fas fa-chevron-down services-dropdown-caret" aria-hidden="true"></i></a>
+          <div class="services-dropdown-menu"><a href="services.html#on-grid">On-Grid Solar System</a><a href="services.html#off-grid">Off-Grid Solar System</a><a href="services.html#hybrid">Hybrid Solar System</a><a href="services.html#solar-led">Solar LED Street Light</a><a href="services.html#water-heating">Solar Water Heating System</a><a href="services.html#water-pumping">Solar Water Pumping System &amp; Solar Aata Chakki</a></div>
+        </div>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+        <a href="calculator.html" class="nav-link">Calculator</a>
+        <a href="get-a-quote.html" class="nav-link">Get a Quote</a>
+        <a href="career.html" class="nav-link" aria-current="page">Career</a>
+      </nav>
+      <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Open navigation" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Services</a><a href="projects.html">Projects</a><a href="contact.html">Contact Us</a><a href="calculator.html">Calculator</a><a href="get-a-quote.html">Get a Quote</a><a href="career.html" aria-current="page">Career</a>
+    </nav>
+  </header>
+
+  <main class="page-main">
+    <section class="career-card" aria-labelledby="career-title">
+      <h1 class="career-heading" id="career-title">Career Form</h1>
+      <div class="career-body">
+        <form id="careerForm" novalidate>
+          <div class="form-grid">
+            <div class="field-control"><label class="sr-only" for="fullName">Full name</label><input id="fullName" name="fullName" type="text" placeholder="Full Name" autocomplete="name" required></div>
+            <div class="field-control"><label class="sr-only" for="phone">Phone number</label><input id="phone" name="phone" type="tel" placeholder="Phone Number" autocomplete="tel" required></div>
+            <div class="field-control"><label class="sr-only" for="email">Email address</label><input id="email" name="email" type="email" placeholder="Email Address" autocomplete="email" required></div>
+            <div class="field-control"><label class="sr-only" for="country">Select country</label><select id="country" name="country" required><option value="" selected disabled>Select Country</option><option>India</option><option>Other</option></select></div>
+            <div class="field-control"><label class="sr-only" for="state">Select state</label><select id="state" name="state" required><option value="" selected disabled>Select State</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>Delhi</option><option>Haryana</option><option>Rajasthan</option><option>Other</option></select></div>
+            <div class="field-control"><label class="sr-only" for="city">Select city</label><input id="city" name="city" type="text" placeholder="Select City" autocomplete="address-level2" required></div>
+          </div>
+          <div class="resume-field">
+            <label class="resume-label" for="resume">Upload Updated Resume</label>
+            <div class="resume-control"><input id="resume" name="resume" type="file" accept=".pdf,.doc,.docx" required></div>
+          </div>
+          <button class="submit-button" type="submit">Submit <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i></button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2026 VAISH Solar Services. All rights reserved.</footer>
+  <script>
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileNav = document.getElementById('mobileNav');
+    const careerForm = document.getElementById('careerForm');
+    const formStatus = document.getElementById('formStatus');
+
+    mobileMenuButton.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      mobileMenuButton.setAttribute('aria-expanded', String(isOpen));
+      mobileMenuButton.innerHTML = `<i class="fas fa-${isOpen ? 'times' : 'bars'}"></i>`;
+    });
+
+    careerForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!careerForm.checkValidity()) {
+        careerForm.reportValidity();
+        return;
+      }
+      formStatus.textContent = 'Thank you. Your application is ready for our team to review.';
+    });
+  </script>
+</body>
+</html>

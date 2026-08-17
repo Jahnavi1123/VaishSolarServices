@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="navigation.css">
   <script>
     tailwind.config = {
       theme: {
@@ -74,6 +75,7 @@
     .hamburger-line { transition: all .3s ease; }
     .hamburger { background:transparent; border-radius:10px; transition:background .2s ease, box-shadow .2s ease; z-index:60; }
     .hamburger.active { background:#fff; box-shadow:0 8px 24px rgba(2,6,23,.08); }
+    .menu-trigger-hidden { display:none; pointer-events:none; }
     .footer-bg { background: linear-gradient(180deg, #0F172A 0%, #020617 100%); }
     .footer-link{position:relative;color:#94A3B8;transition:color .3s ease;} .footer-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#60A5FA;transition:width .3s ease;} .footer-link:hover{color:#fff;} .footer-link:hover::after{width:100%;}
     .social-icon{transition:all .3s ease;} .social-icon:hover{background:#2563EB;color:white;transform:translateY(-3px);} .hero-visual{min-height:440px;background-size:cover;background-position:center center;border-radius:2rem;position:relative;overflow:hidden;} .hero-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right, rgba(37,99,235,.14), transparent 45%);} #pageLoader{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .45s ease,visibility .45s ease;} #pageLoader.hidden{opacity:0;visibility:hidden;pointer-events:none;} #pageLoader .loader-inner{display:flex;flex-direction:column;align-items:center;gap:12px;} #pageLoader img{width:84px;height:84px;object-fit:contain;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,.08);transform-origin:center;animation:loader-pulse 1.6s ease-in-out infinite;} @keyframes loader-pulse{0%{transform:scale(.98);opacity:.95;}50%{transform:scale(1.03);opacity:1;}100%{transform:scale(.98);opacity:.95;}} body.preloading{overflow:hidden;touch-action:none;}
@@ -88,8 +90,7 @@
     #mobileMenu .icon-btn[aria-label="WhatsApp"]:hover { background: #22C55E; color: #FFFFFF; }
     #mobileMenu .icon-btn[aria-label="Contact Us"] { background: #F1F5F9; color: #334155; }
     #mobileMenu .icon-btn[aria-label="Contact Us"]:hover, #mobileMenu #closeMobileMenu:hover { background: #1D4ED8; border-color: #1D4ED8; color: #FFFFFF; }
-    #mobileMenu #closeMobileMenu { display: none; }
-    #mobileMenu #closeMobileMenu .fa-times::before { content: "\f060"; }
+    #mobileMenu #closeMobileMenu { display: inline-flex; }
     #mobileMenu .icon-btn:focus-visible, #mobileMenu #closeMobileMenu:focus-visible { outline: 3px solid rgba(74, 127, 232, 0.45); outline-offset: 3px; }
   </style>
 </head>
@@ -98,17 +99,35 @@
   <header id="header" class="header-sticky fixed top-0 left-0 right-0 z-50 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
-        <a href="index.html" class="flex items-center group"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-14 h-14 object-contain" /></a>
+        <a href="index.html" class="flex items-center group"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-36 h-20 object-contain" /></a>
         <nav class="hidden lg:flex items-center gap-1">
           <a href="index.html" class="nav-link px-3 py-2">Home</a>
-          <a href="about.html" class="nav-link px-3 py-2">About Us</a>
-          <a href="services.html" class="nav-link px-3 py-2">Services</a>
+          <div class="about-dropdown">
+            <a href="about.html" class="nav-link px-3 py-2 about-dropdown-trigger" aria-haspopup="true">About Us <i class="fas fa-chevron-down about-dropdown-caret" aria-hidden="true"></i></a>
+            <div class="about-dropdown-menu">
+              <a href="about.html#about">About</a>
+              <a href="about.html#purpose">Purpose</a>
+              <a href="about.html#team">Team</a>
+              <a href="about.html#certificates">Certificates</a>
+            </div>
+          </div>
+          <div class="services-dropdown">
+            <a href="services.html" class="nav-link px-3 py-2 services-dropdown-trigger" aria-haspopup="true">Services <i class="fas fa-chevron-down services-dropdown-caret" aria-hidden="true"></i></a>
+            <div class="services-dropdown-menu">
+              <a href="services.html#on-grid">On-Grid Solar System</a>
+              <a href="services.html#off-grid">Off-Grid Solar System</a>
+              <a href="services.html#hybrid">Hybrid Solar System</a>
+              <a href="services.html#solar-led">Solar LED Street Light</a>
+              <a href="services.html#water-heating">Solar Water Heating System</a>
+              <a href="services.html#water-pumping">Solar Water Pumping System &amp; Solar Aata Chakki</a>
+            </div>
+          </div>
           <a href="projects.html" class="nav-link px-3 py-2">Projects</a>
           <a href="contact.html" class="nav-link px-3 py-2">Contact Us</a>
         </nav>
         <div class="hidden lg:flex items-center gap-5">
           <a href="tel:+919876543210" class="flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800 transition-colors"><div class="w-9 h-9 rounded-full bg-brand-50 flex items-center justify-center"><i class="fas fa-phone text-brand-500 text-xs"></i></div><span>+91 98765 43210</span></a>
-          <a href="contact.html" class="btn-primary text-sm py-3 px-6">Get a Free Quote<i class="fas fa-arrow-right text-xs"></i></a>
+          <a href="get-a-quote.html" class="btn-primary text-sm py-3 px-6">Get a Free Quote<i class="fas fa-arrow-right text-xs"></i></a>
         </div>
         <button id="mobileMenuBtn" class="lg:hidden hamburger p-2" aria-label="Toggle menu"><div class="w-6 flex flex-col gap-1.5"><span class="hamburger-line block w-full h-0.5 bg-brand-800 rounded-full"></span><span class="hamburger-line block w-4 h-0.5 bg-brand-800 rounded-full ml-auto"></span><span class="hamburger-line block w-full h-0.5 bg-brand-800 rounded-full"></span></div></button>
       </div>
@@ -116,7 +135,7 @@
     <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 lg:hidden">
       <div class="p-6">
         <div class="flex items-center justify-between mb-10">
-          <div class="flex items-center"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-12 h-12 object-contain" /></div>
+          <div class="flex items-center"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-14 h-14 object-contain" /></div>
           <div class="flex items-center gap-3"><a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" aria-label="WhatsApp" class="icon-btn w-10 h-10 rounded-full bg-green-50 flex items-center justify-center hover:bg-green-100 transition-colors"><i class="fab fa-whatsapp text-green-600"></i></a><a href="contact.html" aria-label="Contact Us" class="icon-btn w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors"><i class="fas fa-envelope text-slate-700"></i></a><button id="closeMobileMenu" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors"><i class="fas fa-times text-slate-600"></i></button></div>
         </div>
         <nav class="flex flex-col gap-1">
@@ -266,8 +285,8 @@
     const closeMobileMenu = document.getElementById('closeMobileMenu');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileOverlay = document.getElementById('mobileOverlay');
-    function openMobileMenu(){ mobileMenu.classList.add('open'); mobileOverlay.classList.remove('hidden'); mobileMenuBtn.classList.add('active'); document.body.style.overflow='hidden'; }
-    function closeMobileMenuFn(){ mobileMenu.classList.remove('open'); mobileOverlay.classList.add('hidden'); mobileMenuBtn.classList.remove('active'); document.body.style.overflow=''; }
+function openMobileMenu(){ mobileMenu.classList.add('open'); mobileOverlay.classList.remove('hidden'); mobileMenuBtn.classList.add('menu-trigger-hidden'); document.body.style.overflow='hidden'; }
+function closeMobileMenuFn(){ mobileMenu.classList.remove('open'); mobileOverlay.classList.add('hidden'); mobileMenuBtn.classList.remove('menu-trigger-hidden'); document.body.style.overflow=''; }
     mobileMenuBtn.addEventListener('click', openMobileMenu); closeMobileMenu.addEventListener('click', closeMobileMenuFn); mobileOverlay.addEventListener('click', closeMobileMenuFn);
     const closeMobileMenuIcon = document.querySelector('#closeMobileMenu i'); if (closeMobileMenuIcon) closeMobileMenuIcon.addEventListener('click', closeMobileMenuFn);
     document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', closeMobileMenuFn));

@@ -208,8 +208,89 @@
       });
   }
 
+  function installServicesDropdowns() {
+    var serviceLinks = document.querySelectorAll('.nav-link[href="services.html"]');
+    var serviceItems = [
+      ['services.html#on-grid', 'On-Grid Solar System'],
+      ['services.html#off-grid', 'Off-Grid Solar System'],
+      ['services.html#hybrid', 'Hybrid Solar System'],
+      ['services.html#solar-led', 'Solar LED Street Light'],
+      ['services.html#water-heating', 'Solar Water Heating System'],
+      ['services.html#water-pumping', 'Solar Water Pumping System & Solar Aata Chakki']
+    ];
+
+    Array.prototype.forEach.call(serviceLinks, function (link) {
+      if (link.closest('.services-dropdown')) return;
+
+      var wrapper = document.createElement('div');
+      var menu = document.createElement('div');
+      wrapper.className = 'services-dropdown';
+      menu.className = 'services-dropdown-menu';
+
+      link.classList.add('services-dropdown-trigger');
+      link.setAttribute('aria-haspopup', 'true');
+      link.insertAdjacentHTML('beforeend', ' <i class="fas fa-chevron-down services-dropdown-caret" aria-hidden="true"></i>');
+
+      serviceItems.forEach(function (item) {
+        var menuLink = document.createElement('a');
+        menuLink.href = item[0];
+        menuLink.textContent = item[1];
+        menu.appendChild(menuLink);
+      });
+
+      link.parentNode.insertBefore(wrapper, link);
+      wrapper.appendChild(link);
+      wrapper.appendChild(menu);
+    });
+  }
+
+  function installAboutDropdowns() {
+    var aboutLinks = document.querySelectorAll('.nav-link[href="about.html"]');
+    var aboutItems = [
+      ['about.html#about', 'About'],
+      ['about.html#purpose', 'Purpose'],
+      ['about.html#team', 'Team'],
+      ['about.html#certificates', 'Certificates']
+    ];
+
+    Array.prototype.forEach.call(aboutLinks, function (link) {
+      if (link.closest('.about-dropdown')) return;
+
+      var wrapper = document.createElement('div');
+      var menu = document.createElement('div');
+      wrapper.className = 'about-dropdown';
+      menu.className = 'about-dropdown-menu';
+
+      link.classList.add('about-dropdown-trigger');
+      link.setAttribute('aria-haspopup', 'true');
+      link.insertAdjacentHTML('beforeend', ' <i class="fas fa-chevron-down about-dropdown-caret" aria-hidden="true"></i>');
+
+      aboutItems.forEach(function (item) {
+        var menuLink = document.createElement('a');
+        menuLink.href = item[0];
+        menuLink.textContent = item[1];
+        menu.appendChild(menuLink);
+      });
+
+      link.parentNode.insertBefore(wrapper, link);
+      wrapper.appendChild(link);
+      wrapper.appendChild(menu);
+    });
+  }
+
+  function connectQuoteButtons() {
+    Array.prototype.forEach.call(document.querySelectorAll('a'), function (link) {
+      if (link.textContent.trim().replace(/\s+/g, ' ') === 'Get a Free Quote') {
+        link.setAttribute('href', 'get-a-quote.html');
+      }
+    });
+  }
+
   function boot() {
     applyPageContent(getLocalContent());
+    installServicesDropdowns();
+    installAboutDropdowns();
+    connectQuoteButtons();
     loadRemoteContent();
   }
 

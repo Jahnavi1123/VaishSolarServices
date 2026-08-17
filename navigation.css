@@ -1,0 +1,111 @@
+.services-dropdown,
+.about-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.services-dropdown::before,
+.about-dropdown::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: -1rem;
+  left: -1rem;
+  height: 1rem;
+}
+
+.services-dropdown-trigger,
+.about-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.services-dropdown-trigger .services-dropdown-caret,
+.about-dropdown-trigger .about-dropdown-caret {
+  font-size: 0.65em;
+  transition: transform 0.2s ease;
+}
+
+.services-dropdown-menu,
+.about-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  z-index: 80;
+  width: min(26.75rem, calc(100vw - 2rem));
+  padding: 1rem 1.5rem;
+  background: #ffffff;
+  border-radius: 0 0 0.75rem 0.75rem;
+  box-shadow: 0 20px 46px rgba(15, 23, 42, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -0.5rem);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+.services-dropdown-menu::before,
+.about-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -0.55rem;
+  left: 50%;
+  width: 1.1rem;
+  height: 1.1rem;
+  background: #ffffff;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.services-dropdown:hover .services-dropdown-menu,
+.services-dropdown:focus-within .services-dropdown-menu,
+.about-dropdown:hover .about-dropdown-menu,
+.about-dropdown:focus-within .about-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.services-dropdown:hover .services-dropdown-caret,
+.services-dropdown:focus-within .services-dropdown-caret,
+.about-dropdown:hover .about-dropdown-caret,
+.about-dropdown:focus-within .about-dropdown-caret {
+  transform: rotate(180deg);
+}
+
+.services-dropdown-menu a,
+.about-dropdown-menu a {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: 1rem;
+  color: #1e293b;
+  font-size: 0.875rem;
+  font-weight: 800;
+  line-height: 1.45;
+  text-transform: uppercase;
+  transition: color 0.18s ease, padding-left 0.18s ease;
+}
+
+.services-dropdown-menu a + a,
+.about-dropdown-menu a + a {
+  border-top: 1px solid #cbd5e1;
+}
+
+.services-dropdown-menu a:hover,
+.services-dropdown-menu a:focus-visible,
+.about-dropdown-menu a:hover,
+.about-dropdown-menu a:focus-visible {
+  color: #2563eb;
+  padding-left: 1.25rem;
+  outline: none;
+}
+
+@media (max-width: 1023px) {
+  .services-dropdown-menu,
+  .about-dropdown-menu {
+    display: none;
+  }
+}

@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="navigation.css">
   <script>
     tailwind.config = {
       theme: {
@@ -444,6 +445,11 @@
       box-shadow: 0 8px 24px rgba(2,6,23,0.08);
     }
 
+    .menu-trigger-hidden {
+      display: none;
+      pointer-events: none;
+    }
+
     .floating-actions {
       position: fixed;
       right: 20px;
@@ -623,8 +629,7 @@
     #mobileMenu .icon-btn[aria-label="WhatsApp"]:hover { background: #22C55E; color: #FFFFFF; }
     #mobileMenu .icon-btn[aria-label="Contact Us"] { background: #F1F5F9; color: #334155; }
     #mobileMenu .icon-btn[aria-label="Contact Us"]:hover, #mobileMenu #closeMobileMenu:hover { background: #1D4ED8; border-color: #1D4ED8; color: #FFFFFF; }
-    #mobileMenu #closeMobileMenu { display: none; }
-    #mobileMenu #closeMobileMenu .fa-times::before { content: "\f060"; }
+    #mobileMenu #closeMobileMenu { display: inline-flex; }
     #mobileMenu .icon-btn:focus-visible, #mobileMenu #closeMobileMenu:focus-visible { outline: 3px solid rgba(74, 127, 232, 0.45); outline-offset: 3px; }
   </style>
 </head>
@@ -640,12 +645,30 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         <a href="index.html" class="flex items-center group">
-          <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-14 h-14 object-contain" />
+          <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-36 h-20 object-contain" />
         </a>
         <nav class="hidden lg:flex items-center gap-1">
           <a href="index.html" class="nav-link px-3 py-2">Home</a>
-          <a href="about.html" class="nav-link px-3 py-2">About Us</a>
-          <a href="services.html" class="nav-link px-3 py-2">Services</a>
+          <div class="about-dropdown">
+            <a href="about.html" class="nav-link px-3 py-2 about-dropdown-trigger" aria-haspopup="true">About Us <i class="fas fa-chevron-down about-dropdown-caret" aria-hidden="true"></i></a>
+            <div class="about-dropdown-menu">
+              <a href="about.html#about">About</a>
+              <a href="about.html#purpose">Purpose</a>
+              <a href="about.html#team">Team</a>
+              <a href="about.html#certificates">Certificates</a>
+            </div>
+          </div>
+          <div class="services-dropdown">
+            <a href="services.html" class="nav-link px-3 py-2 services-dropdown-trigger" aria-haspopup="true">Services <i class="fas fa-chevron-down services-dropdown-caret" aria-hidden="true"></i></a>
+            <div class="services-dropdown-menu">
+              <a href="services.html#on-grid">On-Grid Solar System</a>
+              <a href="services.html#off-grid">Off-Grid Solar System</a>
+              <a href="services.html#hybrid">Hybrid Solar System</a>
+              <a href="services.html#solar-led">Solar LED Street Light</a>
+              <a href="services.html#water-heating">Solar Water Heating System</a>
+              <a href="services.html#water-pumping">Solar Water Pumping System &amp; Solar Aata Chakki</a>
+            </div>
+          </div>
           <a href="projects.html" class="nav-link px-3 py-2">Projects</a>
           <a href="contact.html" class="nav-link px-3 py-2">Contact Us</a>
         </nav>
@@ -656,7 +679,7 @@
             </div>
             <span>+91 98765 43210</span>
           </a>
-          <a href="contact.html" class="btn-primary text-sm py-3 px-6">
+          <a href="get-a-quote.html" class="btn-primary text-sm py-3 px-6">
             Get a Free Quote
             <i class="fas fa-arrow-right text-xs"></i>
           </a>
@@ -675,7 +698,7 @@
       <div class="p-6">
         <div class="flex items-center justify-between mb-10">
           <div class="flex items-center">
-            <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-12 h-12 object-contain" />
+            <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-14 h-14 object-contain" />
           </div>
           <div class="flex items-center gap-3">
             <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" aria-label="WhatsApp" class="icon-btn w-10 h-10 rounded-full bg-green-50 flex items-center justify-center hover:bg-green-100 transition-colors">
@@ -711,7 +734,7 @@
               Contact Us
             </a>
           </div>
-          <a href="contact.html" class="btn-primary w-full justify-center mt-4 text-sm py-3">
+          <a href="get-a-quote.html" class="btn-primary w-full justify-center mt-4 text-sm py-3">
             Get a Free Quote
           </a>
         </div>
@@ -721,7 +744,7 @@
   </header>
 
   <main class="pt-24">
-    <section class="relative overflow-hidden pt-24 pb-20">
+    <section id="about" class="relative overflow-hidden pt-24 pb-20 scroll-mt-24">
       <div class="absolute inset-0 bg-gradient-to-br from-brand-50 via-white to-white"></div>
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -831,7 +854,7 @@
     </section>
 
     <!-- ===== ABOUT: VISION & MISSION ===== -->
-    <section class="bg-[#202630] py-20 lg:py-24">
+    <section id="purpose" class="bg-[#202630] py-20 lg:py-24 scroll-mt-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
           <div class="reveal-left rounded-2xl overflow-hidden shadow-2xl shadow-black/20">
@@ -869,7 +892,7 @@
     </section>
 
     <!-- ===== MEET OUR PROFESSIONALS ===== -->
-    <section class="bg-white py-24 lg:py-32">
+    <section id="team" class="bg-white py-24 lg:py-32 scroll-mt-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 class="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-brand-950 mb-6 leading-tight">Meet Our Professionals</h2>
@@ -928,16 +951,29 @@
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <a href="Assests/c1.jpg" target="_blank" rel="noreferrer" class="group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="Assests/c1.jpg" alt="VAISH Solar Services certificate 1" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 1</p></a>
-          <a href="Assests/c2.jpg" target="_blank" rel="noreferrer" class="group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="Assests/c2.jpg" alt="VAISH Solar Services certificate 2" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 2</p></a>
-          <a href="Assests/c3.jpg" target="_blank" rel="noreferrer" class="group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="Assests/c3.jpg" alt="VAISH Solar Services certificate 3" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 3</p></a>
-          <a href="Assests/c4.jpg" target="_blank" rel="noreferrer" class="group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="Assests/c4.jpg" alt="VAISH Solar Services certificate 4" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 4</p></a>
-          <a href="Assests/c5.jpg" target="_blank" rel="noreferrer" class="group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="Assests/c5.jpg" alt="VAISH Solar Services certificate 5" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 5</p></a>
-          <a href="Assests/c6.jpg" target="_blank" rel="noreferrer" class="group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="Assests/c6.jpg" alt="VAISH Solar Services certificate 6" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 6</p></a>
+          <a href="Assests/c1.jpg" class="certificate-card group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="Assests/c1.jpg" alt="VAISH Solar Services certificate 1" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 1</p></a>
+          <a href="Assests/c2.jpg" class="certificate-card group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="Assests/c2.jpg" alt="VAISH Solar Services certificate 2" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 2</p></a>
+          <a href="Assests/c3.jpg" class="certificate-card group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="Assests/c3.jpg" alt="VAISH Solar Services certificate 3" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 3</p></a>
+          <a href="Assests/c4.jpg" class="certificate-card group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="Assests/c4.jpg" alt="VAISH Solar Services certificate 4" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 4</p></a>
+          <a href="Assests/c5.jpg" class="certificate-card group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="Assests/c5.jpg" alt="VAISH Solar Services certificate 5" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 5</p></a>
+          <a href="Assests/c6.jpg" class="certificate-card group block overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-lg shadow-slate-900/5 hover:shadow-xl transition-shadow"><img src="Assests/c6.jpg" alt="VAISH Solar Services certificate 6" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300"><p class="px-5 py-4 text-sm font-semibold text-brand-950">Certificate 6</p></a>
         </div>
       </div>
     </section>
   </main>
+
+  <div id="certificateLightbox" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="certificateLightboxTitle" aria-hidden="true">
+    <button id="certificateLightboxBackdrop" type="button" class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm" aria-label="Close certificate viewer"></button>
+    <div class="relative z-10 w-full max-w-5xl">
+      <button id="closeCertificateLightbox" type="button" class="absolute -top-12 right-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-slate-900 shadow-lg hover:bg-slate-100 focus:outline-none focus:ring-4 focus:ring-white/40" aria-label="Close certificate viewer"><i class="fas fa-times"></i></button>
+      <button id="previousCertificate" type="button" class="absolute left-2 top-1/2 z-10 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-brand-700 shadow-xl transition hover:scale-105 hover:bg-white focus:outline-none focus:ring-4 focus:ring-white/40 sm:-left-6" aria-label="Previous certificate"><i class="fas fa-chevron-left"></i></button>
+      <figure class="overflow-hidden rounded-xl bg-white shadow-2xl">
+        <img id="certificateLightboxImage" src="" alt="" class="max-h-[76vh] w-full object-contain bg-white">
+        <figcaption id="certificateLightboxTitle" class="px-5 py-4 text-center text-sm font-bold text-brand-950"></figcaption>
+      </figure>
+      <button id="nextCertificate" type="button" class="absolute right-2 top-1/2 z-10 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-brand-700 shadow-xl transition hover:scale-105 hover:bg-white focus:outline-none focus:ring-4 focus:ring-white/40 sm:-right-6" aria-label="Next certificate"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
 
   <footer class="footer-bg pt-20 pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1066,14 +1102,14 @@
     function openMobileMenu() {
       mobileMenu.classList.add('open');
       mobileOverlay.classList.remove('hidden');
-      mobileMenuBtn.classList.add('active');
+      mobileMenuBtn.classList.add('menu-trigger-hidden');
       document.body.style.overflow = 'hidden';
     }
 
     function closeMobileMenuFn() {
       mobileMenu.classList.remove('open');
       mobileOverlay.classList.add('hidden');
-      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.classList.remove('menu-trigger-hidden');
       document.body.style.overflow = '';
     }
 
@@ -1088,6 +1124,62 @@
 
     document.querySelectorAll('.mobile-nav-link').forEach(link => {
       link.addEventListener('click', closeMobileMenuFn);
+    });
+
+    const certificateCards = Array.from(document.querySelectorAll('.certificate-card'));
+    const certificateLightbox = document.getElementById('certificateLightbox');
+    const certificateLightboxImage = document.getElementById('certificateLightboxImage');
+    const certificateLightboxTitle = document.getElementById('certificateLightboxTitle');
+    const closeCertificateLightbox = document.getElementById('closeCertificateLightbox');
+    const previousCertificate = document.getElementById('previousCertificate');
+    const nextCertificate = document.getElementById('nextCertificate');
+    const certificateLightboxBackdrop = document.getElementById('certificateLightboxBackdrop');
+    let activeCertificateIndex = 0;
+    let certificateTrigger = null;
+
+    function displayCertificate(index) {
+      activeCertificateIndex = (index + certificateCards.length) % certificateCards.length;
+      const certificate = certificateCards[activeCertificateIndex];
+      const image = certificate.querySelector('img');
+      certificateLightboxImage.src = certificate.href;
+      certificateLightboxImage.alt = image.alt;
+      certificateLightboxTitle.textContent = `${certificate.querySelector('p').textContent} (${activeCertificateIndex + 1} of ${certificateCards.length})`;
+    }
+
+    function openCertificateLightbox(index, trigger) {
+      certificateTrigger = trigger;
+      displayCertificate(index);
+      certificateLightbox.classList.remove('hidden');
+      certificateLightbox.classList.add('flex');
+      certificateLightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeCertificateLightbox.focus();
+    }
+
+    function closeCertificateViewer() {
+      certificateLightbox.classList.add('hidden');
+      certificateLightbox.classList.remove('flex');
+      certificateLightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (certificateTrigger) certificateTrigger.focus();
+    }
+
+    certificateCards.forEach((card, index) => {
+      card.addEventListener('click', (event) => {
+        event.preventDefault();
+        openCertificateLightbox(index, card);
+      });
+    });
+
+    previousCertificate.addEventListener('click', () => displayCertificate(activeCertificateIndex - 1));
+    nextCertificate.addEventListener('click', () => displayCertificate(activeCertificateIndex + 1));
+    closeCertificateLightbox.addEventListener('click', closeCertificateViewer);
+    certificateLightboxBackdrop.addEventListener('click', closeCertificateViewer);
+    document.addEventListener('keydown', (event) => {
+      if (certificateLightbox.classList.contains('hidden')) return;
+      if (event.key === 'Escape') closeCertificateViewer();
+      if (event.key === 'ArrowLeft') displayCertificate(activeCertificateIndex - 1);
+      if (event.key === 'ArrowRight') displayCertificate(activeCertificateIndex + 1);
     });
 
     const header = document.getElementById('header');
