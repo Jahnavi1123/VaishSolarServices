@@ -111,7 +111,7 @@
 }
 
 /* Shared public-site header: matches the home-page navigation on every page. */
-[data-site-navigation] + header {
+[data-site-navigation] ~ header {
   display: none !important;
 }
 
