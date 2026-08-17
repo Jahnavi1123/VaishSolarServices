@@ -109,3 +109,285 @@
     display: none;
   }
 }
+
+/* Shared public-site header: matches the home-page navigation on every page. */
+[data-site-navigation] + header {
+  display: none !important;
+}
+
+#sharedHeader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  height: 102px;
+  color: #0f1d4a;
+  background: #ffffff;
+  transition: box-shadow 0.3s ease;
+}
+
+#sharedHeader.scrolled {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+#sharedHeader .shared-header-inner {
+  display: grid;
+  grid-template-columns: clamp(120px, 15vw, 150px) minmax(0, 1fr) 48px;
+  align-items: center;
+  column-gap: clamp(16px, 3vw, 25px);
+  height: 100%;
+}
+
+#sharedHeader .shared-brand-logo {
+  width: 100%;
+  height: 78px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+#sharedHeader .shared-desktop-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+#sharedHeader .nav-link {
+  position: relative;
+  padding: 0.25rem 0;
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+#sharedHeader .nav-link::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -0.15rem;
+  left: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+#sharedHeader .nav-link:hover,
+#sharedHeader .nav-link[aria-current='page'] {
+  color: #1e40af;
+}
+
+#sharedHeader .nav-link:hover::after,
+#sharedHeader .nav-link[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+#sharedHeader .shared-menu-button {
+  display: none;
+  grid-column: 3;
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  color: #2563eb;
+  background: #eff6ff;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
+  cursor: pointer;
+}
+
+#sharedHeader .shared-menu-button span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+#sharedHeader .shared-menu-button:hover,
+#sharedHeader .shared-menu-button:focus-visible {
+  border-color: #2563eb;
+  color: #ffffff;
+  background: #2563eb;
+  outline: none;
+}
+
+#sharedHeader .shared-mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 110;
+  width: min(22rem, calc(100vw - 2rem));
+  height: 100%;
+  overflow-y: auto;
+  background: #ffffff;
+  box-shadow: -16px 0 40px rgba(15, 23, 42, 0.18);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#sharedHeader .shared-mobile-menu.open {
+  transform: translateX(0);
+}
+
+#sharedHeader .shared-mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+#sharedHeader .shared-mobile-menu-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#sharedHeader .shared-icon-button {
+  display: inline-flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  color: #334155;
+  background: #f8fafc;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#sharedHeader .shared-icon-button:hover {
+  color: #ffffff;
+  background: #1d4ed8;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.13);
+  transform: translateY(-2px);
+}
+
+#sharedHeader .shared-whatsapp-button {
+  color: #16a34a;
+  background: #f0fdf4;
+  border-color: #d1fae5;
+}
+
+#sharedHeader .shared-whatsapp-button:hover {
+  background: #22c55e;
+}
+
+#sharedHeader .shared-mobile-link {
+  display: block;
+  min-height: 48px;
+  padding: 0.8rem 1rem;
+  border-radius: 0.75rem;
+  color: #334155;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+#sharedHeader .shared-mobile-link:hover,
+#sharedHeader .shared-mobile-link[aria-current='page'] {
+  color: #1d4ed8;
+  background: #eef4ff;
+}
+
+#sharedHeader .shared-mobile-action {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  color: #334155;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+#sharedHeader .shared-mobile-action:hover {
+  color: #1d4ed8;
+  background: #eef4ff;
+}
+
+#sharedHeader .shared-mobile-quote {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.75rem;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+}
+
+#sharedHeader .shared-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 105;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+#sharedHeader .shared-mobile-overlay[hidden] {
+  display: none;
+}
+
+body.shared-header-flow {
+  padding-top: 102px;
+}
+
+@media (max-width: 1023px) {
+  #sharedHeader .shared-desktop-nav {
+    display: none;
+  }
+
+  #sharedHeader .shared-menu-button {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 640px) {
+  #sharedHeader {
+    height: 84px;
+  }
+
+  #sharedHeader .shared-header-inner {
+    grid-template-columns: 128px minmax(0, 1fr) 48px;
+  }
+
+  #sharedHeader .shared-brand-logo {
+    height: 64px;
+  }
+
+  body.shared-header-flow {
+    padding-top: 84px;
+  }
+}
+
+@media (max-width: 480px) {
+  #sharedHeader .shared-mobile-menu {
+    width: 100vw;
+  }
+
+  #sharedHeader .shared-mobile-menu > div {
+    padding: 1.25rem;
+  }
+
+  #sharedHeader .shared-mobile-menu-header {
+    margin-bottom: 1.75rem;
+  }
+}
