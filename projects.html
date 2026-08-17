@@ -98,6 +98,19 @@
     .project-filter-button:hover { color:#146dcc; background:#eff6ff; }
     .project-filter-button.is-active { color:#fff; background:#116dcb; box-shadow:0 8px 18px rgba(17,109,203,.18); }
     .project-card[hidden] { display:none; }
+    .gallery-filter-panel { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)) auto; gap:1rem; align-items:end; margin:0 auto 1.25rem; padding:1.25rem; border:1px solid #dbeafe; border-radius:1.25rem; background:#fff; box-shadow:0 12px 30px rgba(15,23,42,.05); }
+    .gallery-filter-label { display:grid; gap:.45rem; color:#334155; font-size:.78rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
+    .gallery-filter-select { width:100%; min-height:2.85rem; padding:0 .9rem; border:1px solid #cbd5e1; border-radius:.75rem; color:#0f1d4a; background:#fff; font:600 .9rem 'Plus Jakarta Sans',sans-serif; outline:none; }
+    .gallery-filter-select:focus { border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.14); }
+    .gallery-project-trigger { width:100%; border:0; color:inherit; background:transparent; text-align:left; cursor:pointer; }
+    .gallery-project-trigger:focus-visible, .gallery-close:focus-visible, .gallery-media-button:focus-visible { outline:3px solid rgba(96,165,250,.85); outline-offset:3px; }
+    .gallery-project-cover { width:100%; height:18rem; display:block; object-fit:cover; background:#e2e8f0; transition:transform .6s ease; }
+    .gallery-project-trigger:hover .gallery-project-cover { transform:scale(1.06); }
+    .gallery-media-button { display:block; width:100%; border:0; padding:0; background:#0f172a; cursor:zoom-in; }
+    .gallery-media-item img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; background:#0f172a; }
+    body.gallery-open { overflow:hidden; }
+    @media (max-width:900px) { .gallery-filter-panel { grid-template-columns:repeat(2, minmax(0,1fr)); } .gallery-filter-panel > button { grid-column:span 2; } }
+    @media (max-width:560px) { .gallery-filter-panel { grid-template-columns:1fr; } .gallery-filter-panel > button { grid-column:auto; } }
     @media (max-width:640px) { .project-filter-bar { justify-content:flex-start; margin-bottom:2rem; } .project-filter-button { font-size:.9rem; padding:.7rem .85rem; } }
   </style>
 </head>
@@ -107,34 +120,22 @@
   <div data-site-navigation></div><script src="site-navigation.js"></script>
   <header id="header" class="header-sticky fixed top-0 left-0 right-0 z-50 bg-white"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-20"><a href="index.html" class="flex items-center group"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-14 h-14 object-contain" /></a><nav class="hidden lg:flex items-center gap-1"><a href="index.html" class="nav-link px-3 py-2">Home</a><a href="about.html" class="nav-link px-3 py-2">About Us</a><a href="services.html" class="nav-link px-3 py-2">Services</a><a href="projects.html" class="nav-link px-3 py-2">Projects</a><a href="contact.html" class="nav-link px-3 py-2">Contact Us</a></nav><div class="hidden lg:flex items-center gap-5"><a href="tel:+919876543210" class="flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800 transition-colors"><div class="w-9 h-9 rounded-full bg-brand-50 flex items-center justify-center"><i class="fas fa-phone text-brand-500 text-xs"></i></div><span>+91 98765 43210</span></a><a href="contact.html" class="btn-primary text-sm py-3 px-6">Get a Free Quote<i class="fas fa-arrow-right text-xs"></i></a></div><button id="mobileMenuBtn" class="lg:hidden hamburger p-2" aria-label="Toggle menu"><div class="w-6 flex flex-col gap-1.5"><span class="hamburger-line block w-full h-0.5 bg-brand-800 rounded-full"></span><span class="hamburger-line block w-4 h-0.5 bg-brand-800 rounded-full ml-auto"></span><span class="hamburger-line block w-full h-0.5 bg-brand-800 rounded-full"></span></div></button></div></div><div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 lg:hidden"><div class="p-6"><div class="flex items-center justify-between mb-10"><div class="flex items-center"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" class="w-12 h-12 object-contain" /></div><div class="flex items-center gap-3"><a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" aria-label="WhatsApp" class="icon-btn w-10 h-10 rounded-full bg-green-50 flex items-center justify-center hover:bg-green-100 transition-colors"><i class="fab fa-whatsapp text-green-600"></i></a><a href="contact.html" aria-label="Contact Us" class="icon-btn w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors"><i class="fas fa-envelope text-slate-700"></i></a><button id="closeMobileMenu" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors"><i class="fas fa-times text-slate-600"></i></button></div></div><nav class="flex flex-col gap-1"><a href="index.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Home</a><a href="about.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">About Us</a><a href="services.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Services</a><a href="projects.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Projects</a><a href="contact.html" class="mobile-nav-link px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 hover:text-brand-700 transition-colors">Contact Us</a></nav><div class="mt-8 pt-6 border-t border-slate-100"><div class="flex flex-col gap-3"><a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors"><i class="fab fa-whatsapp text-green-500"></i>Chat on WhatsApp</a><a href="tel:+919876543210" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors"><i class="fas fa-phone text-brand-500"></i>+91 98765 43210</a><a href="contact.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-brand-50 transition-colors"><i class="fas fa-envelope text-slate-700"></i>Contact Us</a></div><a href="contact.html" class="btn-primary w-full justify-center mt-4 text-sm py-3">Get a Free Quote</a></div></div><div id="mobileOverlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden lg:hidden"></div></header>
   <main class="pt-24">
-    <section class="relative overflow-hidden pt-24 pb-20">
-      <div class="absolute inset-0 bg-gradient-to-br from-brand-50 via-white to-white"></div>
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="max-w-xl">
-            <span class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-100 rounded-full text-sm font-semibold text-brand-700 mb-6">Our Projects</span>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-950 mb-6">Real installations that prove the power of solar.</h1>
-            <p class="text-lg text-slate-600 leading-relaxed mb-8">Browse our portfolio of completed solar projects across residential, commercial, and industrial sectors. Every installation is designed for performance and long-term reliability.</p>
-            <div class="flex flex-col sm:flex-row gap-4">
-              <a href="contact.html" class="btn-primary text-base py-4 px-8 justify-center">Schedule a Visit<i class="fas fa-arrow-right"></i></a>
-              <a href="services.html" class="btn-secondary text-base py-4 px-8 justify-center">View Services<i class="fas fa-chevron-right text-xs"></i></a>
-            </div>
-          </div>
-          <div class="hero-visual bg-[url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&q=85')] bg-cover bg-center h-[460px] shadow-2xl rounded-[2rem]"></div>
-        </div>
-      </div>
-    </section>
-    <section class="projects-bg py-24 lg:py-32">
+    <section class="projects-bg py-24 lg:py-32" aria-labelledby="gallery-title">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="project-filter-bar reveal" role="group" aria-label="Filter projects by category">
-          <button type="button" class="project-filter-button is-active" data-project-filter="all" aria-pressed="true">All</button>
-          <button type="button" class="project-filter-button" data-project-filter="ic-work" aria-pressed="false">I&amp;C Work</button>
-          <button type="button" class="project-filter-button" data-project-filter="off-grid" aria-pressed="false">Off Grid System</button>
-          <button type="button" class="project-filter-button" data-project-filter="on-grid" aria-pressed="false">On Grid System</button>
-          <button type="button" class="project-filter-button" data-project-filter="street-light" aria-pressed="false">Street Light</button>
+        <div class="max-w-3xl mb-10 reveal">
+          <span class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-100 rounded-full text-sm font-semibold text-brand-700 mb-5"><i class="fas fa-images" aria-hidden="true"></i>Project Gallery</span>
+          <h2 id="gallery-title" class="text-3xl sm:text-4xl font-extrabold text-brand-950 mb-4">Explore every completed installation.</h2>
+          <p class="text-slate-600 leading-relaxed">Filter our project gallery by system size, location, or system type. Open any project to view its installation photos.</p>
         </div>
+        <div class="gallery-filter-panel reveal" aria-label="Filter the project gallery">
+          <label class="gallery-filter-label" for="gallerySizeFilter">System size (kW)<select id="gallerySizeFilter" class="gallery-filter-select"><option value="all">All system sizes</option></select></label>
+          <label class="gallery-filter-label" for="galleryLocationFilter">Location<select id="galleryLocationFilter" class="gallery-filter-select"><option value="all">All locations</option></select></label>
+          <label class="gallery-filter-label" for="galleryTypeFilter">System type<select id="galleryTypeFilter" class="gallery-filter-select"><option value="all">All system types</option></select></label>
+          <button id="clearGalleryFilters" type="button" class="btn-secondary justify-center py-3 px-5">Clear filters</button>
+        </div>
+        <p id="projectGallerySummary" class="mb-7 text-sm font-semibold text-slate-500" aria-live="polite">Loading gallery…</p>
         <div id="projectGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <article class="project-card group rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 cursor-pointer reveal" data-project-category="on-grid">
+          <article class="project-card group rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 cursor-pointer reveal" data-project-category="on-grid" hidden>
             <div class="relative h-72 overflow-hidden">
               <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Residential rooftop solar installation" class="project-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent p-6 flex items-end">
@@ -146,7 +147,7 @@
               </div>
             </div>
           </article>
-          <article class="project-card group rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 cursor-pointer reveal" data-project-category="ic-work">
+          <article class="project-card group rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 cursor-pointer reveal" data-project-category="ic-work" hidden>
             <div class="relative h-72 overflow-hidden">
               <img src="https://images.unsplash.com/photo-1545208942-e0c43a4c4dd2?w=600&q=80" alt="Commercial solar installation on factory roof" class="project-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent p-6 flex items-end">
@@ -158,7 +159,7 @@
               </div>
             </div>
           </article>
-          <article class="project-card group rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 cursor-pointer reveal" data-project-category="off-grid">
+          <article class="project-card group rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 cursor-pointer reveal" data-project-category="off-grid" hidden>
             <div class="relative h-72 overflow-hidden">
               <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=600&q=80" alt="Industrial solar farm installation" class="project-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent p-6 flex items-end">
@@ -170,7 +171,7 @@
               </div>
             </div>
           </article>
-          <article class="project-card group rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 cursor-pointer reveal" data-project-category="street-light">
+          <article class="project-card group rounded-2xl overflow-hidden shadow-lg shadow-slate-900/5 cursor-pointer reveal" data-project-category="street-light" hidden>
             <div class="relative h-72 overflow-hidden">
               <img src="Assests/street light.png" alt="Solar LED street light installation" class="project-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent p-6 flex items-end">
@@ -186,6 +187,20 @@
       </div>
     </section>
   </main>
+  <div id="projectGalleryModal" class="fixed inset-0 z-[100] hidden bg-slate-950/80 p-4 sm:p-7 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="projectGalleryModalTitle">
+    <div class="min-h-full flex items-center justify-center">
+      <div class="w-full max-w-6xl rounded-3xl bg-white shadow-2xl">
+        <div class="sticky top-0 z-10 flex items-start justify-between gap-4 rounded-t-3xl border-b border-slate-100 bg-white p-5 sm:p-7">
+          <div><p id="projectGalleryModalMeta" class="mb-1 text-sm font-bold text-brand-600"></p><h2 id="projectGalleryModalTitle" class="text-2xl sm:text-3xl font-extrabold text-brand-950"></h2><p id="projectGalleryModalCount" class="mt-2 text-sm text-slate-500"></p></div>
+          <button type="button" class="gallery-close inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-600 hover:bg-brand-600 hover:text-white" aria-label="Close gallery"><i class="fas fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div id="projectGalleryMedia" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5 sm:p-7"></div>
+      </div>
+    </div>
+  </div>
+  <div id="projectMediaPreview" class="fixed inset-0 z-[110] hidden bg-slate-950/90 p-4 sm:p-8" role="dialog" aria-modal="true" aria-label="Full-size project image">
+    <div class="flex h-full items-center justify-center"><div class="relative max-h-full max-w-6xl"><button type="button" class="gallery-close absolute right-2 top-2 z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/90 text-slate-700 hover:bg-white" aria-label="Close image preview"><i class="fas fa-times" aria-hidden="true"></i></button><img id="projectMediaPreviewImage" src="" alt="" class="max-h-[90vh] max-w-full rounded-2xl object-contain shadow-2xl"></div></div>
+  </div>
   <div data-site-footer></div>
   <script src="site-footer.js"></script>
   <footer class="footer-bg pt-20 pb-8">
@@ -212,6 +227,7 @@
     </div>
   </footer>
   <div class="floating-actions" aria-hidden="false"><a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" class="floating-btn floating-whatsapp" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a><a href="contact.html" class="floating-btn floating-contact" aria-label="Contact Us"><i class="fas fa-envelope"></i></a></div>
+  <script src="project-gallery-data.js"></script>
   <script>
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const closeMobileMenu = document.getElementById('closeMobileMenu');
@@ -235,6 +251,107 @@ function closeMobileMenuFn(){mobileMenu.classList.remove('open');mobileOverlay.c
         card.hidden = selectedFilter !== 'all' && card.dataset.projectCategory !== selectedFilter;
       });
     }));
+    const galleryProjects = Array.isArray(window.VAISH_PROJECT_GALLERY) ? window.VAISH_PROJECT_GALLERY : [];
+    const projectGrid = document.getElementById('projectGrid');
+    const projectGallerySummary = document.getElementById('projectGallerySummary');
+    const gallerySizeFilter = document.getElementById('gallerySizeFilter');
+    const galleryLocationFilter = document.getElementById('galleryLocationFilter');
+    const galleryTypeFilter = document.getElementById('galleryTypeFilter');
+    const clearGalleryFilters = document.getElementById('clearGalleryFilters');
+    const projectGalleryModal = document.getElementById('projectGalleryModal');
+    const projectGalleryMedia = document.getElementById('projectGalleryMedia');
+    const projectMediaPreview = document.getElementById('projectMediaPreview');
+    const projectMediaPreviewImage = document.getElementById('projectMediaPreviewImage');
+
+    const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[character]);
+    const mediaUrl = source => encodeURI(source).replace(/#/g, '%23');
+    const sortValues = values => [...values].sort((first, second) => first.localeCompare(second, undefined, { numeric: true }));
+
+    function populateGalleryFilter(select, values, allLabel) {
+      select.replaceChildren(new Option(allLabel, 'all'));
+      sortValues(values).forEach(value => select.add(new Option(value, value)));
+    }
+
+    function selectedProjects() {
+      return galleryProjects.filter(project =>
+        (gallerySizeFilter.value === 'all' || project.systemSize === gallerySizeFilter.value) &&
+        (galleryLocationFilter.value === 'all' || project.location === galleryLocationFilter.value) &&
+        (galleryTypeFilter.value === 'all' || project.systemType === galleryTypeFilter.value)
+      );
+    }
+
+    function renderProjects() {
+      const projects = selectedProjects();
+      projectGrid.replaceChildren();
+
+      if (!projects.length) {
+        projectGrid.innerHTML = '<div class="sm:col-span-2 lg:col-span-3 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-6 py-14 text-center text-slate-500">No projects match these filters. Try clearing one or more filters.</div>';
+      } else {
+        projects.forEach(project => {
+          const cover = project.media[0];
+          const coverMarkup = `<img class="gallery-project-cover" loading="lazy" src="${mediaUrl(cover.src)}" alt="${escapeHtml(project.title)} solar installation">`;
+          const mediaCount = `${project.photos} photo${project.photos === 1 ? '' : 's'}`;
+          const card = document.createElement('article');
+          card.className = 'project-card overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg shadow-slate-900/5';
+          card.innerHTML = `<button type="button" class="gallery-project-trigger" data-gallery-open="${escapeHtml(project.id)}"><div class="relative overflow-hidden">${coverMarkup}<div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent"></div><div class="absolute inset-x-0 bottom-0 p-5"><span class="inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white backdrop-blur-sm">${escapeHtml(project.systemType)}</span><h3 class="mt-3 text-lg font-extrabold text-white">${escapeHtml(project.title)}</h3><p class="mt-1 text-sm text-white/80">${escapeHtml(project.location)} · ${escapeHtml(project.systemSize)}</p></div></div><div class="flex items-center justify-between gap-3 p-5"><span class="text-sm font-semibold text-slate-500">${mediaCount}</span><span class="text-sm font-bold text-brand-600">Open gallery <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i></span></div></button>`;
+          projectGrid.appendChild(card);
+        });
+      }
+
+      const photos = projects.reduce((total, project) => total + project.photos, 0);
+      projectGallerySummary.textContent = `Showing ${projects.length} of ${galleryProjects.length} projects · ${photos} photos`;
+    }
+
+    function closeProjectGallery() {
+      projectGalleryModal.classList.add('hidden');
+      projectGalleryMedia.replaceChildren();
+      document.body.classList.remove('gallery-open');
+    }
+
+    function closeMediaPreview() {
+      projectMediaPreview.classList.add('hidden');
+      projectMediaPreviewImage.src = '';
+    }
+
+    function openProjectGallery(projectId) {
+      const project = galleryProjects.find(item => item.id === projectId);
+      if (!project) return;
+      document.getElementById('projectGalleryModalTitle').textContent = project.title;
+      document.getElementById('projectGalleryModalMeta').textContent = `${project.systemType} · ${project.location} · ${project.systemSize}`;
+      document.getElementById('projectGalleryModalCount').textContent = `${project.photos} photos`;
+      projectGalleryMedia.replaceChildren();
+
+      project.media.forEach((item, index) => {
+        const mediaItem = document.createElement('article');
+        mediaItem.className = 'gallery-media-item overflow-hidden rounded-xl border border-slate-100 bg-slate-50';
+        const description = `${project.title} — photo ${index + 1}`;
+        mediaItem.innerHTML = `<button type="button" class="gallery-media-button" data-media-preview="${escapeHtml(item.src)}" data-media-alt="${escapeHtml(description)}"><img loading="lazy" src="${mediaUrl(item.src)}" alt="${escapeHtml(description)}"></button><p class="truncate px-3 py-2 text-xs font-medium text-slate-500">Photo ${index + 1}</p>`;
+        projectGalleryMedia.appendChild(mediaItem);
+      });
+
+      projectGalleryModal.classList.remove('hidden');
+      document.body.classList.add('gallery-open');
+      projectGalleryModal.scrollTop = 0;
+    }
+
+    if (galleryProjects.length) {
+      populateGalleryFilter(gallerySizeFilter, new Set(galleryProjects.map(project => project.systemSize)), 'All system sizes');
+      populateGalleryFilter(galleryLocationFilter, new Set(galleryProjects.map(project => project.location)), 'All locations');
+      populateGalleryFilter(galleryTypeFilter, new Set(galleryProjects.map(project => project.systemType)), 'All system types');
+      renderProjects();
+    } else {
+      projectGallerySummary.textContent = 'The project gallery could not be loaded.';
+    }
+
+    [gallerySizeFilter, galleryLocationFilter, galleryTypeFilter].forEach(filter => filter.addEventListener('change', renderProjects));
+    clearGalleryFilters.addEventListener('click', () => { gallerySizeFilter.value = 'all'; galleryLocationFilter.value = 'all'; galleryTypeFilter.value = 'all'; renderProjects(); });
+    projectGrid.addEventListener('click', event => { const button = event.target.closest('[data-gallery-open]'); if (button) openProjectGallery(button.dataset.galleryOpen); });
+    projectGalleryMedia.addEventListener('click', event => { const button = event.target.closest('[data-media-preview]'); if (!button) return; projectMediaPreviewImage.src = mediaUrl(button.dataset.mediaPreview); projectMediaPreviewImage.alt = button.dataset.mediaAlt; projectMediaPreview.classList.remove('hidden'); });
+    document.querySelectorAll('#projectGalleryModal .gallery-close').forEach(button => button.addEventListener('click', closeProjectGallery));
+    document.querySelectorAll('#projectMediaPreview .gallery-close').forEach(button => button.addEventListener('click', closeMediaPreview));
+    projectGalleryModal.addEventListener('click', event => { if (event.target === projectGalleryModal) closeProjectGallery(); });
+    projectMediaPreview.addEventListener('click', event => { if (event.target === projectMediaPreview) closeMediaPreview(); });
+    document.addEventListener('keydown', event => { if (event.key !== 'Escape') return; if (!projectMediaPreview.classList.contains('hidden')) closeMediaPreview(); else if (!projectGalleryModal.classList.contains('hidden')) closeProjectGallery(); });
     const header=document.getElementById('header'); window.addEventListener('scroll',()=>{ if(window.scrollY>50) header.classList.add('scrolled'); else header.classList.remove('scrolled'); });
     const revealElements=document.querySelectorAll('.reveal'); const revealObserver=new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObserver.unobserve(entry.target);} }); },{threshold:0.1,rootMargin:'0px 0px -50px 0px'}); revealElements.forEach(el=>revealObserver.observe(el));
     window.addEventListener('load',()=>{ const pageLoader=document.getElementById('pageLoader'); if(pageLoader){pageLoader.classList.add('hidden'); setTimeout(()=>{ if(pageLoader.parentNode) pageLoader.parentNode.removeChild(pageLoader); document.body.classList.remove('preloading');},500);}});
