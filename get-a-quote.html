@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="page-loader.css">
   <style>
     :root { color-scheme: light; }
     * { box-sizing: border-box; }
@@ -57,7 +58,9 @@
     @media (max-width: 640px) { .header-inner { min-height: 78px; } .brand img { width: 128px; height: 68px; } .page-main { padding: 2rem .75rem 3rem; } .quote-body { padding: 2.25rem 1.25rem; } .form-grid { grid-template-columns: 1fr; gap: 1.3rem; } .field-control input, .field-control select { min-height: 4rem; padding: .8rem 1rem; font-size: 1.1rem; } .bill-field { margin-top: 1.5rem; } .submit-button { margin-top: 2.25rem; } }
   </style>
 </head>
-<body>
+<body class="preloading">
+  <script defer src="page-loader.js"></script>
+  <div id="pageLoader" aria-hidden="false"><div class="loader-inner"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo"><div class="text-sm text-slate-600">Loading...</div></div></div>
   <div data-site-navigation data-reserve-header-space></div>
   <script src="site-navigation.js"></script>
   <header class="site-header">
@@ -133,6 +136,8 @@
     </section>
   </main>
 
+  <div data-site-footer></div>
+  <script src="site-footer.js"></script>
   <footer class="footer">© 2026 VAISH Solar Services. All rights reserved.</footer>
 
   <script>

@@ -89,8 +89,11 @@
     @media (max-width: 820px) { .topbar { padding: 11px 15px; } .brand small { display: none; } .workspace { grid-template-columns: 1fr; height: auto; } .pages { display: flex; gap: 5px; overflow-x: auto; padding: 10px; border-bottom: 1px solid var(--line); border-right: 0; } .panel-heading, .tip { display: none; } .page-button { width: auto; min-width: max-content; margin: 0; } .preview { height: 62vh; } .editor { border-left: 0; border-top: 1px solid var(--line); } .status { display: none; } }
     @media (max-width: 480px) { .login-card { padding: 30px 23px; } h1 { font-size: 29px; } .topbar { flex-wrap: wrap; gap: 9px; } .brand { width: 100%; } .topbar #saveButton { flex: 1; } .topbar .secondary { padding: 0 9px; font-size: 11px; } }
   </style>
+  <link rel="stylesheet" href="page-loader.css">
 </head>
-<body>
+<body class="preloading">
+  <script defer src="page-loader.js"></script>
+  <div id="pageLoader" aria-hidden="false"><div class="loader-inner"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo"><div>Loading...</div></div></div>
   <section id="loginView" class="login">
     <form id="loginForm" class="login-card">
       <p class="eyebrow">VAISH Solar Services</p>

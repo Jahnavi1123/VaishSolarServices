@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="page-loader.css">
   <script>
     tailwind.config = { theme: { extend: { fontFamily: { sans: ['DM Sans', 'sans-serif'] }, colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#2563eb', 600: '#1d4ed8', 700: '#1d4ed8', 950: '#172554' } } } } };
   </script>
@@ -27,7 +28,9 @@
     #savingsResult > .grid, #savingsResult > p, #savingsResult > a { display: none; }
   </style>
 </head>
-<body class="font-sans text-slate-800">
+<body class="font-sans text-slate-800 preloading">
+  <script defer src="page-loader.js"></script>
+  <div id="pageLoader" aria-hidden="false"><div class="loader-inner"><img src="Assests/logo.jpeg" alt="VAISH Solar Services logo"><div class="text-sm text-slate-600">Loading...</div></div></div>
   <div data-site-navigation data-reserve-header-space></div>
   <script src="site-navigation.js"></script>
   <header class="bg-white border-b border-slate-100 sticky top-0 z-20">
@@ -222,6 +225,8 @@
     </section>
   </main>
 
+  <div data-site-footer></div>
+  <script src="site-footer.js"></script>
   <footer class="footer-bg py-10 text-sm text-slate-400">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       <div>

@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="page-loader.css">
   <script>
     tailwind.config = {
       theme: {
@@ -604,9 +605,86 @@
     #mobileMenu .icon-btn[aria-label="Contact Us"]:hover, #mobileMenu #closeMobileMenu:hover { background: #1D4ED8; border-color: #1D4ED8; color: #FFFFFF; }
     #mobileMenu #closeMobileMenu { display: inline-flex; }
     #mobileMenu .icon-btn:focus-visible, #mobileMenu #closeMobileMenu:focus-visible { outline: 3px solid rgba(74, 127, 232, 0.45); outline-offset: 3px; }
+
+    .service-selector {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid #E2E8F0;
+      border-radius: 0.85rem;
+      color: #1E293B;
+      background: #FFFFFF;
+      font: inherit;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color .2s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+
+    .service-selector > span {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .service-selector-number {
+      color: #2563EB;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .service-selector i {
+      color: #64748B;
+      font-size: 0.85rem;
+      transition: transform .2s ease, color .2s ease;
+    }
+
+    .service-selector:hover,
+    .service-selector:focus-visible {
+      border-color: #93C5FD;
+      color: #1D4ED8;
+      background: #EFF6FF;
+      outline: none;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, .1);
+    }
+
+    .service-selector:hover i,
+    .service-selector:focus-visible i,
+    .service-selector[aria-selected="true"] i {
+      color: #1D4ED8;
+      transform: translateX(3px);
+    }
+
+    .service-selector[aria-selected="true"] {
+      border-color: #2563EB;
+      color: #FFFFFF;
+      background: linear-gradient(135deg, #2563EB, #1E40AF);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, .22);
+    }
+
+    .service-selector[aria-selected="true"] .service-selector-number,
+    .service-selector[aria-selected="true"] i {
+      color: #DBEAFE;
+    }
+
+    .service-panel[hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 1023px) {
+      #service-details {
+        min-width: 0;
+      }
+    }
   </style>
 </head>
 <body class="preloading">
+  <script defer src="page-loader.js"></script>
   <div id="pageLoader" aria-hidden="false">
     <div class="loader-inner">
       <img src="Assests/logo.jpeg" alt="VAISH Solar Services logo" />
@@ -718,31 +796,6 @@
   </header>
 
   <main class="pt-24">
-    <section class="relative overflow-hidden pt-24 pb-20">
-      <div class="absolute inset-0 bg-gradient-to-br from-brand-50 via-white to-white"></div>
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="max-w-xl">
-            <span class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-100 rounded-full text-sm font-semibold text-brand-700 mb-6">Our Services</span>
-            <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-950 mb-6">Complete Solar Services for every rooftop and facility.</h1>
-            <p class="text-lg text-slate-600 leading-relaxed mb-8">From rooftop design to large commercial installations, VAISH Solar Services offers a complete suite of solutions built for efficiency, durability, and performance.</p>
-            <div class="flex flex-col sm:flex-row gap-4">
-              <a href="contact.html" class="btn-primary text-base py-4 px-8 justify-center">
-                Request a Quote
-                <i class="fas fa-arrow-right"></i>
-              </a>
-              <a href="index.html" class="btn-secondary text-base py-4 px-8 justify-center">
-                Back to Home
-                <i class="fas fa-chevron-right text-xs"></i>
-              </a>
-            </div>
-          </div>
-          <div class="hero-visual bg-[url('https://images.unsplash.com/photo-1558449028-b53a39d100fc?w=1200&q=85')] bg-cover bg-center h-[460px] shadow-2xl rounded-[2rem]"></div>
-        </div>
-      </div>
-    </section>
-    <!-- Detailed solar system services are shown below. -->
-
     <section id="solar-system-solutions" class="bg-white py-24 lg:py-32">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-14 reveal">
@@ -751,103 +804,136 @@
           <p class="text-slate-500 text-lg leading-relaxed">Explore grid-connected, independent, hybrid, lighting, water-heating, and agricultural solar solutions from VAISH Solar Services.</p>
         </div>
 
-        <nav aria-label="Solar system solutions" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14 reveal">
-          <a href="#on-grid" class="group rounded-2xl border border-slate-100 bg-slate-50 p-4 hover:bg-brand-50 hover:border-brand-100 transition-colors flex items-center gap-4">
-            <div class="w-28 h-16 rounded-lg overflow-hidden bg-slate-100">
-              <video class="w-full h-full object-cover" autoplay muted loop playsinline preload="metadata" aria-label="On-Grid solar system preview"><source src="Assests/on%20grid%20solar.mp4" type="video/mp4"></video>
+        <div class="grid lg:grid-cols-[21rem_minmax(0,1fr)] gap-8 lg:gap-12 items-start">
+          <aside class="lg:sticky lg:top-32 reveal">
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5 shadow-sm">
+              <h3 class="text-xl font-extrabold text-brand-950 px-2 mb-4">Our Services</h3>
+              <div class="grid gap-2" role="tablist" aria-label="Choose a solar service">
+                <button id="service-tab-on-grid" type="button" role="tab" class="service-selector" data-service-target="on-grid" aria-controls="on-grid" aria-selected="true"><span><span class="service-selector-number">01</span>On-Grid Solar System</span><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                <button id="service-tab-off-grid" type="button" role="tab" class="service-selector" data-service-target="off-grid" aria-controls="off-grid" aria-selected="false"><span><span class="service-selector-number">02</span>Off-Grid Solar System</span><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                <button id="service-tab-hybrid" type="button" role="tab" class="service-selector" data-service-target="hybrid" aria-controls="hybrid" aria-selected="false"><span><span class="service-selector-number">03</span>Hybrid Solar System</span><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                <button id="service-tab-solar-led" type="button" role="tab" class="service-selector" data-service-target="solar-led" aria-controls="solar-led" aria-selected="false"><span><span class="service-selector-number">04</span>Solar LED Street Light</span><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                <button id="service-tab-water-heating" type="button" role="tab" class="service-selector" data-service-target="water-heating" aria-controls="water-heating" aria-selected="false"><span><span class="service-selector-number">05</span>Solar Water Heating System</span><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                <button id="service-tab-water-pumping" type="button" role="tab" class="service-selector" data-service-target="water-pumping" aria-controls="water-pumping" aria-selected="false"><span><span class="service-selector-number">06</span>Solar Water Pumping System &amp; Solar Atta Chakki</span><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+              </div>
             </div>
-            <div>
-              <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">01</span>
-              <span class="block mt-1 font-bold text-brand-950 group-hover:text-brand-700">On-Grid Solar System <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
-            </div>
-          </a>
-          <a href="#off-grid" class="group rounded-2xl border border-slate-100 bg-slate-50 p-4 hover:bg-brand-50 hover:border-brand-100 transition-colors flex items-center gap-4">
-            <div class="w-28 h-16 rounded-lg overflow-hidden bg-slate-100">
-              <img src="Assests/off%20grid.png" alt="Off-Grid solar system" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">02</span>
-              <span class="block mt-1 font-bold text-brand-950 group-hover:text-brand-700">Off-Grid Solar System <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
-            </div>
-          </a>
-          <a href="#hybrid" class="group rounded-2xl border border-slate-100 bg-slate-50 p-4 hover:bg-brand-50 hover:border-brand-100 transition-colors flex items-center gap-4">
-            <div class="w-28 h-16 rounded-lg overflow-hidden bg-slate-100">
-              <img src="Assests/hybrid.png" alt="Hybrid solar system" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">03</span>
-              <span class="block mt-1 font-bold text-brand-950 group-hover:text-brand-700">Hybrid Solar System <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
-            </div>
-          </a>
-          <a href="#solar-led" class="group rounded-2xl border border-slate-100 bg-slate-50 p-4 hover:bg-brand-50 hover:border-brand-100 transition-colors flex items-center gap-4">
-            <div class="w-28 h-16 rounded-lg overflow-hidden bg-slate-100">
-              <img src="Assests/street%20light.png" alt="Solar LED street light" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">04</span>
-              <span class="block mt-1 font-bold text-brand-950 group-hover:text-brand-700">Solar LED Street Light <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
-            </div>
-          </a>
-          <a href="#water-heating" class="group rounded-2xl border border-slate-100 bg-slate-50 p-4 hover:bg-brand-50 hover:border-brand-100 transition-colors flex items-center gap-4">
-            <div class="w-28 h-16 rounded-lg overflow-hidden bg-slate-100">
-              <img src="Assests/solar%20water%20heterr.png" alt="Solar water heating" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">05</span>
-              <span class="block mt-1 font-bold text-brand-950 group-hover:text-brand-700">Solar Water Heating <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
-            </div>
-          </a>
-          <a href="#water-pumping" class="group rounded-2xl border border-slate-100 bg-slate-50 p-4 hover:bg-brand-50 hover:border-brand-100 transition-colors flex items-center gap-4">
-            <div class="w-28 h-16 rounded-lg overflow-hidden bg-slate-100">
-              <img src="Assests/solar%20water%20pumping%20sysytem.png" alt="Solar water pumping" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">06</span>
-              <span class="block mt-1 font-bold text-brand-950 group-hover:text-brand-700">Pumping &amp; Atta Chakki <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
-            </div>
-          </a>
-        </nav>
+          </aside>
 
-        <div class="space-y-10">
-          <article id="on-grid" class="scroll-mt-28 rounded-[2rem] border border-slate-100 bg-slate-50 p-6 sm:p-8 lg:p-10 shadow-sm reveal">
-            <div class="mb-6 img-zoom rounded-2xl overflow-hidden bg-slate-200"><video class="block w-full h-64 object-cover rounded-2xl" autoplay muted loop playsinline preload="auto" controls aria-label="On-Grid solar system video"><source src="Assests/on%20grid%20solar.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
-            <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">01</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">On-Grid Solar System</h2><p class="text-slate-600 leading-relaxed">An on-grid solar power system is connected to the utility grid. The electricity it produces is routed to the grid and used to run appliances, making installation fuss-free and maintenance simple.</p></div></div>
-            <div class="grid lg:grid-cols-2 gap-8"><div class="rounded-2xl bg-white p-6 border border-slate-100"><h3 class="text-lg font-bold text-brand-950 mb-3">How does an on-grid solar power system work?</h3><p class="text-slate-600 leading-relaxed">Solar modules absorb sunlight and convert it into direct current (DC). A solar inverter changes the DC into alternating current (AC) to power electrical items. The electricity is then routed to the grid for day-to-day use. A net meter records energy supplied to the grid and energy consumed; the monthly bill reflects the outstanding balance.</p></div><div class="rounded-2xl bg-white p-6 border border-slate-100"><h3 class="text-lg font-bold text-brand-950 mb-4">Benefits of on-grid solar</h3><ol class="space-y-4 text-slate-600 leading-relaxed"><li><strong class="text-brand-950">Zero electricity bills:</strong> You pay only for surplus electricity consumed. When you use less than your system generates, the excess can be fed back to the grid.</li><li><strong class="text-brand-950">Easy maintenance:</strong> Fewer components and no batteries make the system simple to install and maintain.</li><li><strong class="text-brand-950">Passive income generation:</strong> Surplus electricity sent to the grid can earn credits, reducing bills and creating value from excess generation.</li></ol></div></div>
+          <div id="service-details" aria-live="polite">
+          <article id="on-grid" role="tabpanel" aria-labelledby="service-tab-on-grid" class="service-panel scroll-mt-28 rounded-[2rem] border border-slate-100 bg-slate-50 p-6 sm:p-8 lg:p-10 shadow-sm">
+            <div class="mb-8 img-zoom rounded-2xl overflow-hidden bg-slate-950"><video class="block w-full max-h-[34rem] object-contain rounded-2xl" autoplay muted loop playsinline preload="auto" controls aria-label="On-Grid solar system video"><source src="Assests/on%20grid%20solar.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+            <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8">
+              <span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">01</span>
+              <div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">On-Grid Solar System</h2>
+                <p class="text-slate-600 leading-relaxed">On-grid solar power system is a solar power generation system where it is connected to the utility grid. The electricity produced by the system is routed to the grid from where it is used to run the various appliances. The installation of the same is also fuss free and easy to maintain.</p>
+              </div>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8">
+              <div class="rounded-2xl bg-white p-6 border border-slate-100">
+                <h3 class="text-lg font-bold text-brand-950 mb-3">How does on-grid solar power system works ?</h3>
+                <p class="text-slate-600 leading-relaxed">The arrangement of solar modules absorbs the sunlight on them and converts them into electricity. The current generated here is Direct Current (DC). The solar inverter then converts the DC to Alternating Current (AC), thus making it power the electrical items. This electricity is then routed to the grid where it is supplied for day to day use. An important feature is the net meter. It is a device that records the energy supplied to the grid and the energy consumed. At the end of each month, the outstanding is recorded and the consumer is provided with a bill.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-6 border border-slate-100">
+                <h3 class="text-lg font-bold text-brand-950 mb-4">Benefits of on-grid solar :</h3>
+                <ol class="list-decimal pl-5 space-y-4 text-slate-600 leading-relaxed">
+                  <li><strong class="text-brand-950">Zero Electricity Bills –</strong> Though the solar power system is connected to the grid, the consumer has to pay only for the surplus electricity he consumes. The bill generated on a monthly basis determines whether the consumer has any payments to be made. However, at the same time if the consumer utilizes less electricity, the excess is fed back in the grid.</li>
+                  <li><strong class="text-brand-950">Easy maintenance –</strong> The on-grid solar power system has the least number of parts along with simple installation. The elimination of batteries makes the maintenance quite easy.</li>
+                  <li><strong class="text-brand-950">Passive income generation –</strong> With connection to the grid, the consumer can charge for the surplus electricity he has generated. It not only eliminates your electricity bills but also avail the cost benefits for the excess electricity generated. Solar power has several benefits which notably includes a reduction in the electricity cost and usage. However, there are other benefits that depend on the type of system you choose.</li>
+                </ol>
+              </div>
+            </div>
           </article>
 
-          <article id="off-grid" class="scroll-mt-28 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 lg:p-10 shadow-sm reveal">
-            <div class="mb-6 img-zoom rounded-2xl overflow-hidden"><img src="Assests/off%20grid.png" alt="Off-grid solar setup" class="w-full h-64 object-cover rounded-2xl"></div>
-            <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">02</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Off-Grid Solar System</h2><p class="text-slate-600 leading-relaxed">Also known as a stand-alone power system (SAPS), an off-grid system generates electricity from solar panels and stores it in solar batteries through a charge controller. An inverter then powers home or business appliances, including at night or during lower sun exposure.</p></div></div>
-            <div class="grid lg:grid-cols-2 gap-8"><div><h3 class="text-lg font-bold text-brand-950 mb-4">Components of an off-grid system</h3><ul class="space-y-4 text-slate-600 leading-relaxed"><li><strong class="text-brand-950">Solar panels:</strong> The array size and output depend on available sunlight, usable roof space, and energy-consumption needs.</li><li><strong class="text-brand-950">Solar batteries:</strong> Storage keeps the home running after sunset by saving excess power generated during the day.</li><li><strong class="text-brand-950">Solar inverter:</strong> A stand-alone inverter converts solar DC into AC for most household appliances and electronics.</li><li><strong class="text-brand-950">Solar charge controller:</strong> Regulates voltage and current to protect batteries from overcharging and damage.</li><li><strong class="text-brand-950">Alternative energy source:</strong> A backup generator can support the system during periods of very low solar production.</li></ul></div><div class="rounded-2xl bg-brand-50 p-6"><h3 class="text-lg font-bold text-brand-950 mb-4">Advantages of off-grid solar</h3><ol class="space-y-4 text-slate-600 leading-relaxed"><li><strong class="text-brand-950">No utility-grid access required:</strong> In remote areas, off-grid solar can be more affordable than extending power lines.</li><li><strong class="text-brand-950">Energy self-sufficiency:</strong> Become independent of electricity retailers and rising power prices while remaining protected from grid failures and blackouts.</li></ol></div></div>
+          <article id="off-grid" role="tabpanel" aria-labelledby="service-tab-off-grid" class="service-panel scroll-mt-28 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 lg:p-10 shadow-sm" hidden>
+            <div class="mb-8 img-zoom rounded-2xl overflow-hidden bg-slate-50"><img src="Assests/off%20grid.png" alt="Off-grid solar setup" class="block w-full max-h-[34rem] object-contain rounded-2xl"></div>
+            <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8">
+              <span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">02</span>
+              <div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Off-Grid Solar System</h2>
+                <p class="text-slate-600 leading-relaxed">One of the main types of the solar power system is Off-grid &mdash; also known as a stand-alone power system (SAPS).It works by generating electricity from solar panels and using it to charge a solar battery via a charger controller. That electricity is then converted using an inverter so that it can power the home or business appliances. By saving the electricity in a solar battery, it is possible to run home with solar energy, even at night or during times when there is less sun exposure.</p>
+              </div>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8">
+              <div class="rounded-2xl bg-white p-6 border border-slate-100">
+                <h3 class="text-lg font-bold text-brand-950 mb-4">Components of an Off Grid Solar Power System</h3>
+                <ul class="space-y-5 text-slate-600 leading-relaxed">
+                  <li><strong class="text-brand-950">Solar Panels &ndash;</strong> The precise size and production capabilities of individual solar panel array which is the first ingredient will depend on the amount of available sunlight in the region, the usable space of roof, and energy consumption needs.</li>
+                  <li><strong class="text-brand-950">Solar Batteries &ndash;</strong> A solar battery is needed to allow home to continue to run after the sun goes down. Solar storage device will charge throughout the day as solar panels generate excess electricity. Rather than simply losing out on all of that available solar power, a battery enables to keep it for later use. Depending on energy needs, a single battery, or even a battery bank is used.</li>
+                  <li><strong class="text-brand-950">Solar Inverters &ndash;</strong> In order to convert the direct current (DC) collected by solar panel array into the alternating current (AC) for running most of common household appliances and electronics, solar power system needs a solar inverter &mdash; sometimes referred to as a solar converter or a PV inverter. For an off-grid system use a stand-alone inverter.</li>
+                  <li><strong class="text-brand-950">Solar Charge Controller &ndash;</strong> The solar charge controller or battery charger is essential to save battery. The controller regulates the voltage and current that solar battery receives, to prevent overcharging and damage.</li>
+                  <li><strong class="text-brand-950">Alternative energy source &ndash;</strong> It may be worth considering an alternative source of energy as back up of the system. This is needed during the depths of winter when solar production is at its lowest. Many owners who use off-grid systems combine them with a generator that can power home&rsquo;s electricity needs.</li>
+                </ul>
+              </div>
+              <div class="rounded-2xl bg-brand-50 p-6">
+                <h3 class="text-lg font-bold text-brand-950 mb-4">Advantages of Off-Grid Solar Systems</h3>
+                <ol class="list-decimal pl-5 space-y-5 text-slate-600 leading-relaxed">
+                  <li><strong class="text-brand-950">No access to the utility grid &ndash;</strong> Off-grid solar systems can be cheaper than extending power lines in certain remote areas.</li>
+                  <li><strong class="text-brand-950">Become energy self-sufficient &ndash;</strong> Another big advantage of going off grid is that, 100% independence from electricity retailers. Need not to pay anything for electricity costs, and 100% insured against rising energy prices. System also protects from grid-tied power failures or blackouts. Living off the grid and being self-sufficient feels good. Energy self-sufficiency is also a form of security. Power failures on the utility grid do not affect off-grid solar systems.</li>
+                </ol>
+              </div>
+            </div>
           </article>
 
-          <article id="hybrid" class="scroll-mt-28 rounded-[2rem] border border-slate-100 bg-slate-50 p-6 sm:p-8 lg:p-10 shadow-sm reveal">
-            <div class="mb-6 img-zoom rounded-2xl overflow-hidden"><img src="Assests/hybrid.png" alt="Hybrid solar system" class="w-full h-64 object-cover rounded-2xl"></div>
-            <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">03</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Hybrid Solar System</h2><p class="text-slate-600 leading-relaxed">Hybrid solar systems combine the strengths of grid-tied and off-grid systems. They can be described as off-grid solar with utility backup power, or grid-tied solar with additional battery storage.</p></div></div>
-            <div class="grid lg:grid-cols-2 gap-8"><div class="rounded-2xl bg-white p-6 border border-slate-100"><h3 class="text-lg font-bold text-brand-950 mb-4">Advantages of hybrid solar</h3><ol class="space-y-4 text-slate-600 leading-relaxed"><li><strong class="text-brand-950">Lower cost than off-grid:</strong> Hybrid systems generally need a smaller battery bank and no backup generator. Off-peak utility electricity can be less expensive than diesel.</li><li><strong class="text-brand-950">Smart solar potential:</strong> Modern inverters can respond to changing utility rates. You can use lower-cost power off-peak, store excess solar energy, and export it when grid rates are highest.</li></ol></div><div class="rounded-2xl bg-white p-6 border border-slate-100"><h3 class="text-lg font-bold text-brand-950 mb-4">Equipment for hybrid solar systems</h3><ul class="list-disc pl-5 space-y-2 text-slate-600 leading-relaxed"><li>Charge controller</li><li>Battery bank</li><li>Additional DC disconnect</li><li>Battery-based grid-tie inverter</li><li>Power meter</li></ul><h4 class="font-bold text-brand-950 mt-5 mb-2">Battery-based grid-tie inverter</h4><p class="text-slate-600 leading-relaxed">These devices draw power to and from battery banks while synchronizing with the utility grid. For most homeowners, using the utility grid for backup electricity remains more practical and economical than relying only on battery banks or generators.</p></div></div>
+          <article id="hybrid" role="tabpanel" aria-labelledby="service-tab-hybrid" class="service-panel scroll-mt-28 rounded-[2rem] border border-slate-100 bg-slate-50 p-6 sm:p-8 lg:p-10 shadow-sm" hidden>
+            <div class="mb-8 img-zoom rounded-2xl overflow-hidden bg-slate-50"><img src="Assests/hybrid.png" alt="Hybrid solar system" class="block w-full max-h-[34rem] object-contain rounded-2xl"></div>
+            <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8">
+              <span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">03</span>
+              <div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Hybrid Solar System</h2>
+                <p class="text-slate-600 leading-relaxed">Hybrid solar systems combine the best from grid-tied and off-grid solar systems. These systems can either be described as off-grid solar with utility backup power, or grid-tied solar with extra battery storage.</p>
+                <p class="text-slate-600 leading-relaxed mt-4">If you own a grid-tied solar system and drive a vehicle that runs on electricity, you already kind of have a hybrid setup. The electrical vehicle is really just a battery with wheels.</p>
+              </div>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8">
+              <div class="rounded-2xl bg-white p-6 border border-slate-100">
+                <h3 class="text-lg font-bold text-brand-950 mb-4">Advantages of Hybrid Solar Systems</h3>
+                <ol class="list-decimal pl-5 space-y-5 text-slate-600 leading-relaxed">
+                  <li><strong class="text-brand-950">Less expensive than off-gird solar systems :</strong> Hybrid solar systems are less expensive than off-grid solar systems. You don&rsquo;t really need a backup generator, and the capacity of your battery bank can be downsized. Off-peak electricity from the utility company is cheaper than diesel.</li>
+                  <li><strong class="text-brand-950">Smart solar holds a lot of promise</strong> The introduction of hybrid solar systems has opened up for many interesting innovations. New inverters let homeowners take advantage of changes in the utility electricity rates throughout the day.<p class="mt-4">Solar panels happen to output the most electrical power at noon &ndash; not long before the price of electricity peaks. Your home and electrical vehicle can be programmed to consume power during off-peak hours (or from your solar panels).</p><p class="mt-4">Consequently, you can temporarily store whatever excess electricity your solar panels in batteries, and put it on the utility grid when you are paid the most for every kWh. Smart solar holds a lot of promise. The concept will become increasingly important as we transition towards the smart grid in the coming years.</p></li>
+                </ol>
+              </div>
+              <div class="rounded-2xl bg-white p-6 border border-slate-100">
+                <h3 class="text-lg font-bold text-brand-950 mb-3">Equipment for Hybrid Solar Systems</h3>
+                <p class="text-slate-600 leading-relaxed">Typical hybrid solar systems are based on the following additional components:</p>
+                <ul class="list-disc pl-5 mt-4 space-y-2 text-slate-600 leading-relaxed">
+                  <li>Charge Controller</li>
+                  <li>Battery Bank</li>
+                  <li>DC Disconnect (additional)</li>
+                  <li>Battery-Based Grid-Tie Inverter</li>
+                  <li>Power Meter</li>
+                </ul>
+                <h4 class="font-bold text-brand-950 mt-6 mb-2">Battery-Based Grid-Tie Inverter</h4>
+                <p class="text-slate-600 leading-relaxed">Hybrid solar systems utilize batter-based grid-tie inverters. These devices combine can draw electrical power to and from battery banks, as well as synchronize with the utility grid.</p>
+                <p class="text-slate-600 leading-relaxed mt-4">The bottom line is this: Right now, for the vast majority of homeowners, tapping the utility grid for electricity and energy storage is significantly cheaper and more practical than using battery banks and/or backup generators.</p>
+              </div>
+            </div>
           </article>
 
-          <article id="solar-led" class="scroll-mt-28 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 lg:p-10 shadow-sm reveal">
-            <div class="mb-6 img-zoom rounded-2xl overflow-hidden"><img src="Assests/street%20light.png" alt="Solar LED street light" class="w-full h-64 object-cover rounded-2xl"></div>
-            <div class="flex flex-col sm:flex-row sm:items-start gap-5"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">04</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Solar LED Street Light</h2><p class="text-slate-600 leading-relaxed mb-5">A solar lamp, also known as a solar light or solar lantern, is a lighting system made up of an LED lamp, solar panels, battery, charge controller, and sometimes an inverter. The lamp operates using electricity stored in batteries charged through solar photovoltaic panels.</p><div class="rounded-2xl bg-brand-50 p-6"><h3 class="text-lg font-bold text-brand-950 mb-2">All-in-One Solar Light</h3><p class="text-slate-600 leading-relaxed">All-in-one solar street lights are compact, new-age lighting solutions that integrate solar panels, an LED light, a lithium-ion battery, and a PIR motion sensor. They use high-quality materials and are designed for Indian environments.</p></div></div></div>
+          <article id="solar-led" role="tabpanel" aria-labelledby="service-tab-solar-led" class="service-panel scroll-mt-28 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 lg:p-10 shadow-sm" hidden>
+            <div class="mb-8 img-zoom rounded-2xl overflow-hidden bg-slate-50"><img src="Assests/street%20light.png" alt="Solar LED street light" class="block w-full max-h-[34rem] object-contain rounded-2xl"></div>
+            <div class="flex flex-col sm:flex-row sm:items-start gap-5"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">04</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Solar LED Street Light</h2><p class="text-slate-600 leading-relaxed mb-5">Solar LED street lights are energy-efficient outdoor lighting systems powered by solar energy. Each system includes an LED lamp, solar panel, rechargeable battery, and charge controller, with some models also using an inverter. During the day, the solar panel charges the battery; at night, the stored energy provides reliable illumination without grid electricity.</p><div class="rounded-2xl bg-brand-50 p-6"><h3 class="text-lg font-bold text-brand-950 mb-2">All-in-One Solar Light</h3><p class="text-slate-600 leading-relaxed">All-in-one solar street lights are compact, new-age lighting solutions that integrate solar panels, an LED light, a lithium-ion battery, charge controller, and PIR motion sensor in one unit. Designed with high-quality materials for Indian environments, they are easy to install, low-maintenance, and reduce energy use by brightening when movement is detected.</p></div></div></div>
           </article>
 
-          <article id="water-heating" class="scroll-mt-28 rounded-[2rem] border border-slate-100 bg-slate-50 p-6 sm:p-8 lg:p-10 shadow-sm reveal">
-            <div class="mb-6 img-zoom rounded-2xl overflow-hidden"><img src="Assests/solar%20water%20heterr.png" alt="Solar water heating" class="w-full h-64 object-cover rounded-2xl"></div>
-            <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">05</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Solar Water Heating System</h2><p class="text-slate-600 leading-relaxed">Solar water heating converts sunlight into heat for water heating using a solar thermal collector. We provide direct, indirect, and pressurized heating systems for domestic and commercial use, reducing the need for electricity to produce hot water.</p></div></div>
+          <article id="water-heating" role="tabpanel" aria-labelledby="service-tab-water-heating" class="service-panel scroll-mt-28 rounded-[2rem] border border-slate-100 bg-slate-50 p-6 sm:p-8 lg:p-10 shadow-sm" hidden>
+            <div class="mb-8 img-zoom rounded-2xl overflow-hidden bg-slate-50"><img src="Assests/solar%20water%20heterr.png" alt="Solar water heating" class="block w-full max-h-[34rem] object-contain rounded-2xl"></div>
+            <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">05</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Solar Water Heating System</h2><p class="text-slate-600 leading-relaxed">Solar water heating converts sunlight into heat for water heating using solar thermal collectors. It is an energy-efficient and eco-friendly solution for residential, commercial, and industrial hot-water requirements. We provide direct, indirect, and pressurized systems that reduce dependence on electricity and conventional fuels.</p></div></div>
             <div class="grid lg:grid-cols-2 gap-8"><div class="rounded-2xl bg-white p-6 border border-slate-100"><h3 class="text-lg font-bold text-brand-950 mb-3">How do solar water heating systems work?</h3><p class="text-slate-600 leading-relaxed">Heat is transferred from the collector to the tank through a separate circuit and heat exchanger. The panel heats water, oil, or another fluid flowing through pipes into a copper coil inside the hot-water tank.</p></div><div class="rounded-2xl bg-white p-6 border border-slate-100"><h3 class="text-lg font-bold text-brand-950 mb-3">Types of solar water heating systems</h3><ul class="list-disc pl-5 space-y-2 text-slate-600 leading-relaxed"><li>Flat Plate Collector Technology</li><li>Evacuated Glass Tube Technology</li><li>Heat Pipe Technology</li></ul></div></div>
           </article>
 
-          <article id="water-pumping" class="scroll-mt-28 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 lg:p-10 shadow-sm reveal">
-            <div class="mb-6 img-zoom rounded-2xl overflow-hidden"><img src="Assests/solar%20water%20pumping%20sysytem.png" alt="Solar water pumping" class="w-full h-64 object-cover rounded-2xl"></div>
-            <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">06</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Solar Water Pumping System &amp; Solar Atta Chakki</h2><p class="text-slate-600 leading-relaxed">Solar water pumping systems support irrigation, drinking-water, and other water requirements. The pump runs on electricity generated by solar panels, making operation economical and environmentally friendly. A typical system includes a solar charge controller, customised pump, and solar PV module.</p></div></div>
-            <div class="grid lg:grid-cols-2 gap-8"><div><h3 class="text-lg font-bold text-brand-950 mb-4">Types of solar water pumping systems</h3><ol class="list-decimal pl-5 space-y-2 text-slate-600 leading-relaxed"><li>Solar submersible pumps</li><li>Solar open-well pumps</li><li>Solar monoblock pumps</li><li>Solar AC water pumping systems</li></ol><h3 class="text-lg font-bold text-brand-950 mt-7 mb-4">Major applications</h3><ul class="list-disc pl-5 space-y-2 text-slate-600 leading-relaxed"><li>Domestic drinking water</li><li>Industrial water requirements</li><li>Irrigation</li><li>Hospitals, schools, colleges, and universities</li></ul></div><div><div class="rounded-2xl bg-brand-50 p-6 mb-6"><h3 class="text-lg font-bold text-brand-950 mb-4">Key features</h3><ul class="space-y-2 text-slate-600 leading-relaxed"><li><i class="fas fa-check text-green-600 mr-2"></i>Eco-friendly model</li><li><i class="fas fa-check text-green-600 mr-2"></i>Economical water pumping system</li><li><i class="fas fa-check text-green-600 mr-2"></i>Inbuilt protection system</li><li><i class="fas fa-check text-green-600 mr-2"></i>2-year warranty</li></ul></div><div class="rounded-2xl bg-slate-50 p-6"><h3 class="text-lg font-bold text-brand-950 mb-3">Solar Atta Chakki</h3><p class="text-slate-600 leading-relaxed">Solar Atta Chakki is especially useful in villages, where it can reduce running costs. Traditional Atta Chakki units often run on diesel, which becomes more expensive over time. A one-time solar project investment provides long-term benefits with minimal maintenance.</p></div></div></div>
+          <article id="water-pumping" role="tabpanel" aria-labelledby="service-tab-water-pumping" class="service-panel scroll-mt-28 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 lg:p-10 shadow-sm" hidden>
+            <div class="mb-8 img-zoom rounded-2xl overflow-hidden bg-slate-50"><img src="Assests/solar%20water%20pumping%20sysytem.png" alt="Solar water pumping" class="block w-full max-h-[34rem] object-contain rounded-2xl"></div>
+            <div class="flex flex-col sm:flex-row sm:items-start gap-5 mb-8"><span class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-extrabold flex items-center justify-center flex-shrink-0">06</span><div><h2 class="text-2xl sm:text-3xl font-extrabold text-brand-950 mb-2">Solar Water Pumping System &amp; Solar Atta Chakki</h2><p class="text-slate-600 leading-relaxed">Solar water pumping systems provide a reliable, economical, and eco-friendly solution for irrigation, drinking water, and other water supply needs. The pump operates on electricity generated by solar panels, reducing dependence on conventional electricity and diesel. A typical system includes solar PV modules, a solar charge controller, and a customised water pump.</p></div></div>
+            <div class="grid lg:grid-cols-2 gap-8"><div><h3 class="text-lg font-bold text-brand-950 mb-4">Types of solar water pumping systems</h3><ol class="list-decimal pl-5 space-y-2 text-slate-600 leading-relaxed"><li>Solar submersible pumps</li><li>Solar open-well pumps</li><li>Solar monoblock pumps</li><li>Solar AC water pumping systems</li></ol><h3 class="text-lg font-bold text-brand-950 mt-7 mb-4">Major applications</h3><ul class="list-disc pl-5 space-y-2 text-slate-600 leading-relaxed"><li>Domestic drinking water</li><li>Industrial water requirements</li><li>Irrigation</li><li>Hospitals, schools, colleges, and universities</li></ul></div><div><div class="rounded-2xl bg-brand-50 p-6 mb-6"><h3 class="text-lg font-bold text-brand-950 mb-4">Key features</h3><ul class="space-y-2 text-slate-600 leading-relaxed"><li><i class="fas fa-check text-green-600 mr-2"></i>Eco-friendly model</li><li><i class="fas fa-check text-green-600 mr-2"></i>Economical water pumping system</li><li><i class="fas fa-check text-green-600 mr-2"></i>Inbuilt protection system</li><li><i class="fas fa-check text-green-600 mr-2"></i>2-year warranty</li></ul></div><div class="rounded-2xl bg-slate-50 p-6"><h3 class="text-lg font-bold text-brand-950 mb-3">Solar Atta Chakki</h3><p class="text-slate-600 leading-relaxed">Solar Atta Chakki is an efficient solution for flour mills, especially in villages and rural areas. Replacing diesel or conventional electricity with clean solar energy lowers running costs. It is a one-time investment that delivers long-term savings with minimal maintenance.</p></div></div></div>
           </article>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
+  <div data-site-footer></div>
+  <script src="site-footer.js"></script>
   <footer class="footer-bg pt-20 pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 mb-16">
@@ -978,6 +1064,52 @@
         header.classList.remove('scrolled');
       }
     });
+
+    const serviceSelectors = Array.from(document.querySelectorAll('[data-service-target]'));
+    const servicePanels = Array.from(document.querySelectorAll('.service-panel'));
+    const servicePanelIds = new Set(servicePanels.map((panel) => panel.id));
+
+    function showService(serviceId, options = {}) {
+      if (!servicePanelIds.has(serviceId)) return;
+
+      serviceSelectors.forEach((selector) => {
+        const isSelected = selector.dataset.serviceTarget === serviceId;
+        selector.setAttribute('aria-selected', String(isSelected));
+        selector.tabIndex = isSelected ? 0 : -1;
+      });
+
+      servicePanels.forEach((panel) => {
+        panel.hidden = panel.id !== serviceId;
+      });
+
+      const activePanel = document.getElementById(serviceId);
+      const activeVideo = activePanel.querySelector('video');
+      if (activeVideo) activeVideo.play().catch(() => {});
+
+      if (options.updateHash) {
+        history.pushState(null, '', `#${serviceId}`);
+      }
+
+      if (options.scrollToPanel) {
+        requestAnimationFrame(() => activePanel.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      }
+    }
+
+    function showServiceFromHash() {
+      const serviceId = window.location.hash.slice(1);
+      const activeService = servicePanelIds.has(serviceId) ? serviceId : 'on-grid';
+      showService(activeService, { scrollToPanel: servicePanelIds.has(serviceId) });
+    }
+
+    serviceSelectors.forEach((selector) => {
+      selector.addEventListener('click', () => {
+        const isMobile = window.matchMedia('(max-width: 1023px)').matches;
+        showService(selector.dataset.serviceTarget, { updateHash: true, scrollToPanel: isMobile });
+      });
+    });
+
+    window.addEventListener('hashchange', showServiceFromHash);
+    showServiceFromHash();
 
     const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
     const revealObserver = new IntersectionObserver((entries) => {

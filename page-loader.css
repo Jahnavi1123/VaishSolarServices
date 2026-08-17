@@ -1,0 +1,42 @@
+#pageLoader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  transition: opacity .45s ease, visibility .45s ease;
+}
+
+#pageLoader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#pageLoader .loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+#pageLoader img {
+  width: 84px;
+  height: 84px;
+  border-radius: 12px;
+  object-fit: contain;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, .08);
+  animation: page-loader-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes page-loader-pulse {
+  0%, 100% { transform: scale(.98); opacity: .95; }
+  50% { transform: scale(1.03); opacity: 1; }
+}
+
+body.preloading {
+  overflow: hidden;
+  touch-action: none;
+}
