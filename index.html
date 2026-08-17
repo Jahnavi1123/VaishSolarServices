@@ -378,6 +378,15 @@
       transform: translateY(0);
     }
 
+    .btn-sky {
+      background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%);
+      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3), 0 1px 3px rgba(14, 165, 233, 0.15);
+    }
+
+    .btn-sky:hover {
+      box-shadow: 0 8px 30px rgba(14, 165, 233, 0.42), 0 2px 8px rgba(14, 165, 233, 0.2);
+    }
+
     .btn-secondary {
       position: relative;
       background: transparent;
@@ -1962,6 +1971,55 @@
     </div>
   </section>
 
+  <!-- QUICK REFERENCE -->
+  <section id="quick-reference" class="bg-white py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-10 reveal">
+        <span class="inline-block px-4 py-1.5 bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4">Official portals</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-950 mb-4">Quick Reference</h2>
+        <p class="text-slate-600 leading-relaxed">Use these official portals for solar subsidy applications, UPCL processes, vendor registration, and scheme information.</p>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-lg shadow-slate-900/5 reveal">
+        <table class="w-full min-w-[560px] text-left">
+          <caption class="sr-only">Quick reference links</caption>
+          <thead class="bg-brand-950 text-white">
+            <tr>
+              <th scope="col" class="px-6 py-4 text-xs font-bold uppercase tracking-wider">Purpose</th>
+              <th scope="col" class="px-6 py-4 text-xs font-bold uppercase tracking-wider">Link</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 bg-white">
+            <tr class="hover:bg-brand-50/50 transition-colors">
+              <td class="px-6 py-5 font-semibold text-brand-950">Apply for subsidy + select vendor</td>
+              <td class="px-6 py-5"><a href="https://pmsuryaghar.gov.in/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 font-bold text-brand-700 hover:text-brand-950 hover:underline">Visit government site for more details. <i class="fas fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a></td>
+            </tr>
+            <tr class="hover:bg-brand-50/50 transition-colors">
+              <td class="px-6 py-5 font-semibold text-brand-950">UPCL feasibility + net meter</td>
+              <td class="px-6 py-5"><a href="https://usrp.upcl.org/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 font-bold text-brand-700 hover:text-brand-950 hover:underline">Visit government site for more details. <i class="fas fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a></td>
+            </tr>
+            <tr class="hover:bg-brand-50/50 transition-colors">
+              <td class="px-6 py-5 font-semibold text-brand-950">State subsidy ₹15,000</td>
+              <td class="px-6 py-5"><a href="https://ureda.uk.gov.in/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 font-bold text-brand-700 hover:text-brand-950 hover:underline">Visit government site for more details. <i class="fas fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a></td>
+            </tr>
+            <tr class="hover:bg-brand-50/50 transition-colors">
+              <td class="px-6 py-5 font-semibold text-brand-950">Register for PM Surya Ghar</td>
+              <td class="px-6 py-5"><a href="https://pmsuryaghar.gov.in/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 font-bold text-brand-700 hover:text-brand-950 hover:underline">Visit government site for more details. <i class="fas fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a></td>
+            </tr>
+            <tr class="hover:bg-brand-50/50 transition-colors">
+              <td class="px-6 py-5 font-semibold text-brand-950">ALMM/DCR listing</td>
+              <td class="px-6 py-5"><a href="https://mnre.gov.in/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 font-bold text-brand-700 hover:text-brand-950 hover:underline">Visit government site for more details. <i class="fas fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a></td>
+            </tr>
+            <tr class="hover:bg-brand-50/50 transition-colors">
+              <td class="px-6 py-5 font-semibold text-brand-950">Scheme guidelines</td>
+              <td class="px-6 py-5"><a href="https://mnre.gov.in/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 font-bold text-brand-700 hover:text-brand-950 hover:underline">Visit government site for more details. <i class="fas fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <!-- Reordered: WHY CHOOSE US (moved after calculator) -->
   <section id="about" class="why-choose-bg py-24 lg:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2438,7 +2496,7 @@
         <p class="text-lg text-white/70 leading-relaxed mb-10 max-w-2xl mx-auto">Join hundreds of satisfied customers who have already made the switch. Get your free consultation today and take the first step towards energy independence.</p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="get-a-quote.html" class="btn-primary text-base py-4 px-10 justify-center bg-white text-brand-700 hover:bg-brand-50 shadow-xl shadow-black/20">
+          <a href="get-a-quote.html" class="btn-primary btn-sky text-base py-4 px-10 justify-center">
             Get a Free Quote
             <i class="fas fa-arrow-right"></i>
           </a>
@@ -2522,7 +2580,7 @@
               <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <i class="fas fa-map-marker-alt text-brand-400 text-xs"></i>
               </div>
-              <span class="text-slate-400 text-sm leading-relaxed">C-8, Nehru Colony, Near IDBI Bank, Fawwara Chowk, Dehradun (UK)-248001</span>
+              <span class="text-slate-400 text-sm leading-relaxed">G-79, Nehru Colony, Near IDBI Bank, Fawwara Chowk, Dehradun (UK)-248001</span>
             </li>
             <li class="flex items-center gap-3">
               <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center flex-shrink-0">
