@@ -243,13 +243,8 @@ window.VAISH_PROJECT_GALLERY = [
     "systemSize": "5 kW",
     "location": "Dehradun, Uttarakhand",
     "systemType": "Residential Rooftop Solar",
-    "photos": 8,
+    "photos": 7,
     "media": [
-      {
-        "src": "Assests/vaish solar pictures new/DDN 5 KW 3 PH _Sunil Pant kalidas report/.trashed-1733674706-20241108_54952PMByGPSMapCamera.jpg",
-        "kind": "image",
-        "name": ".trashed-1733674706-20241108_54952PMByGPSMapCamera.jpg"
-      },
       {
         "src": "Assests/vaish solar pictures new/DDN 5 KW 3 PH _Sunil Pant kalidas report/20241108_51328PMByGPSMapCamera.jpg",
         "kind": "image",

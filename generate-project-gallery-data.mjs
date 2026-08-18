@@ -99,7 +99,7 @@ function getMediaFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true })
     .filter((entry) => entry.isFile())
     .map((entry) => ({ entry, extension: path.extname(entry.name).toLowerCase() }))
-    .filter(({ entry, extension }) => imageExtensions.has(extension) && !excludedImageNamePattern.test(entry.name))
+    .filter(({ entry, extension }) => !entry.name.startsWith('.') && imageExtensions.has(extension) && !excludedImageNamePattern.test(entry.name))
     .sort(({ entry: first }, { entry: second }) => first.name.localeCompare(second.name, undefined, { numeric: true }))
     .map(({ entry }) => {
       const src = path.relative(rootDirectory, path.join(directory, entry.name)).split(path.sep).join('/');
