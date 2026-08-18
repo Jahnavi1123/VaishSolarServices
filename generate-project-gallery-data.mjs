@@ -13,6 +13,7 @@ const imageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp']);
 // are retained locally, but only GPS-stamped project evidence is published.
 const excludedImageNamePattern = /\bbill\b/i;
 const verifiedInstallationImageNamePattern = /ByGPSMapCamera/i;
+const excludedProjectDirectoryPattern = /(?:^|[/\\])DDN J P Sharma 4 KW 1 Ph_Done(?:[/\\]|$)/i;
 const excludedImageSources = new Set([
   // Food and drink
   'Assests/vaish solar pictures new/10 KW 3 Ph Arun Kumar Walia_Done/IMG_20250124_223619687.jpg',
@@ -142,6 +143,8 @@ function findSystemType(source, systemSize) {
 
 const projects = sourceDirectories
   .flatMap((directory) => listDirectories(directory))
+  // Exclude the requested project and any of its nested folders from the public gallery.
+  .filter((directory) => !excludedProjectDirectoryPattern.test(directory))
   .map((directory) => {
     const media = getMediaFiles(directory);
     if (!media.length) return null;
