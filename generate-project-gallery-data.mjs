@@ -9,9 +9,10 @@ const sourceDirectories = [
 ];
 const imageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp']);
 
-// Keep the public gallery focused on completed installations. Source files are
-// retained locally, but bills and videos are never added to the published feed.
+// Keep the public gallery focused on verified solar installations. Source files
+// are retained locally, but only GPS-stamped project evidence is published.
 const excludedImageNamePattern = /\bbill\b/i;
+const verifiedInstallationImageNamePattern = /ByGPSMapCamera/i;
 const excludedImageSources = new Set([
   // Food and drink
   'Assests/vaish solar pictures new/10 KW 3 Ph Arun Kumar Walia_Done/IMG_20250124_223619687.jpg',
@@ -66,6 +67,22 @@ const excludedImageSources = new Set([
   'Assests/vaish solar pictures new/DDN balbir Road Smt Usha Aswal28 Oct 2023_Done/Plant Picture Smt Usha Aswal.png',
   'Assests/vaish solar pictures new/Done_3 KW Bimla Chandrabani/IMG_20250308_123531861.jpg',
   'Assests/vaish solar pictures new/Done_3 KW Bimla Chandrabani/IMG_20250308_123540497.jpg',
+
+  // GPS-stamped images that do not show panels, equipment, or installation work
+  'Assests/vaish solar pictures new/DDN J P Sharma 4 KW 1 Ph_Done/20240603_22711PMByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN J P Sharma 4 KW 1 Ph_Done/20240603_23307pmByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN J P Sharma 4 KW 1 Ph_Done/DDN Gytri 4 KW Done/20240603_22711PMByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN Kalam Singh Bhandari 4 KW Done/20241215_44637PMByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN Kalam Singh Bhandari 4 KW Done/20241215_44739PMByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN Mokampur 3 KW Mrs Aradhna Kurreti 8 March 2024_Done/20240602_42328PMByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN Mr Tanuj Bajaj 3 KW Done/20241019_123353PMByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN Mr Tanuj Bajaj 3 KW Done/20241019_123406PMByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN Mr Tanuj Bajaj 3 KW Done/20241019_123414PMByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN Mr Tanuj Bajaj 3 KW Done/20241019_123418PMByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN RAJSHEKHAR BAHUGUNA 4 KW Done/20240905_64126PMByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN RAJSHEKHAR BAHUGUNA 4 KW Done/20240905_64129PMByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN Tehseen Ahmand 4 KW _ Done/20240516_94241AMByGPSMapCamera.jpg',
+  'Assests/vaish solar pictures new/DDN col Amit Danwal_Done/5 KW 3 PH Amit Dangwal/20240627_53658pmByGPSMapCamera.jpg',
 ]);
 
 function listDirectories(directory) {
@@ -88,7 +105,7 @@ function getMediaFiles(directory) {
       const src = path.relative(rootDirectory, path.join(directory, entry.name)).split(path.sep).join('/');
       return { src, kind: 'image', name: entry.name };
     })
-    .filter(({ src }) => !excludedImageSources.has(src));
+    .filter(({ src, name }) => verifiedInstallationImageNamePattern.test(name) && !excludedImageSources.has(src));
 }
 
 function formatTitle(folderName) {
